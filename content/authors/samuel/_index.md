@@ -3,11 +3,13 @@ name: "Samuel"
 image: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Ursula_K_Le_Guin.JPG"
 social:
     website: "https://thestaticturtle.fr"
-    twitter: "@thestaticturtle"
-    youtube: "@thestaticturtle"
-    email:
-        address: "samuel@thestaticturtle.fr"
-        gpg: "URLLLLLL"
+    twitter: "TheStaticTurtle"
+    youtube: "TheStaticTurtle"
+    github: "TheStaticTurtle"
+    emails:
+      - address: "samuel@thestaticturtle.fr"
+        gpg: 
+            id: "0xc97f759321c4c29c"
+            link: https://keyserver.ubuntu.com/pks/lookup?search=0xc97f759321c4c29c&fingerprint=on&op=index
 ---
-Ursula Kroeber Le Guin (October 21, 1929 – January 22, 2018) was an American
-novelist. The New York Times described her as “America’s greatest  science fiction writer”, although she said that she would prefer to be known as an “American novelist”.
+Hey, I'm Samuel, I'm a 21 years old student studying computer science. I really like computers / electronics and board design / radio communication stuff like satellites / 3D Design and audiovisual stuff. I currently live in Alsace, France.

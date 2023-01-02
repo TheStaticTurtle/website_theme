@@ -17,9 +17,23 @@
 	-moz-osx-font-smoothing: grayscale
 }
 
-
+.mdi-email::before{
+	content:"\F01EE"
+}
+.mdi-shield-key::before{
+	content:"\F0BC4"
+}
+.mdi-shield-key-outline::before{
+	content:"\F0BC5"
+}
+.mdi-web::before{
+	content:"\F059F"
+}
 .mdi-github::before {
 	content: "\F02A4"
+}
+.mdi-youtube::before{
+	content:"\F05C3"
 }
 .mdi-linkedin::before {
 	content: "\F033B"

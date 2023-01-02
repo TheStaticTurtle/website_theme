@@ -1,6 +1,9 @@
 {{ define "main" }}
+    <section id="section-intro" class="container">
+        {{ partial "author-list-item.html" . }} 
+    </section>
     <section id="section-posts" class="container">
-        <h2>All posts from "{{ .Params.name }}"</h2>
+        <h2>{{ len .Pages }} Posts:</h2>
         <div class="post-list">
             {{ range .Pages }}
                 {{- partial "post-list-item" . -}}
