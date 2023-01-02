@@ -1,0 +1,17 @@
+{{ define "main" }}
+    <section id="section-posts" class="container">
+        <h2>All the posts</h2>
+
+        {{ range (where .Site.RegularPages "Section" "posts" ) }}
+            {{- partial "blog-list-item" . -}}
+        {{ end }}
+
+        {{ range .Site.Pages }}
+            <li>
+                {{ . }}
+                {{ .Section }}
+            </li>
+        {{ end }}
+
+    </section>
+{{ end }}
