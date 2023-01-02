@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/turtle/css/blog.css" >
-        <link rel="stylesheet" href="/turtle/css/bootstrap.stripped.css" >
-
-
         <!--<meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">-->
 
         <meta name="theme-color" content="#263238">
@@ -15,19 +11,20 @@
         <link href="/turtle//fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
         <link href="/turtle//fonts/materialdesignicons.stripped.css" rel="stylesheet">
 
+        <link rel="stylesheet" href="/turtle/css/bootstrap.stripped.css" >
 
         <link rel="stylesheet" href="/turtle/css/theme-light.css" >
         <link rel="stylesheet" href="/turtle/css/common.css" >
-        <link rel="stylesheet" href="/turtle/css/blog.css" >
 
         <link rel="alternate" type="application/rss+xml" href="https://blog.thestaticturtle.fr/rss/" title="TheStaticTurtle's Blog" />
 
+        <link rel="stylesheet" href="/turtle/css/blog.css" >
     </head>
     <body>
         {{- partial "header.html" . -}}
-        <div id="content">
+        
         {{- block "main" . }}{{- end }}
-        </div>
+
         {{- partial "footer.html" . -}}
     </body>
 </html>

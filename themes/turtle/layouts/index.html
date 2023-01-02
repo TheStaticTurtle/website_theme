@@ -2,9 +2,15 @@
     <section id="section-posts" class="container">
         <h2>All the posts</h2>
 
-        {{ range (where .Site.RegularPages "Section" "posts" ) }}
-            {{- partial "blog-list-item" . -}}
-        {{ end }}
+        <div class="post-list">
+            {{ range first 1 (where .Site.RegularPages "Section" "posts" ) }}
+                {{- partial "blog-list-item-large" . -}}
+            {{ end }}
+            {{ range after 1 (where .Site.RegularPages "Section" "posts" ) }}
+                {{- partial "blog-list-item" . -}}
+            {{ end }}
+        </div>
+
 
         {{ range .Site.Pages }}
             <li>
