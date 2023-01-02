@@ -1,0 +1,10 @@
+{{ define "main" }}
+    <section id="section-posts" class="container">
+        <h2>All the tags</h2>
+        <div class="post-list">
+            {{ range .Pages }}
+                {{- partial "tag-list-item" . -}}
+            {{ end }}
+        </div>
+    </section>
+{{ end }}
