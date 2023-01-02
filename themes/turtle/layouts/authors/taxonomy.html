@@ -1,0 +1,10 @@
+{{ define "main" }}
+    <section id="section-posts" class="container">
+        <h2>All the authors</h2>
+        <div class="post-list">
+            {{ range .Pages }}
+                {{- partial "author-list-item" . -}}
+            {{ end }}
+        </div>
+    </section>
+{{ end }}
