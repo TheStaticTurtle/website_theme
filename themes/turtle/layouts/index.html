@@ -10,14 +10,6 @@
                 {{- partial "post-list-item" . -}}
             {{ end }}
         </div>
-
-
-        {{ range .Site.Pages }}
-            <li>
-                {{ . }}
-                {{ .Section }}
-            </li>
-        {{ end }}
-
+        
     </section>
 {{ end }}

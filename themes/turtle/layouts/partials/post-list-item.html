@@ -29,18 +29,20 @@
             <div>{{ .Date | time.Format ":date_long" }}</div>
         </div>
 
-        <div class="post-item-infos">
-            <div>
-                <i class="mdi mdi-tag" aria-hidden="true"></i>
-            </div>
-            <div class="tag-container">
-                {{ range .Param "tags" }}
-                    {{ with $.Site.GetPage (printf "/%s/%s" "tags" .) }}
-                        <a class="tag" href="{{ .Permalink }}">{{ .Title | humanize }}</a>
+        {{ with (.Param "tags") }}
+            <div class="post-item-infos">
+                <div>
+                    <i class="mdi mdi-tag" aria-hidden="true"></i>
+                </div>
+                <div class="tag-container">
+                    {{ range . }}
+                        {{ with $.Site.GetPage (printf "/%s/%s" "tags" .) }}
+                            <a class="tag" href="{{ .RelPermalink }}">{{ .Title | humanize }}</a>
+                        {{ end }}
                     {{ end }}
-                {{ end }}
+                </div>
             </div>
-        </div>
+        {{ end }}
 
     </div>
 </div>

@@ -1,7 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <!--<meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">-->
+        <meta charset="UTF-8">
+
+        {{ $title := "TheStaticTurtle" }}
+        {{ $og_type := "website" }}
+
+        {{ if eq .Kind "page" }}
+            {{ if eq .Section "posts" }}
+                {{ $title = print $title " - " .Title }}
+                {{ $og_type = "article" }}
+            {{ end }}
+        {{ end }}
+        {{ if eq .Kind "term" }}
+            {{ if eq .Section "tags" }}
+                {{ $title = print $title " - Posts tagged with " (.Title | humanize) }}
+                {{ $og_type = "website" }}
+            {{ end }}
+            {{ if eq .Section "authors" }}
+                {{ $title = print $title " - Posts from " (.Param "name") }}
+                {{ $og_type = "website" }}
+            {{ end }}
+        {{ end }}
+        {{ if eq .Kind "taxonomy" }}
+            {{ $title = print $title " - " (.Section | humanize) }}
+            {{ $og_type = "website" }}
+        {{ end }}
+
+        <title>{{ $title }}</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <meta property="og:type" content="{{ $og_type }}">
+        <meta property="og:url" content="{{ .Permalink | default "https://thestaticturtle.fr"  }}">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="og:description" content="{{.Summary}}">
+        <meta property="og:image" content="{{ .Param "image" | default "/img/logo_white_round.png" }}">
+        
+        <meta property="twitter:card" content="{{ if eq $og_type "article" }}summary_large_image{{else}}summary{{end}}">
+        <meta property="twitter:url" content="{{ .Permalink | default "https://thestaticturtle.fr"  }}">
+        <meta property="twitter:title" content="{{ $title }}">
+        <meta property="twitter:description" content="{{.Summary}}">
+        <meta property="twitter:image" content="{{ .Param "image" | default "/img/logo_white_round.png" }}">
+
+        <meta name="description" content="{{.Summary}}">
+        <meta name="keywords" content="thestaticturtle,{{ with .Param "tags" }}{{ delimit . "," }}{{ end }}">
+
+        <meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">
 
         <meta name="theme-color" content="#263238">
     
@@ -19,10 +64,12 @@
         <link rel="alternate" type="application/rss+xml" href="https://blog.thestaticturtle.fr/rss/" title="TheStaticTurtle's Blog" />
 
         <link rel="stylesheet" href="/turtle/css/blog.css" >
+
+        {{- block "head" . }}{{- end }}
     </head>
     <body>
         {{- partial "header.html" . -}}
-        
+
         {{- block "main" . }}{{- end }}
 
         {{- partial "footer.html" . -}}
