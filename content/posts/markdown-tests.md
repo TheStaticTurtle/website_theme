@@ -226,14 +226,25 @@ will produce
 
 `#!php-inline $a = array("foo" => 0, "bar" => 1);`
 
+## Definitions
+Apple
+:   Pomaceous fruit of plants of the genus Malus in 
+    the family Rosaceae.
+
+Orange
+:   The fruit of an evergreen tree of the genus Citrus.
+
+## Keyboard
 
 ++ctrl+alt+delete++
+
+## Emojis
 
 :smile: :heart: :thumbsup:
 
 text with an emoji :thumbsup: lol
 
-Task List
+## Task List
 
 - [X] item 1
     * [X] item A
@@ -245,6 +256,17 @@ Task List
     * [X] item C
 - [ ] item 2
 - [ ] item 3
+
+
+```mermaid
+graph TD
+    A[Christmas] -->|Get money| B(Go shopping)
+    B --> C{Let me think}
+    C -->|One| D[Laptop]
+    C -->|Two| E[iPhone]
+    C -->|Three| F[fa:fa-car Car]
+  
+```
 
 ~~test~~
 

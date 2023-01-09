@@ -1,4 +1,8 @@
 <footer>
     Copyright 2022 - TheStaticTurtle / 
-    <a href="https://blog.thestaticturtle.fr/rss">RSS</a>
+    <a href="https://blog.thestaticturtle.fr/rss">RSS</a> 
+    <br>
+    {{ if .GitInfo }}
+        Last update: #{{ .GitInfo.AbbreviatedHash }}, {{ .GitInfo.AuthorDate | time.Format ":date_long" }} at {{ .GitInfo.AuthorDate | time.Format ":time_long" }}
+    {{ end }}
 </footer>
