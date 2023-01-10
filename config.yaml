@@ -3,6 +3,14 @@ languageCode: en-us
 title: My New Hugo Site
 theme: turtle
 
+params:
+  ssrOpengraph:
+    quickGraph:
+      url: "http://127.0.0.1:8000/parse?url="
+
+ignoreErrors: 
+  - "error-remote-getjson"
+
 enableGitInfo: true
 
 permalinks:

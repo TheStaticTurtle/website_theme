@@ -1,1 +1,57 @@
-<a href="{{ .Destination  }}">{{ .PlainText  }}</a>
+{{/* Check if the link can be found alone on a line */}}
+{{ $linkAlone := false }}
+{{ range split  (readFile .Page.File) "\n" }}
+    {{ if eq (chomp  .) $.Destination }}
+        {{ $linkAlone = true }}
+    {{ end}}
+{{ end }}
+
+{{ if $linkAlone }}
+    {{ with getJSON (print .Page.Site.Params.ssrOpengraph.quickgraph.url  .Destination) }}
+        {{ if index . "opengraph" }}
+            {{ $siteNameUrlized := urlize  (index . "opengraph" "og:site_name") }}
+            {{ $embedTitle := index . "opengraph" "og:title" }}
+            {{ $embedImage := index . "opengraph" "og:image" }}
+            {{ $embedImageAlt := index . "opengraph" "og:image:alt" }}
+            {{ $embedDescription := index . "opengraph" "og:description" }}
+
+            <blockquote class="embed embed-{{ $siteNameUrlized }}">
+                {{ with $embedImage }}
+                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
+                    <a href="{{ $.Destination  }}" class="embed-image-container">
+
+                        {{ $embedImageBg | safeHTML }}
+
+                        <div class="embed-image-image">
+                            <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
+                        </div>
+                    </a>
+                {{ end }}
+                <div class="embed-content">
+                    {{ with $embedTitle }}
+                        <a class="embed-title" href="{{ $.Destination  }}">{{ . }}</a>
+                    {{ end }}
+                    {{ with $embedDescription }}
+                        <p>{{ . }}</p>
+                    {{ end }}
+                </div>
+            </blockquote>
+        {{ else }}
+                <blockquote class="embed">
+                    <div class="embed-content">
+                        <a href="{{ .Destination  }}">{{ .Destination  }}</a>
+                    </div>
+                </blockquote>
+        {{ end }}
+    {{ else }}
+        {{ warnf "Failed to get opengrah data of '%s' for page '%s'" .Destination .Page.Title}}
+        <blockquote class="embed">
+            <div class="embed-content">
+                <a href="{{ .Destination  }}">{{ .Destination  }}</a><br>
+                <p style="color: red; font-size: 12px;">!! Failed to get opengraph data. See build logs !!</p>
+            </div>
+        </blockquote>
+    {{ end }}
+{{ else }}
+<a href="{{ .Destination  }}">{{ .Destination  }}</a>
+{{ end }}
