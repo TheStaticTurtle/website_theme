@@ -2,7 +2,7 @@
 
     <section id="section-content" class="container markdown">
         <h1>{{ .Title }}</h1>
-        {{ .Content }}
+        {{ .Content | emojify }}
     </section>
     <section id="section-comments" class="container markdown">
         <h2 id="comments">Comments<a class="header-link" href="#comments"><i class="mdi mdi-link-variant" aria-hidden="true"></i>Shortcut to: Comments</a></h2>

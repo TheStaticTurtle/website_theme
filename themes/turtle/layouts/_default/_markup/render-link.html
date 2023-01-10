@@ -37,11 +37,11 @@
                 </div>
             </blockquote>
         {{ else }}
-                <blockquote class="embed">
-                    <div class="embed-content">
-                        <a href="{{ .Destination  }}">{{ .Destination  }}</a>
-                    </div>
-                </blockquote>
+            <blockquote class="embed">
+                <div class="embed-content">
+                    <a href="{{ $.Destination  }}">{{ $.Destination  }}</a>
+                </div>
+            </blockquote>
         {{ end }}
     {{ else }}
         {{ warnf "Failed to get opengrah data of '%s' for page '%s'" .Destination .Page.Title}}

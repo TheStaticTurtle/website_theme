@@ -236,7 +236,7 @@ Orange
 
 ## Keyboard
 
-++ctrl+alt+delete++
+<kbd>ctrl+alt+delete</kbd>
 
 ## Emojis
 
