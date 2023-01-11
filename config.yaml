@@ -4,6 +4,19 @@ title: TheStaticTurtle
 copyright: Copyright 2023 - TheStaticTurtle
 theme: turtle
 
+params:
+  description: Let's Hack
+  rss:
+    image: /favicon.png
+    ttl: 60
+    managingEditor: 
+        email: samuel@thestaticturtle.fr
+        name: Samuel
+    webMaster: 
+        email: samuel@thestaticturtle.fr
+        name: Samuel
+
+
 ignoreErrors: 
   - "error-remote-getjson"
 

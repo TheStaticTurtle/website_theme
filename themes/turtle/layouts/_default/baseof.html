@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
 
-        {{ $title := "TheStaticTurtle" }}
+        {{ $title := .Site.Title }}
         {{ $og_type := "website" }}
 
         {{ if eq .Kind "page" }}
@@ -61,9 +61,11 @@
         <link rel="stylesheet" href="/turtle/css/theme-light.css" >
         <link rel="stylesheet" href="/turtle/css/common.css" >
 
-        <link rel="alternate" type="application/rss+xml" href="https://blog.thestaticturtle.fr/rss/" title="TheStaticTurtle's Blog" />
-
         <link rel="stylesheet" href="/turtle/css/blog.css" >
+
+        {{ with .OutputFormats.Get "rss" -}}
+            {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
+        {{ end -}}
 
         {{- block "head" . }}{{- end }}
     </head>
