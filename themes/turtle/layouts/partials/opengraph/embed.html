@@ -8,29 +8,33 @@
         {{ $embedImage := index . "tags" "og:image" }}
         {{ $embedImageAlt := index . "tags" "og:image:alt" }}
 
-        <blockquote class="embed embed-{{ $siteNameUrlized }}">
-            {{ if $embedImage }}
-                {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
-                <a href="{{ $  }}" class="embed-image-container">
+        {{ if eq $siteNameUrlized "youtube"}}
+            {{ partial "opengraph/embed_youtube.html" . }}
+        {{ else }}
+            <blockquote class="embed embed-{{ $siteNameUrlized }}">
+                {{ if $embedImage }}
+                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
+                    <a href="{{ $  }}" class="embed-image-container">
 
-                    {{ $embedImageBg | safeHTML }}
+                        {{ $embedImageBg | safeHTML }}
 
-                    <div class="embed-image-image">
-                        <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
-                    </div>
-                </a>
-            {{ end }}
-            <div class="embed-content">
-                {{ with $embedTitle }}
-                    <a class="embed-title" href="{{ $ }}">{{ . }}</a>
-                {{ else }}
-                    <a href="{{ $ }}">{{ $ }}</a>
+                        <div class="embed-image-image">
+                            <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
+                        </div>
+                    </a>
                 {{ end }}
-                {{ with $embedDescription }}
-                    <p>{{ . }}</p>
-                {{ end }}
-            </div>
-        </blockquote>
+                <div class="embed-content">
+                    {{ with $embedTitle }}
+                        <a class="embed-title" href="{{ $ }}">{{ . }}</a>
+                    {{ else }}
+                        <a href="{{ $ }}">{{ $ }}</a>
+                    {{ end }}
+                    {{ with $embedDescription }}
+                        <p>{{ . }}</p>
+                    {{ end }}
+                </div>
+            </blockquote>
+        {{ end }}
     {{ else }}
         <blockquote class="embed">
             <div class="embed-content">

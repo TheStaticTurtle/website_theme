@@ -1,0 +1,14 @@
+{{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
+{{ $embedUrl := index . "tags" "og:video:secure_url" }}
+{{ $embedUrlNoCookies := replace $embedUrl "youtube.com" "youtube-nocookie.com" }}
+<div style="display: flex; justify-content: center;">
+    <iframe 
+        src="{{ $embedUrlNoCookies }}"
+        width="720"
+        height="406"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+    ></iframe>
+</div>
