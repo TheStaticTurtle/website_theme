@@ -1,12 +1,8 @@
 baseURL: 'http://example.org/'
 languageCode: en-us
-title: My New Hugo Site
+title: TheStaticTurtle
+copyright: Copyright 2023 - TheStaticTurtle
 theme: turtle
-
-params:
-  ssrOpengraph:
-    quickGraph:
-      url: "http://127.0.0.1:8000/parse?url="
 
 ignoreErrors: 
   - "error-remote-getjson"
