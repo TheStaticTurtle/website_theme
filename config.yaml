@@ -1,46 +1,30 @@
+#########################  Website  ###########################
 baseURL: 'http://example.org/'
-languageCode: en-us
+refLinksNotFoundURL: "/404.html"
+
+log: true
+verbose: true
+timeout: 300000 # Large timeout for the SSR of embed
+
+enableGitInfo: true
+
+defaultExtension: "html"
+defaultLayout: "post"
+
+##########################  Blog  #############################
+
+theme: turtle
 title: TheStaticTurtle
 copyright: Copyright 2023 - TheStaticTurtle
-theme: turtle
 
-params:
-  description: Let's hack
-  rss:
-    image: /favicon.png
-    ttl: 60
-    managingEditor: 
-        email: samuel@thestaticturtle.fr
-        name: Samuel
-    webMaster: 
-        email: samuel@thestaticturtle.fr
-        name: Samuel
+languageCode: en-us
 
+timeZone: "Europe/Paris"
 
 ignoreErrors: 
   - "error-remote-getjson"
 
-enableGitInfo: true
-
-permalinks:
-  posts: '/:slug/'
-
-
-outputs:
-  section:
-    - "HTML"
-    - "SITEMAP"
-  page:
-    - "HTML"
-  taxonomy:
-    - "HTML"
-  taxonomyTerm:
-    - "HTML"
-
-
-taxonomies:
-  author: authors
-  tag: tags
+#########################  Render  ###########################
 
 markup:
   highlight:
@@ -75,3 +59,68 @@ markup:
       hardWraps: false
       xhtml: false
       unsafe: true
+
+frontmatter:
+  date:
+    - date
+    - publishDate
+    - lastmod
+  publishDate:
+    - publishDate
+    - date
+  expiryDate:
+    - expiryDate
+  lastmod:
+    - :git
+    - lastmod
+    - :fileModTime
+    - date
+    - publishDate
+
+security:
+  enableInlineShortcodes: true
+  http:
+    methods:
+    - (?i)GET
+    urls:
+    - .*
+    
+#########################  Content  ###########################
+
+taxonomies:
+  author: authors
+  tag: tags
+
+permalinks:
+  posts: '/:slug/'
+
+section:
+  - "RSS"
+  - "SITEMAP"
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "SITEMAP"
+  page:
+    - "HTML"
+  section:
+    - "HTML"
+    - "SITEMAP"
+  taxonomy:
+    - "HTML"
+  term:
+    - "HTML"
+
+params:
+  description: Let's hack
+  rss:
+    image: /favicon.png
+    ttl: 60
+    managingEditor: 
+        email: samuel@thestaticturtle.fr
+        name: Samuel
+    webMaster: 
+        email: samuel@thestaticturtle.fr
+        name: Samuel
