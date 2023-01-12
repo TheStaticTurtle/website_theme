@@ -5,7 +5,7 @@ copyright: Copyright 2023 - TheStaticTurtle
 theme: turtle
 
 params:
-  description: Let's Hack
+  description: Let's hack
   rss:
     image: /favicon.png
     ttl: 60
@@ -24,6 +24,19 @@ enableGitInfo: true
 
 permalinks:
   posts: '/:slug/'
+
+
+outputs:
+  section:
+    - "HTML"
+    - "SITEMAP"
+  page:
+    - "HTML"
+  taxonomy:
+    - "HTML"
+  taxonomyTerm:
+    - "HTML"
+
 
 taxonomies:
   author: authors
