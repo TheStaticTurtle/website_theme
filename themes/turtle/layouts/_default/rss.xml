@@ -25,7 +25,7 @@
 
     {{ with (index .Site.Params "rss" "image")  }}
         <image>
-            <url>{{ . }}</url>
+            <url>{{ absURL  . }}</url>
             <title>{{ $pageTitle }}</title>
             <link>{{ $.Permalink }}</link>
         </image>
@@ -65,7 +65,7 @@
             {{- (printf "<title><![CDATA[ %s ]]></title>" .Title)  | safeHTML }}
             {{- (printf "<description><![CDATA[ %s ]]></description>" .Summary)  | safeHTML }}
             <link>{{ .Permalink }}</link>
-            <guid isPermalink="true">{{ .Permalink }}</guid>
+            <guid>{{ .Permalink }}</guid>
             {{ range .Params.tags }}
                 {{ with $.Site.GetPage (printf "/%s/%s" "tags" .) }}
                     {{- (printf "<category><![CDATA[ %s ]]></category>" (.Title | humanize))  | safeHTML }}
@@ -75,15 +75,15 @@
             {{ with index .Params.authors 0 }}
                 {{ with $.Site.GetPage (printf "/%s/%s" "authors" .) }}
                     {{- (printf "<dc:creator><![CDATA[ %s ]]></dc:creator>" .Params.name)  | safeHTML }}
-                    {{ $address := index (index .Params.social "emails") 0 }}
-                    {{ if $address }}
-                        {{- (printf "<author><![CDATA[ %s ]]></author>" (print (index $address "address") " (" .Params.name ")" ))  | safeHTML }}
-                    {{ end }}
                 {{ end }}
             {{ end }}
-            {{ if .Params.image }}
-                <media:content url="{{ .Params.image }}" medium="image"/>
+            {{ with .Resources.GetMatch .Params.image }}
+                <media:content url='{{ .RelPermalink }}' medium="image"/>
+            {{ else }}
+                <media:content url='{{ (resources.Get "img/default_post_cover.png").RelPermalink }}' medium="image"/>
             {{ end }}
+
+            {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .Content)  | safeHTML }}
         </item>
     {{ end }}
   </channel>

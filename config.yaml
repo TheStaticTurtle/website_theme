@@ -1,5 +1,5 @@
 #########################  Website  ###########################
-baseURL: 'http://example.org/'
+baseURL: 'https://blog.thestaticturtle.fr/'
 refLinksNotFoundURL: "/404.html"
 
 log: true
@@ -116,7 +116,7 @@ outputs:
 params:
   description: Let's hack
   rss:
-    image: /favicon.png
+    image: /img/logo_white.png
     ttl: 60
     managingEditor: 
         email: samuel@thestaticturtle.fr

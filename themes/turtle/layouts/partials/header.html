@@ -1,7 +1,7 @@
 <header id="section-header" class="container-fluid">
     <div id="header-title" class="container-fluid align-center">
         <h1>
-            <img class="header-title-image" height="65" width="65" src="/turtle/img/logo_white.jpg" loading="lazy" alt="Logo">
+            <img class="header-title-image" height="65" width="65" src="{{ ((resources.Get `img/logo_white.png`).Fit `65x65`).RelPermalink }}" loading="lazy" alt="Logo">
             <b>{{ .Site.Title }}</b>
         </h1>
     </div>
@@ -10,7 +10,7 @@
             <a class="col header-link" href="https://thestaticturtle.fr">
                 Home
             </a>
-            <a class="col header-link" href="https://blog.thestaticturtle.fr">
+            <a class="col header-link" href="{{ .Site.BaseURL }}">
                 Blog
             </a>
         </div>

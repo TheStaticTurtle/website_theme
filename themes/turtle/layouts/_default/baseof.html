@@ -32,36 +32,46 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <meta property="og:type" content="{{ $og_type }}">
-        <meta property="og:url" content="{{ .Permalink | default "https://thestaticturtle.fr"  }}">
-        <meta property="og:title" content="{{ $title }}">
-        <meta property="og:description" content="{{.Summary}}">
-        <meta property="og:image" content="{{ .Param "image" | default "/img/logo_white_round.png" }}">
-        
         <meta property="twitter:card" content="{{ if eq $og_type "article" }}summary_large_image{{else}}summary{{end}}">
-        <meta property="twitter:url" content="{{ .Permalink | default "https://thestaticturtle.fr"  }}">
-        <meta property="twitter:title" content="{{ $title }}">
-        <meta property="twitter:description" content="{{.Summary}}">
-        <meta property="twitter:image" content="{{ .Param "image" | default "/img/logo_white_round.png" }}">
 
-        <meta name="description" content="{{.Summary}}">
-        <meta name="keywords" content="thestaticturtle,{{ with .Param "tags" }}{{ delimit . "," }}{{ end }}">
+        <meta property="og:title" content="{{ $title }}">
+        <meta property="twitter:title" content="{{ $title }}">
+
+        <meta property="og:url" content="{{ .Permalink | default `https://thestaticturtle.fr`  }}">
+        <meta property="twitter:url" content="{{ .Permalink | default `https://thestaticturtle.fr`  }}">
+
+        {{ with .Summary }}
+            <meta property="og:description" content="{{.}}">
+            <meta property="twitter:description" content="{{.}}">
+            <meta name="description" content="{{.}}">
+        {{ end }}
+
+        {{ with .Resources.GetMatch .Params.image }}
+            <meta property="og:image" content="{{ .RelPermalink }}">
+            <meta property="twitter:image" content="{{ .RelPermalink }}">
+        {{ else }}
+            <meta property="og:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
+            <meta property="twitter:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
+        {{ end }}
+
+        <meta name="keywords" content="thestaticturtle{{ with .Param `tags` }},{{ delimit . `,` }}{{ end }}">
 
         <meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">
 
         <meta name="theme-color" content="#263238">
-    
-        <link rel="icon" type="image/png" sizes="400x400" href="/turtle/img/logo_transparent.png">
+        <link rel="icon" type="image/x-icon" href='{{ (resources.Get "img/favicon.ico").RelPermalink }}'>
+
         <!-- <link rel="manifest" href="{ url_for('static', path='/manifest.json') }}"> -->
     
-        <link href="/turtle//fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
-        <link href="/turtle//fonts/materialdesignicons.stripped.css" rel="stylesheet">
+        <link href="/fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
+        <link href="/fonts/materialdesignicons.stripped.css" rel="stylesheet">
 
-        <link rel="stylesheet" href="/turtle/css/bootstrap.stripped.css" >
+        <link rel="stylesheet" href="/css/bootstrap.stripped.css" >
 
-        <link rel="stylesheet" href="/turtle/css/theme-light.css" >
-        <link rel="stylesheet" href="/turtle/css/common.css" >
+        <link rel="stylesheet" href="/css/theme-light.css" >
+        <link rel="stylesheet" href="/css/common.css" >
 
-        <link rel="stylesheet" href="/turtle/css/blog.css" >
+        <link rel="stylesheet" href="/css/blog.css" >
 
         {{ with .OutputFormats.Get "rss" -}}
             {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}

@@ -3,7 +3,7 @@ title: "Markdown tests"
 date: 2023-01-01T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/02/kiwx_blog_post_icon.png"
+image: "images/cover.jpg"
 tags: []
 authors:
     - samuel
@@ -221,7 +221,7 @@ will produce
 ![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
 
 ## Big Image
-![Branching Concepts](https://wallpapershome.com/images/pages/pic_h/21486.jpg)
+![images/cover.jpg](images/cover.jpg)
 
 
 `#!php-inline $a = array("foo" => 0, "bar" => 1);`
