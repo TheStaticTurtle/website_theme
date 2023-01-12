@@ -115,12 +115,12 @@ outputs:
 
 params:
   description: Let's hack
+  webMaster: 
+    email: samuel@thestaticturtle.fr
+    name: Samuel
+  managingEditor: 
+    email: samuel@thestaticturtle.fr
+    name: Samuel
   rss:
     image: /img/logo_white.png
     ttl: 60
-    managingEditor: 
-        email: samuel@thestaticturtle.fr
-        name: Samuel
-    webMaster: 
-        email: samuel@thestaticturtle.fr
-        name: Samuel

@@ -1,0 +1,15 @@
+{{ define "main" }}
+
+    <section id="section-error" class="container">
+        <h1>404 Not Found</h1>
+        <h1>😥</h1>
+        <p>
+            If you feel that something should be availible at this address, send me an email at: <a href="mailto:{{ index .Site.Params `webMaster` `email` }}">{{ index .Site.Params `webMaster` `email` }}</a>
+        </p>
+        <h2>Here is a random cat instead</h1>
+        <img src="https://cataas.com/cat" alt="Cat As A Service Image">
+    </section>
+{{ end }}
+
+{{ define "head" }}
+{{ end }}
