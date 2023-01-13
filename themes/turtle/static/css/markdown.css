@@ -254,6 +254,9 @@
     color: var(--text-color)  !important;
     text-decoration: none;
 }
+.markdown blockquote[class*="embed"] .embed-content .embed-title:hover {
+    text-decoration: underline;
+}
 .markdown blockquote[class*="embed"] .embed-content a {
     color: var(--main-accent-color);
 }
