@@ -1,0 +1,11 @@
+{{ .Page.Store.Set "hasJs" true }}
+{{ .Page.Store.Set "hasMermaid" true }}
+<div class="javascript-content mermaid">
+    {{- .Inner | safeHTML }}
+</div>
+<blockquote class="no-javascript-content diagram embed embed-mermaid-block">
+    <div class="embed-content">
+        <b>Unfortunatly, you seem to not be able to load Javascript, this means rendering of mermaid diagrams is not possible, here is the raw instructions if you want to generate it yourself:</b>
+        <pre>{{- .Inner }}</pre>
+    </div>
+</blockquote>
