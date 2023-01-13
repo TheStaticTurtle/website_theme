@@ -6,25 +6,6 @@
     </section>
     
     {{ partial "comments.html" }}
-
-    {{/* Tool to hide content tipically used by JS */}}
-    {{ if .Page.Store.Get "hasJs" }}
-        <script>
-            for (let el of document.getElementsByClassName("javascript-content")) {
-                el.classList.remove("javascript-content")
-            }
-            for (let el of document.getElementsByClassName("no-javascript-content")) {
-                el.style.display = 'none'
-            }
-        </script>
-    {{ end }}
-
-    {{ if .Page.Store.Get "hasMermaid" }}
-        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-        <script>
-            mermaid.initialize({ startOnLoad: true });
-        </script>
-    {{ end }}
 {{ end }}
 
 {{ define "head" }}

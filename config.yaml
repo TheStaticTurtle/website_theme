@@ -126,6 +126,8 @@ params:
         name: Home
       - url: https://blog.thestaticturtle.fr/
         name: Blog
+  plantuml:
+    server: https://www.plantuml.com/plantuml/svg/
   webMaster: 
     email: samuel@thestaticturtle.fr
     name: Samuel
