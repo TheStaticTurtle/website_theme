@@ -4,26 +4,8 @@
         <h1>{{ .Title }}</h1>
         {{ .Content | emojify }}
     </section>
-    <section id="section-comments" class="container markdown">
-        <h2 id="comments">Comments<a class="header-link" href="#comments"><i class="mdi mdi-link-variant" aria-hidden="true"></i>Shortcut to: Comments</a></h2>
-        <p>
-            Want to chat about this article? Just post a message down here. Chat is powered by giscus and all discussions can be found
-            here: <a href="https://github.com/TheStaticTurtle/blog-comments/discussions">TheStaticTurtle/blog-comments</a>
-        </p>
-        <script src="https://giscus.app/client.js"
-                data-repo="TheStaticTurtle/blog-comments"
-                data-repo-id="R_kgDOGgNzFw"
-                data-category="General"
-                data-category-id="DIC_kwDOGgNzF84CANT2"
-                data-mapping="pathname"
-                data-reactions-enabled="1"
-                data-emit-metadata="0"
-                data-theme="light"
-                data-lang="en"
-                crossorigin="anonymous"
-                async>
-        </script>
-    </section>
+    
+    {{ partial "comments.html" }}
 
     {{/* Tool to hide content tipically used by JS */}}
     {{ if .Page.Store.Get "hasJs" }}
