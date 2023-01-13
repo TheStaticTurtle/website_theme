@@ -102,6 +102,7 @@ p {
     font-size: 1.05rem;
     color: var(--text-color);
     margin-left: 8px;
+    overflow-wrap: break-word;
 }
 
 
@@ -111,7 +112,10 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-color-important);
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 240px) {
+    #header-title h1 { font-size: 13vw; }
+}
+@media screen and (min-width: 241px)  and (max-width: 350px) {
     #header-title h1 { font-size: 2rem; }
 }
 @media screen and (min-width: 351px)  and (max-width: 500px) {
@@ -158,6 +162,7 @@ hr {
 
 a {
     color: var(--link-color);
+    overflow-wrap: break-word;
 }
 a:hover {
     color: var(--link-color-mouserover-color);

@@ -7,12 +7,9 @@
     </div>
     <div id="header-navigation" class="container align-center" style="display: flex">
         <div class="row">
-            <a class="col header-link" href="https://thestaticturtle.fr">
-                Home
-            </a>
-            <a class="col header-link" href="{{ .Site.BaseURL }}">
-                Blog
-            </a>
+            {{ range (index .Site.Params "header" "links") }}
+                <a class="col header-link" href="{{ index . `url` }}">{{ index . `name` }}</a>
+            {{ end }}
         </div>
     </div>
 </header>

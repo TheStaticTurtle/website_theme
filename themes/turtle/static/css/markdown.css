@@ -25,13 +25,14 @@
 .markdown .highlight, .markdown pre, .markdown code {
     background-color: var(--post-content-code-bg-color) !important; /* !important to override the style attribute put by pygment */
     overflow-x: auto;
+    overflow-wrap: break-word;
 }
 .markdown pre {
     padding: 12px;
 }
 .markdown .highlight pre {
     padding: 0;
-    margin-bottom: 0;
+    margin: 0;
 }
 .markdown p > code {
     padding: 2px 4px;

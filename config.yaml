@@ -115,6 +115,12 @@ outputs:
 
 params:
   description: Let's hack
+  header:
+    links:
+      - url: https://thestaticturtle.fr
+        name: Home
+      - url: https://blog.thestaticturtle.fr/
+        name: Blog
   webMaster: 
     email: samuel@thestaticturtle.fr
     name: Samuel
