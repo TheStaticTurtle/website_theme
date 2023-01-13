@@ -1,0 +1,6 @@
+<h{{ .Level }} id="{{ .Anchor | safeURL }}">
+    {{ .Text | safeHTML }} 
+    <a class="header-link" href="#{{ .Anchor | safeURL }}">
+        <i class="mdi mdi-link-variant" aria-hidden="true"></i>
+    </a>
+</h{{ .Level }}>

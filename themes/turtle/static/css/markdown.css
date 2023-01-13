@@ -374,7 +374,8 @@
 }
 
 .markdown .header-link {
-    margin-left: 8px;
+    margin: 0 !important;
+    margin-left: 4px !important;
     border: none !important;
     font-size: 0;
 }
@@ -392,10 +393,10 @@
     transition: ease-in 75ms;
 }
 
-.markdown h1 > .header-link > i { font-size: 32px; }
-.markdown h2 > .header-link > i { font-size: 28px; }
-.markdown h3 > .header-link > i { font-size: 24px; }
-.markdown h4 > .header-link > i { font-size: 20px; }
+.markdown h1 > .header-link > i { font-size: 36px; }
+.markdown h2 > .header-link > i { font-size: 32px; }
+.markdown h3 > .header-link > i { font-size: 28px; }
+.markdown h4 > .header-link > i { font-size: 24px; }
 .markdown h5 > .header-link > i { font-size: 16px; }
 .markdown h6 > .header-link > i { font-size: 12px; }
 
