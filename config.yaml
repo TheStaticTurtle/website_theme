@@ -84,7 +84,12 @@ security:
     - (?i)GET
     urls:
     - .*
-    
+
+imaging:
+  exif:
+    disableDate: true
+    disableLatLong: true
+
 #########################  Content  ###########################
 
 taxonomies:

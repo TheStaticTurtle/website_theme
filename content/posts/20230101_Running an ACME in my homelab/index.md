@@ -3,7 +3,7 @@ title: "Running an ACME in my homelab"
 date: 2023-01-01T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/11/signal-2022-11-28-120947_002-1.jpeg"
+image: "images/cover.jpg"
 tags: 
     - homelab
     - security

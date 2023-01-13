@@ -3,7 +3,7 @@ title: "Automating my Outlook calendars"
 date: 2022-12-01T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/11/signal-2022-11-18-155924_002.jpeg"
+image: "images/cover.jpg"
 tags: 
     - python
     - tutorials

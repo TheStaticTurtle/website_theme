@@ -3,7 +3,7 @@ title: "Let's talk about WireGuard"
 date: 2022-08-01T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/05/Untitled.png"
+image: "images/cover.png"
 tags: 
     - home automation
     - servers

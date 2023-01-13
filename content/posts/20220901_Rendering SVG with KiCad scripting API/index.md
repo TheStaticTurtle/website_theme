@@ -3,7 +3,7 @@ title: "Rendering SVG with KiCad scripting API"
 date: 2022-09-01T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/08/ggggggggg-2-2.jpg"
+image: "images/cover.jpg"
 tags: 
     - python
     - electronics

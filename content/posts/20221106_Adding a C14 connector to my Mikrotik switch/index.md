@@ -3,7 +3,7 @@ title: "Adding a C14 connector to my Mikrotik switch"
 date: 2022-11-06T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/11/DSC00159.JPG"
+image: "images/cover.jfif"
 tags: 
     - homelab
     - diy

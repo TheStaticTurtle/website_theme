@@ -3,7 +3,7 @@ title: "Too cold? Let's predict things!"
 date: 2022-08-17T12:00:00Z
 draft: false
 featured: false
-image: "https://data.thestaticturtle.fr/blog/2022/07/60f14edaaca4e112707472-1.jpg"
+image: "images/cover.jpg"
 tags: 
     - automation
     - home automation
