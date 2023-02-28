@@ -296,6 +296,30 @@
 .markdown blockquote[class*="embed-twitter"] .embed-content a {
     color: #1DA1F2 !important;
 }
+.embed-twitter-mediatype-video > p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    background: #0009;
+    border: 2px solid white;
+    border-radius: 65px;
+    height: 65px;
+    width: 65px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.75rem;
+    padding: 0  !important;
+    padding-left: 4px !important;
+}
+
+
+
+
+
 .markdown blockquote[class*="embed-stack-overflow"] {
     border-left: #F48024 solid 4px !important;
 }

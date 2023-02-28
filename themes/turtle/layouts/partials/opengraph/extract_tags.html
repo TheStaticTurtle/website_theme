@@ -14,10 +14,27 @@
         {{ $error = . }}
         {{ warnf "[opengraph_embeds] %s" . }}
     {{ else }}
-        {{ range findRE `<meta.*?(?:property|name)="(.+?)".*?content="(.*?)".*?\/?>` .Content }}
-            {{/* Stupid workaround because hugo doesn't support capture groups in template (yet, https://github.com/gohugoio/hugo/issues/10594) */}}
+        {{ $processedContent := replace .Content "\n" "NEWLINETAG%%$" }}
+
+        {{ range findRE `<meta.*?content="(.*?)".*?(?:property|name)="(.+?)".*?\/?>` $processedContent }}
+            {{/* Stupid workaround for capture groups in template (yet, https://github.com/gohugoio/hugo/issues/10594) */}}
             {{ $property := replaceRE `^.*?(?:property|name)="|".*$` "" .  }}
             {{ $content := replaceRE `^.*?content="|".*$` "" .  }}
+            
+            {{ $content = replace $content "NEWLINETAG%%$" "\n" }}
+
+            {{ if or (hasPrefix $property "og:") (hasPrefix $property "twitter:") }}
+                {{ $tags = merge $tags (dict $property $content) }}
+            {{ end }}
+        {{ end }}
+
+        {{ range findRE  `<meta.*?(?:property|name)="(.+?)".*?content="(.*?)".*?\/?>` $processedContent }}
+            {{/* Stupid workaround for capture groups in template (yet, https://github.com/gohugoio/hugo/issues/10594) */}}
+            {{ $property := replaceRE `^.*?(?:property|name)="|".*$` "" .  }}
+            {{ $content := replaceRE `^.*?content="|".*$` "" .  }}
+            
+            {{ $content = replace $content "NEWLINETAG%%$" "\n" }}
+
             {{ if or (hasPrefix $property "og:") (hasPrefix $property "twitter:") }}
                 {{ $tags = merge $tags (dict $property $content) }}
             {{ end }}

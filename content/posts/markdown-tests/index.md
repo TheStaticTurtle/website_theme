@@ -265,7 +265,7 @@ Bob --> Alice: Authentication Response
 
 ~~test~~
 
-https://localhost.local
+http://MP21A1.biotrialrennes.local:7898
 
 Test: fefv https://www.youtube.com/watch?v=ytWz0qVvBZ0
 

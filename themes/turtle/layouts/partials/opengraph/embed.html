@@ -2,38 +2,12 @@
     {{ if index . "valid" }}
         {{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
 
-        {{ $embedTitle := index . "tags" "og:title" | default (index . "tags" "twitter:title")  | default (index . "tags" "twitter:titleog:title") }}
-        {{ $embedDescription := index . "tags" "og:description" | default (index . "tags" "twitter:description")  | default (index . "tags" "twitter:descriptionog:description") }}
-
-        {{ $embedImage := index . "tags" "og:image" }}
-        {{ $embedImageAlt := index . "tags" "og:image:alt" }}
-
         {{ if eq $siteNameUrlized "youtube"}}
             {{ partial "opengraph/embed_youtube.html" . }}
+        {{ else if eq $siteNameUrlized "twitter"}}
+            {{ partial "opengraph/embed_twitter.html" . }}
         {{ else }}
-            <blockquote class="embed embed-{{ $siteNameUrlized }}">
-                {{ if $embedImage }}
-                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
-                    <a href="{{ $  }}" class="embed-image-container">
-
-                        {{ $embedImageBg | safeHTML }}
-
-                        <div class="embed-image-image">
-                            <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
-                        </div>
-                    </a>
-                {{ end }}
-                <div class="embed-content">
-                    {{ with $embedTitle }}
-                        <a class="embed-title" href="{{ $ }}">{{ . }}</a>
-                    {{ else }}
-                        <a href="{{ $ }}">{{ $ }}</a>
-                    {{ end }}
-                    {{ with $embedDescription }}
-                        <p>{{ . }}</p>
-                    {{ end }}
-                </div>
-            </blockquote>
+            {{ partial "opengraph/embed_generic.html" . }}
         {{ end }}
     {{ else }}
         <blockquote class="embed">
