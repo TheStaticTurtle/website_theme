@@ -1,0 +1,58 @@
+
+<div class="page-selector">
+    <div class="page-selector-controls">
+        {{ if .HasPrev }}
+            {{ with .First }}
+                <a href="{{ .URL }}" aria-label="First" role="button">«</a>
+            {{ end }}
+        {{ else }}
+            <a class="page-selector-disabled">«</a>
+        {{ end }}
+
+        {{ with .Prev }}
+            <a href="{{ .URL }}" aria-label="Previous" role="button">‹</a>
+        {{ else }}
+            <a class="page-selector-disabled">‹</a>
+        {{ end }}
+    </div>
+
+
+    {{ with .Prev }}
+        {{ with .Prev }}
+            {{ with .Prev }}
+                <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+            {{ end }}
+            <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+        {{ end }}
+        <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+    {{ end }}
+            
+    <a class="page-selector-current">{{.PageNumber}}</a>
+
+    {{ with .Next }}
+        <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+        {{ with .Next }}
+            <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+            {{ with .Next }}
+                <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+
+
+    <div class="page-selector-controls">
+        {{ with .Next }}
+            <a href="{{ .URL }}" aria-label="Next" role="button">›</a>
+        {{ else }}
+            <a class="page-selector-disabled">›</a>
+        {{ end }}
+        
+        {{ if .HasNext }}
+            {{ with .Last }}
+                <a href="{{ .URL }}" aria-label="Last" role="button">»</a>
+            {{ end }}
+        {{ else }}
+            <a class="page-selector-disabled">»</a>
+        {{ end }}
+    </div>
+</div>

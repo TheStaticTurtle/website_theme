@@ -137,3 +137,5 @@ params:
   rss:
     image: /img/logo_white.png
     ttl: 60
+  pagination:
+    articleCount: 10

@@ -2,14 +2,24 @@
     <section id="section-posts" class="container">
         <h2>All the posts</h2>
 
+        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "posts") .Site.Params.pagination.articleCount }}
+
         <div class="post-list">
-            {{ range first 1 (where .Site.RegularPages "Section" "posts" ) }}
-                {{- partial "post-list-item-large" . -}}
-            {{ end }}
-            {{ range after 1 (where .Site.RegularPages "Section" "posts" ) }}
-                {{- partial "post-list-item" . -}}
+            {{ if eq $paginator.PageNumber 1 }}
+                {{ range first 1 $paginator.Pages }}
+                    {{- partial "post-list-item-large" . -}}
+                {{ end }}
+                {{ range after 1 $paginator.Pages }}
+                    {{- partial "post-list-item" . -}}
+                {{ end }}
+            {{ else }}
+                {{ range $paginator.Pages }}
+                    {{- partial "post-list-item" . -}}
+                {{ end }}
             {{ end }}
         </div>
         
+        {{ partial "pagination.html" $paginator }}
+
     </section>
 {{ end }}
