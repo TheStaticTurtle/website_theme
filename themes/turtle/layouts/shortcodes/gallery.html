@@ -1,0 +1,23 @@
+{{ $images := slice }}
+{{ range split .Inner "\n" }}
+    {{ if hasPrefix . "http" }}
+        {{ $images = $images | append . }}
+    {{ end }}
+{{ end }}
+
+{{ $imageIndex := 0 }}
+
+<div class="img-gallery-container">
+    {{ range $images }}
+        {{ $newRow :=  or (eq $imageIndex 0) (modBool $imageIndex 3) }}
+        {{ $endRow :=  or (eq $imageIndex (sub (len  $images) 1)) (eq (mod $imageIndex 3) 2) }}
+
+        {{ if $newRow  }}<div class="img-gallery-row">{{ end }}
+            <a class="img-gallery-image" target="_blank" href="{{ . }}">
+                <img src="{{ . }}" >
+            </a>
+        {{ if $endRow }}</div>{{ end }}
+
+        {{ $imageIndex = add $imageIndex 1}}
+    {{ end }}
+</div>

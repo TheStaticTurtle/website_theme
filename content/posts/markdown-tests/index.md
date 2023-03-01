@@ -304,3 +304,66 @@ https://mail.google.com
 https://docs.djangoproject.com/en/4.0/intro/tutorial01/
 
 https://www.reddit.com/r/DataHoarder/comments/txy10y/just_finished_building_my_new_plex_server/
+
+https://gist.github.com/spf13/7896402
+
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+https://dummyimage.com/600x400/828282/ffffff&text=4
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+https://dummyimage.com/600x400/828282/ffffff&text=4
+https://dummyimage.com/600x400/828282/ffffff&text=5
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+https://dummyimage.com/600x400/828282/ffffff&text=4
+https://dummyimage.com/600x400/828282/ffffff&text=5
+https://dummyimage.com/600x400/828282/ffffff&text=6
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+https://dummyimage.com/600x400/828282/ffffff&text=4
+https://dummyimage.com/600x400/828282/ffffff&text=5
+https://dummyimage.com/600x400/828282/ffffff&text=6
+https://dummyimage.com/600x400/828282/ffffff&text=7
+{{< /gallery >}}
+<hr>
+{{< gallery >}}
+https://dummyimage.com/600x400/828282/ffffff&text=1
+https://dummyimage.com/600x400/828282/ffffff&text=2
+https://dummyimage.com/600x400/828282/ffffff&text=3
+https://dummyimage.com/600x400/828282/ffffff&text=4
+https://dummyimage.com/600x400/828282/ffffff&text=5
+https://dummyimage.com/600x400/828282/ffffff&text=6
+https://dummyimage.com/600x400/828282/ffffff&text=7
+https://dummyimage.com/600x400/828282/ffffff&text=8
+{{< /gallery >}}
+<hr>
