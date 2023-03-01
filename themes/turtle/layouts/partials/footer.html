@@ -1,6 +1,10 @@
 <footer>
-    {{ .Site.Copyright }} / 
-    <a href="https://blog.thestaticturtle.fr/rss">RSS</a> 
+    {{ .Site.Copyright }}
+
+    {{ with .OutputFormats.Get "rss" -}}
+        / <a href="{{ .RelPermalink }}">RSS</a> 
+    {{ end -}}
+
     <br>
     {{ if .GitInfo }}
         Last update: #{{ .GitInfo.AbbreviatedHash }}, {{ .GitInfo.AuthorDate | time.Format ":date_long" }} at {{ .GitInfo.AuthorDate | time.Format ":time_long" }}
