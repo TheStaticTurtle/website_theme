@@ -1,0 +1,41 @@
+{{ $title := .Site.Title }}
+{{ $og_type := "website" }}
+
+
+{{ with partial "opengraph/site_title.html" . }}
+    {{ $title = . }}
+{{ end }}
+{{ with partial "opengraph/og_type.html" . }}
+    {{ $og_type = . }}
+{{ end }}
+
+
+
+<meta property="og:type" content="{{ $og_type }}">
+<meta property="twitter:card" content="{{ if eq $og_type "article" }}summary_large_image{{else}}summary{{end}}">
+
+<meta property="og:title" content="{{ $title }}">
+<meta property="twitter:title" content="{{ $title }}">
+
+<meta property="og:url" content="{{ .Permalink | default .Site.BaseURL  }}">
+<meta property="twitter:url" content="{{ .Permalink | default .Site.BaseURL }}">
+
+{{ with .Summary }}
+    <meta property="og:description" content="{{.}}">
+    <meta property="twitter:description" content="{{.}}">
+    <meta name="description" content="{{.}}">
+{{ else }}
+    <meta property="og:description" content="{{ .Site.Params.description }}">
+    <meta property="twitter:description" content="{{ .Site.Params.description }}">
+    <meta name="description" content="{{ .Site.Params.description }}">
+{{ end }}
+
+{{ with .Resources.GetMatch .Params.image }}
+    <meta property="og:image" content="{{ .RelPermalink }}">
+    <meta property="twitter:image" content="{{ .RelPermalink }}">
+{{ else }}
+    <meta property="og:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
+    <meta property="twitter:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
+{{ end }}
+
+<meta name="keywords" content="thestaticturtle{{ with .Param `tags` }},{{ delimit . `,` }}{{ end }}">

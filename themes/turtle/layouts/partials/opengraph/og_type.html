@@ -1,0 +1,20 @@
+{{ $og_type := "website" }}
+
+{{ if eq .Kind "page" }}
+    {{ if eq .Section "posts" }}
+        {{ $og_type = "article" }}
+    {{ end }}
+{{ end }}
+{{ if eq .Kind "term" }}
+    {{ if eq .Section "tags" }}
+        {{ $og_type = "website" }}
+    {{ end }}
+    {{ if eq .Section "authors" }}
+        {{ $og_type = "website" }}
+    {{ end }}
+{{ end }}
+{{ if eq .Kind "taxonomy" }}
+    {{ $og_type = "website" }}
+{{ end }}
+
+{{ return $og_type }}

@@ -1,0 +1,20 @@
+{{ $title := .Site.Title }}
+
+{{ if eq .Kind "page" }}
+    {{ if eq .Section "posts" }}
+        {{ $title = print $title " - " .Title }}
+    {{ end }}
+{{ end }}
+{{ if eq .Kind "term" }}
+    {{ if eq .Section "tags" }}
+        {{ $title = print $title " - Posts tagged with " (.Title | humanize) }}
+    {{ end }}
+    {{ if eq .Section "authors" }}
+        {{ $title = print $title " - Posts from " (.Param "name") }}
+    {{ end }}
+{{ end }}
+{{ if eq .Kind "taxonomy" }}
+    {{ $title = print $title " - " (.Section | humanize) }}
+{{ end }}
+
+{{ return $title }}

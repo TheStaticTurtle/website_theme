@@ -2,67 +2,21 @@
 <html>
     <head>
         <meta charset="UTF-8">
-
-        {{ $title := .Site.Title }}
-        {{ $og_type := "website" }}
-
-        {{ if eq .Kind "page" }}
-            {{ if eq .Section "posts" }}
-                {{ $title = print $title " - " .Title }}
-                {{ $og_type = "article" }}
-            {{ end }}
-        {{ end }}
-        {{ if eq .Kind "term" }}
-            {{ if eq .Section "tags" }}
-                {{ $title = print $title " - Posts tagged with " (.Title | humanize) }}
-                {{ $og_type = "website" }}
-            {{ end }}
-            {{ if eq .Section "authors" }}
-                {{ $title = print $title " - Posts from " (.Param "name") }}
-                {{ $og_type = "website" }}
-            {{ end }}
-        {{ end }}
-        {{ if eq .Kind "taxonomy" }}
-            {{ $title = print $title " - " (.Section | humanize) }}
-            {{ $og_type = "website" }}
-        {{ end }}
-
-        <title>{{ $title }}</title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <meta property="og:type" content="{{ $og_type }}">
-        <meta property="twitter:card" content="{{ if eq $og_type "article" }}summary_large_image{{else}}summary{{end}}">
 
-        <meta property="og:title" content="{{ $title }}">
-        <meta property="twitter:title" content="{{ $title }}">
-
-        <meta property="og:url" content="{{ .Permalink | default `https://thestaticturtle.fr`  }}">
-        <meta property="twitter:url" content="{{ .Permalink | default `https://thestaticturtle.fr`  }}">
-
-        {{ with .Summary }}
-            <meta property="og:description" content="{{.}}">
-            <meta property="twitter:description" content="{{.}}">
-            <meta name="description" content="{{.}}">
-        {{ end }}
-
-        {{ with .Resources.GetMatch .Params.image }}
-            <meta property="og:image" content="{{ .RelPermalink }}">
-            <meta property="twitter:image" content="{{ .RelPermalink }}">
-        {{ else }}
-            <meta property="og:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
-            <meta property="twitter:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
-        {{ end }}
-
-        <meta name="keywords" content="thestaticturtle{{ with .Param `tags` }},{{ delimit . `,` }}{{ end }}">
-
-        <meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">
-
-        <meta name="theme-color" content="#263238">
         <link rel="icon" type="image/x-icon" href='{{ (resources.Get "img/favicon.ico").RelPermalink }}'>
+        <meta name="copyright" content="Copyright TheStaticTurtle (Samuel) - 2022">
+        <meta name="theme-color" content="#263238">
+
+
+        {{ with partial "opengraph/site_title.html" . }}
+            <title>{{ . }}</title>
+        {{ end }}
+
+        {{ partial "opengraph/meta.html" . }}
 
         <!-- <link rel="manifest" href="{ url_for('static', path='/manifest.json') }}"> -->
-    
+
         <link href="/fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
         <link href="/fonts/materialdesignicons.stripped.css" rel="stylesheet">
         
