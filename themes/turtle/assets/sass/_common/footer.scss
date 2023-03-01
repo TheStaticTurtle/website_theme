@@ -1,0 +1,19 @@
+@import "../theme.scss";
+
+footer {
+    background-color: $footer-bg-color;
+    width: 100%;
+    color: $footer-color;
+    padding: 8px;
+    text-align: center;
+    /*margin-top: 48px;*/
+    margin-top: auto;
+
+    a {
+        color: $footer-color;
+
+        &:hover {
+            color: $text-color;
+        }
+    }
+}

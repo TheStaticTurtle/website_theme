@@ -14,7 +14,7 @@ defaultLayout: "post"
 ##########################  Blog  #############################
 
 theme: turtle
-title: TheStaticTurtles
+title: TheStaticTurtle
 copyright: Copyright 2023 - TheStaticTurtle
 
 languageCode: en-us

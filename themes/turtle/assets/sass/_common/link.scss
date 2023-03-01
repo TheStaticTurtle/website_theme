@@ -1,0 +1,10 @@
+@import "../theme.scss";
+
+a {
+    color: $link-color;
+    overflow-wrap: break-word;
+
+    &:hover {
+        color: $link-color-mouserover-color;
+    }
+}

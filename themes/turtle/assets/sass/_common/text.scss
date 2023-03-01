@@ -1,0 +1,27 @@
+@import "../theme.scss";
+
+p {
+    font-size: 1.05rem;
+    color: $text-color;
+    margin-left: 8px;
+    overflow-wrap: break-word;
+}
+
+
+i {
+    margin: 0 12px;
+}
+
+hr {
+    margin: 0 16px;
+    border: 1px solid $text-color-important;
+    
+	color: inherit;
+	background-color: currentColor;
+	opacity: .25;
+	height: 1px;
+
+	&:not([size]) {
+		height: 1px
+	}
+}

@@ -1,0 +1,49 @@
+@import "../theme.scss";
+
+.markdown {
+    .highlight {
+        padding: 12px;
+        margin-bottom: 16px;
+
+        pre {
+            padding: 0;
+            margin: 0;
+        }
+
+        .filename {
+            background-color: $post-content-code-header-bg-color !important; /* !important to override the style attribute put by pygment */
+            display: block;
+            margin: -12px -12px 12px;
+            padding: 5px;
+            padding-left: 40px;
+
+            &:before {
+                position: absolute;
+                width: 24px;
+                height: 24px;
+                transform: translateX(-30px);
+                background-color: $post-content-code-icon-color;
+                -webkit-mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59l3.99-4Z"/></svg>');
+                mask-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 19V7H4v12h16m0-16a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16m-7 14v-2h5v2h-5m-3.42-4L5.57 9H8.4l3.3 3.3c.39.39.39 1.03 0 1.42L8.42 17H5.59l3.99-4Z"/></svg>');
+                mask-size: contain;
+                content: "";
+            }
+        }
+    }
+
+    .highlight, pre, code {
+        background-color: $post-content-code-bg-color !important; /* !important to override the style attribute put by pygment */
+        overflow-x: auto;
+        overflow-wrap: break-word;
+    }
+
+    pre {
+        padding: 12px;
+    }
+
+    p > code {
+        padding: 2px 4px;
+        margin: 0 2px;
+        color: inherit;
+    }
+}

@@ -7,7 +7,7 @@
 {{ end }}
 
 {{ if $linkAlone }}
-    {{ partial "opengraph/embed.html" .Destination }}
+    {{ partial "opengraph_ssr/embed.html" .Destination }}
 {{ else }}
 <a href="{{ .Destination  }}">{{ .Destination  }}</a>
 {{ end }}

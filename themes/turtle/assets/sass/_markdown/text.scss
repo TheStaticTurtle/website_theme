@@ -1,0 +1,12 @@
+@import "../theme.scss";
+
+.markdown {
+    hr {
+        margin: 16px 0;
+    }
+
+    mark {
+        background-color: $main-accent-color;
+        color: white;
+    }
+}

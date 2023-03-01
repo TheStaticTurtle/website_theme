@@ -1,0 +1,23 @@
+@import "../theme.scss";
+
+.tag-container {
+    text-align: initial;
+}
+
+.tag {
+    color: $tag-color;
+    background-color: $tag-bg-color;
+    padding: 2px 6px;
+    margin: 2px 2px;
+    font-size: $tag-font-size;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    filter: none;
+    display: inline-block;
+
+    &:hover {
+        color: $tag-hover-color;
+        background-color: $tag-hover-bg-color;
+    }
+}

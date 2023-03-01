@@ -65,13 +65,8 @@
     
         <link href="/fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
         <link href="/fonts/materialdesignicons.stripped.css" rel="stylesheet">
-
-        <link rel="stylesheet" href="/css/bootstrap.stripped.css" >
-
-        <link rel="stylesheet" href="/css/theme-light.css" >
-        <link rel="stylesheet" href="/css/common.css" >
-
-        <link rel="stylesheet" href="/css/blog.css" >
+        
+        {{ partial "scss/include.html" "sass/blog.scss" }}
 
         {{ with .OutputFormats.Get "rss" -}}
             {{ printf `<link rel="%s" type="%s" href="%s" title="%s" />` .Rel .MediaType.Type .Permalink $.Site.Title | safeHTML }}
