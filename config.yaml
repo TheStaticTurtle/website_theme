@@ -35,9 +35,9 @@ markup:
     style: manni
     tabWidth: 4
   tableOfContents:
-    endLevel: 3
-    ordered: false
     startLevel: 2
+    endLevel: 6
+    ordered: false
   goldmark:
     extensions:
       definitionList: true
