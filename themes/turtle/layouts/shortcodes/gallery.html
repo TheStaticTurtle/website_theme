@@ -1,7 +1,7 @@
 {{ $images := slice }}
 {{ range split .Inner "\n" }}
     {{ if hasPrefix . "http" }}
-        {{ $images = $images | append . }}
+        {{ $images = $images | append (replace . "\r" "") }}
     {{ end }}
 {{ end }}
 

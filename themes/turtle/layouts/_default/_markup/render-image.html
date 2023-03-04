@@ -15,7 +15,6 @@
             {{ warnf "[image_hook_remote] Couldn't download %s" .Destination }}
             <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
         {{ end }}
-        <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
     {{ else }}
         {{ with $.Page.Resources.GetMatch .Destination }}
             {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
