@@ -20,7 +20,7 @@
         <link href="/fonts/bebas-neue-v8-latin-ext_latin-regular.css" rel="stylesheet">
         <link href="/fonts/materialdesignicons.stripped.css" rel="stylesheet">
         
-        {{ partial "scss/include.html" "sass/blog.scss" }}
+        {{ partial "scss/include.html" "sass/common.scss" }}
 
         {{ with .OutputFormats.Get "rss" -}}
             <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .RelPermalink }}" title="{{ $.Site.Title }}" />

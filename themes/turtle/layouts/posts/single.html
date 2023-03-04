@@ -1,0 +1,16 @@
+{{ define "main" }}
+
+    <section id="section-content" class="container markdown">
+        <h1>{{ .Title }}</h1>
+        {{ .Content | emojify }}
+    </section>
+    
+    {{/* {{ partial "toc.html" . }} */}}
+    
+    {{ partial "comments.html" }}
+{{ end }}
+
+{{ define "head" }}
+    {{ partial "scss/include.html" "sass/blog.scss" }}
+    {{ partial "scss/include.html" "sass/markdown.scss" }}
+{{ end }}

@@ -1,15 +1,10 @@
 {{ define "main" }}
-
-    <section id="section-content" class="container markdown">
-        <h1>{{ .Title }}</h1>
+    <h1>Default - {{ .Kind }} - {{ .Type }} - {{ .Parent }}</h1>
+    <section id="section-single-default" class="container markdown">
         {{ .Content | emojify }}
     </section>
-    
-    {{/* {{ partial "toc.html" . }} */}}
-    
-    {{ partial "comments.html" }}
 {{ end }}
 
 {{ define "head" }}
-    {{ partial "scss/include.html" "sass/markdown.scss" }}
+    {{ partial "scss/include.html" "sass/site.scss" }}
 {{ end }}

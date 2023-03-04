@@ -9,5 +9,4 @@
 {{ if $linkAlone }}
     {{ partial "opengraph_ssr/embed.html" .Destination }}
 {{ else }}
-<a href="{{ .Destination  }}">{{ .Destination  }}</a>
-{{ end }}
+<a href="{{ .Destination  }}">{{ .Text | safeHTML  }}</a>{{ end }}

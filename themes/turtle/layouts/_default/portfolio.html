@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <section id="section-portfolio" class="container">
+        {{ .Content | emojify }}
+    </section>
+{{ end }}
+
+{{ define "head" }}
+{{ partial "scss/include.html" "sass/site.scss" }}
+{{ end }}

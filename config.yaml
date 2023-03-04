@@ -123,7 +123,7 @@ params:
   header:
     links:
       - url: https://thestaticturtle.fr
-        name: Home
+        name: Portfolio
       - url: https://blog.thestaticturtle.fr/
         name: Blog
   plantuml:
