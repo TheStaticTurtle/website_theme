@@ -1,12 +1,1 @@
-{{/* Check if the link can be found alone on a line */}}
-{{ $linkAlone := false }}
-{{ range split  (readFile .Page.File) "\n" }}
-    {{ if eq (chomp  .) $.Destination }}
-        {{ $linkAlone = true }}
-    {{ end}}
-{{ end }}
-
-{{ if $linkAlone }}
-    {{ partial "opengraph_ssr/embed.html" .Destination }}
-{{ else }}
-<a href="{{ .Destination  }}">{{ .Text | safeHTML  }}</a>{{ end }}
+<a href="{{ .Destination  }}">{{ .Text | safeHTML  }}</a>

@@ -23,7 +23,7 @@ I had a pi0 lying around for a while now, an old pi camera v1 that bought out of
 
 And so at 2am it was decided I was making a webcam, the software part was really simple, install Raspbian and install the uvc-gadget. I personally followed this tutorial:
 
-https://www.jeffgeerling.com/blog/2020/raspberry-pi-makes-great-usb-webcam-100
+{{<og "https://www.jeffgeerling.com/blog/2020/raspberry-pi-makes-great-usb-webcam-100">}}
 
 Now having everything (cables and all) hanging around isn't pretty, so I spend some time and design a nice case for everything
 

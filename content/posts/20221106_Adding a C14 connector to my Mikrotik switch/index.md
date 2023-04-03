@@ -20,7 +20,7 @@ So, I decided to add an IEC C14 connector to it.
 
 Recently, I bought some used mikrotik CRS326-24G-2S+RM
 
-https://mikrotik.com/product/CRS326-24G-2SplusRM
+{{<og "https://mikrotik.com/product/CRS326-24G-2SplusRM">}}
 
 These switches are remarkable 1g switches for the price, but they have one flaw that some sysadmins consider a pretty big one: they use an external power adapter
 

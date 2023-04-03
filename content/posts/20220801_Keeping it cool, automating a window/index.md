@@ -252,7 +252,7 @@ As you can see, I also added light pipes to the cover. These light pipes will be
 ## Demo
 
 And here is a little demo video of the whole system:
-https://youtube.com/shorts/qMDlRPEto4c
+{{<og "https://youtube.com/shorts/qMDlRPEto4c">}}
 
 ## Noteworthy stuff
 Here are some things that I learned the hard way on this project:

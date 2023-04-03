@@ -48,6 +48,6 @@ I messed a bit with unicode characters to try do double the resolution but it is
 
 ![](https://data.thestaticturtle.fr/blog/2020/08/68747470733a2f2f692e696d6775722e636f6d2f66696551615a492e706e67.png)
 
-https://github.com/TheStaticTurtle/terminal_tv
+{{<og "https://github.com/TheStaticTurtle/terminal_tv">}}
 
-https://youtu.be/YMIr55X8WbQ
+{{<og "https://youtu.be/YMIr55X8WbQ">}}

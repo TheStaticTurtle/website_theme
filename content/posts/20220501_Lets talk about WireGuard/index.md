@@ -52,7 +52,7 @@ At equal hardware, it achieves almost quadruple the speed than that of OpenVPN w
 However, WireGuard implementations for Android, iOS, macOS, OpenBSD, and Windows are written in the Go programming language while their functionally remains identical, non-Linux WireGuard implementations work in user space. They also don't enjoy the same performance as the kernel implementation. That said, they still manage to match or exceed OpenVPN in a majority of cases.
 
 WireGuard is so light compared to other heavy protocols that it has successfully been implemented on IoT devices such as the ESP32:
-https://github.com/ciniml/WireGuard-ESP32-Arduino
+{{<og "https://github.com/ciniml/WireGuard-ESP32-Arduino">}}
 
 # Manual setup
 ## Terminology

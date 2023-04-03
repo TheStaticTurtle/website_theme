@@ -189,7 +189,7 @@ And guess what, apps want the certificate in the system store.
 I'm sure you could do this properly in a managed setup. However, I don't have time to manage that, and my phone is already rooted, so how can we do it?
 
 Turns out, you can either do it manually each time you reboot by moving files around, or you can  use a magisk module that does just that:
-https://github.com/NVISOsecurity/MagiskTrustUserCerts
+{{<og "https://github.com/NVISOsecurity/MagiskTrustUserCerts">}}
 
 I proceeded by reading the script (always do this before randomly giving root access to something you don't trust), installed it, rebooted and boom here it is:
 ![My CA in android's system store](https://data.thestaticturtle.fr/ShareX/2022/11/28/Signal_2022_11_28_11-09-54_50LQqc4T8N.png)

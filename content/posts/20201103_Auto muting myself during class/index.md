@@ -142,9 +142,9 @@ True, I could have just used an esp8266 to send the UDP packet to VoiceMetter bu
 
 As always here's the code (might differ from the article):
 
-https://github.com/TheStaticTurtle/VoiceMeeterAutoMute
+{{<og "https://github.com/TheStaticTurtle/VoiceMeeterAutoMute">}}
 
 ## Video
 Quick demo video:
 
-https://youtu.be/OW962AcEFpI
+{{<og "https://youtu.be/OW962AcEFpI">}}

@@ -54,7 +54,7 @@ The esp8266 connects to my Wi-Fi and my mqtt server for the home assistant integ
 
 Code (And schematic+pcb without correction) on github:
 
-https://github.com/TheStaticTurtle/Esp8266ThisFan
+{{<og "https://github.com/TheStaticTurtle/Esp8266ThisFan">}}
 
 ### Home assistant integration
 

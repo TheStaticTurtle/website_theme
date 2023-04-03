@@ -6,7 +6,7 @@
     {{ end }}
     <div class="post-item-details-container">
         <p class="post-item-title">
-            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+            <a href="{{ .RelPermalink }}">{{ .Title | humanize }}</a>
         </p>
         <p class="post-item-description">{{ .Description }}</p>
 

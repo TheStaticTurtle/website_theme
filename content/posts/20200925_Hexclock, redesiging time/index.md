@@ -57,4 +57,4 @@ Apart from that there is still a few things that need to be improved like the po
 
 As with most of my projects it's open source so here is the code: 
 
-https://github.com/TheStaticTurtle/HexClock
+{{<og "https://github.com/TheStaticTurtle/HexClock">}}

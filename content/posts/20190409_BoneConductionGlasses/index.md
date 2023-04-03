@@ -19,7 +19,7 @@ I had a really boring class in high school and short story I made bone conductio
 
 I had a really boring class in high school and I've seen product pages of bone conduction glasses and boy they were expensive. So I m bought two bone conduction modules from AliExpress (The GD-02 model) the module itself is about 12.6*6*4mm.
 
-https://aliexpress.com/item/32963777242.html
+{{<og "https://aliexpress.com/item/32963777242.html">}}
 
 Next I had to search for a Bluetooth module to be able to receive the music. I tried to search for an ic that I could put on a pcb but a friend had his old wireless earphones broken, fortunately the receiver part and the battery still works, so I used that
 

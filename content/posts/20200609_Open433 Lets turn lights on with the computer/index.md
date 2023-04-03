@@ -91,4 +91,4 @@ The library ins't finished yet but look like this
     	time.sleep(1)
     
 
-https://github.com/TheStaticTurtle/Open433
+{{<og "https://github.com/TheStaticTurtle/Open433">}}

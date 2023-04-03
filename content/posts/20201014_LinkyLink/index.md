@@ -227,6 +227,6 @@ void Linky::updateStruct(int len) {
 
 Implementing everything into the ESP8266:
 
-https://github.com/TheStaticTurtle/LinkyLink
+{{<og "https://github.com/TheStaticTurtle/LinkyLink">}}
 
 The code is working on some meters but on some other I cannot get data to be read by the esp8266 it seems to be an optocoupler issue.

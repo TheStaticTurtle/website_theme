@@ -269,43 +269,43 @@ http://MP21A1.biotrialrennes.local:7898
 
 Test: fefv https://www.youtube.com/watch?v=ytWz0qVvBZ0
 
-https://www.youtube.com/watch?v=ytWz0qVvBZ0
+{{<og "https://www.youtube.com/watch?v=ytWz0qVvBZ0" >}}
 
-https://twitter.com/Thom_astro/status/1511815389352759306
+{{<og "https://twitter.com/Thom_astro/status/1511815389352759306" >}}
 
-https://twitter.com/WholesomeMeme/status/1511696735227322370
+{{<og "https://twitter.com/WholesomeMeme/status/1511696735227322370" >}}
 
-https://twitter.com/G4GUO/status/1511765504721145863
+{{<og "https://twitter.com/G4GUO/status/1511765504721145863" >}}
 
-https://twitter.com/netflix/status/1511849504156266496
+{{<og "https://twitter.com/netflix/status/1511849504156266496" >}}
 
-https://twitter.com/MisterTechBlog/status/1511831453532712963
+{{<og "https://twitter.com/MisterTechBlog/status/1511831453532712963" >}}
 
-https://twitter.com/gleeda/status/1511789436601876483
+{{<og "https://twitter.com/gleeda/status/1511789436601876483" >}}
 
-https://twitter.com/Foone/status/1511808848729804803
+{{<og "https://twitter.com/Foone/status/1511808848729804803" >}}
 
-https://stackoverflow.com/questions/6497548/chrome-extension-make-it-run-every-page-load
+{{<og "https://stackoverflow.com/questions/6497548/chrome-extension-make-it-run-every-page-load" >}}
 
-https://github.com/eried/portapack-mayhem
+{{<og "https://github.com/eried/portapack-mayhem" >}}
 
-https://github.com/yukiisbored
+{{<og "https://github.com/yukiisbored" >}}
 
-https://github.com/eried/portapack-mayhem/issues/541
+{{<og "https://github.com/eried/portapack-mayhem/issues/541" >}}
 
-https://github.com/eried/portapack-mayhem/pull/547
+{{<og "https://github.com/eried/portapack-mayhem/pull/547" >}}
 
-https://github.com/TheStaticTurtle/MarkdownStick
+{{<og "https://github.com/TheStaticTurtle/MarkdownStick" >}}
 
-https://wavesync.herokuapp.com/visualizer
+{{<og "https://wavesync.herokuapp.com/visualizer" >}}
 
-https://mail.google.com
+{{<og "https://mail.google.com" >}}
 
-https://docs.djangoproject.com/en/4.0/intro/tutorial01/
+{{<og "https://docs.djangoproject.com/en/4.0/intro/tutorial01/" >}}
 
-https://www.reddit.com/r/DataHoarder/comments/txy10y/just_finished_building_my_new_plex_server/
+{{<og "https://www.reddit.com/r/DataHoarder/comments/txy10y/just_finished_building_my_new_plex_server/" >}}
 
-https://gist.github.com/spf13/7896402
+{{<og "https://gist.github.com/spf13/7896402" >}}
 
 <hr>
 {{< gallery >}}
