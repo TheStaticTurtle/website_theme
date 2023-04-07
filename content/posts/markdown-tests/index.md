@@ -313,5 +313,5 @@ https://dummyimage.com/600x400/828282/ffffff&text=1
 https://dummyimage.com/600x400/828282/ffffff&text=2
 https://dummyimage.com/600x400/828282/ffffff&text=3
 https://dummyimage.com/600x400/828282/ffffff&text=4
-https://dummyimage.com/600x400/828282/ffffff&text=5
+images/cover.jpg
 {{< /gallery >}}

@@ -1,27 +1,5 @@
-<p>
-    {{ $imageFilename := print (.Destination | md5) (path.Ext .Destination) }}
-    {{ $imgPath := path.Join $.Page.RelPermalink "images/" $imageFilename }}
-
-    {{ if hasPrefix .Destination "http" }}
-        {{ with resources.GetRemote .Destination  }}
-            {{ with .Err }}
-                {{ warnf "[image_hook_remote] Couldn't download %s" .Destination }}
-                <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
-            {{ else }}
-                {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
-                <img src="{{ $img.RelPermalink | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
-            {{ end }}
-        {{ else }}
-            {{ warnf "[image_hook_remote] Couldn't download %s" .Destination }}
-            <img src="{{ .Destination | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
-        {{ end }}
-    {{ else }}
-        {{ with $.Page.Resources.GetMatch .Destination }}
-            {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
-            <img src="{{ $img.RelPermalink | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
-        {{ else }}
-            {{ warnf "[image_hook] Couldn't get %s" $.Destination }}
-            <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}"{{ end }} />
-        {{ end }}
-    {{ end }}
-</p>
+{{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" .Destination) }}
+    <p>
+        <img src="{{ . | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
+    </p>
+{{ end }}

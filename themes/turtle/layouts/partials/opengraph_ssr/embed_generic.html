@@ -1,26 +1,29 @@
+{{ $link := index . "link" }}
 {{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
-{{ $embedTitle := index . "tags" "og:title" | default (index . "tags" "twitter:title")  | default (index . "tags" "twitter:titleog:title") }}
-{{ $embedDescription := index . "tags" "og:description" | default (index . "tags" "twitter:description")  | default (index . "tags" "twitter:descriptionog:description") }}
+{{ $embedTitle := index . "tags" "og:title" | default (index . "tags" "og:Title")  | default (index . "tags" "twitter:title")  | default (index . "tags" "twitter:titleog:title") }}
+{{ $embedDescription := index . "tags" "og:description" | default (index . "tags" "og:Description")  | default (index . "tags" "twitter:description")  | default (index . "tags" "twitter:descriptionog:description") }}
 
 {{ $embedImage := index . "tags" "og:image" }}
 {{ $embedImageAlt := index . "tags" "og:image:alt" }}
 
 <blockquote class="embed embed-{{ $siteNameUrlized }}">
     {{ if $embedImage }}
-        {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
-        <a href="{{ $  }}" class="embed-image-container">
-            {{ $embedImageBg | safeHTML }}
+        {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" $embedImage) }}
+            {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" }}
+            <a href="{{ $link }}" class="embed-image-container">
+                {{ $embedImageBg | safeHTML }}
 
-            <div class="embed-image-image">
-                <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
-            </div>
-        </a>
+                <div class="embed-image-image">
+                    <img src='{{ . }}' alt='{{ $embedImageAlt }}'>
+                </div>
+            </a>
+        {{ end }}
     {{ end }}
     <div class="embed-content">
         {{ with $embedTitle }}
-            <a class="embed-title" href="{{ $ }}">{{ . }}</a>
+            <a class="embed-title" href="{{ $link }}">{{ . }}</a>
         {{ else }}
-            <a href="{{ $ }}">{{ $ }}</a>
+            <a href="{{ $link }}">{{ $link }}</a>
         {{ end }}
         {{ with $embedDescription }}
             <p>{{ replace . "\n" "<br>" | safeHTML }}</p>

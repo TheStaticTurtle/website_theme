@@ -1,0 +1,29 @@
+{{ $imageSrc := index . "src" }}
+
+{{ $imageFilename := print ($imageSrc | md5) (path.Ext $imageSrc) }}
+{{ $imgPath := path.Join $.Page.RelPermalink "images/" $imageFilename }}
+
+{{ if hasPrefix $imageSrc "http" }}
+    {{ warnf "[image_hook_remote] Downloading and masking %s" $imageSrc }}
+    {{ with resources.GetRemote $imageSrc  }}
+        {{ with .Err }}
+            {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
+        {{ else }}
+            {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
+            {{ $imageSrc = $img.RelPermalink }}
+        {{ end }}
+    {{ else }}
+        {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
+    {{ end }}
+{{ else }}
+    {{ warnf "[image_hook_local] Masking %s" $imageSrc }}
+    {{ with (index $ "res").GetMatch $imageSrc }}
+        {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
+        {{ $imageSrc = $img.RelPermalink }}
+        {{ warnf $imageSrc }}
+    {{ else }}
+        {{ warnf "[image_hook_local] Couldn't get %s" $imageSrc }}
+    {{ end }}
+{{ end }}
+
+{{ return $imageSrc }}

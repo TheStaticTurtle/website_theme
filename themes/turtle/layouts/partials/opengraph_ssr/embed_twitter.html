@@ -1,5 +1,5 @@
 {{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
-{{ $tweetUrl := index . "tags" "og:url" }}
+{{ $tweetUrl := index . "link" }}
 {{ $tweetId := index (index (findRESubmatch  `^.*\/(\d+)` $tweetUrl) 0 ) 1 }}
 {{ $tweetInfoUrl := printf "https://cdn.syndication.twimg.com/tweet-result?id=%s" $tweetId }}
 
@@ -23,16 +23,18 @@
                 {{ $mediaExpandedUrl := index . 0 "expanded_url" }}
                 {{ $mediaType := index . 0 "type" }}
                 
-                {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $mediaUrl ");'></div>" }}
-                <a href="{{ $mediaExpandedUrl }}" target="_blank" class="embed-image-container">
-                    {{ $embedImageBg | safeHTML }}
-                    <div class="embed-image-image embed-twitter-mediatype-{{ $mediaType }}">
-                        {{ if eq $mediaType "video" }}
-                            <p>▶</p>
-                        {{ end }}
-                        <img src='{{ $mediaUrl }}'>
-                    </div>
-                </a>
+                {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" $mediaUrl) }}
+                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" }}
+                    <a href="{{ $tweetUrl }}" target="_blank" class="embed-image-container">
+                        {{ $embedImageBg | safeHTML }}
+                        <div class="embed-image-image embed-twitter-mediatype-{{ $mediaType }}">
+                            {{ if eq $mediaType "video" }}
+                                <p>▶</p>
+                            {{ end }}
+                            <img src='{{ . }}'>
+                        </div>
+                    </a>
+                {{ end}}
             {{ end }}
         {{ end }}
 

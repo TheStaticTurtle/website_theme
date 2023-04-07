@@ -3,6 +3,9 @@
     {{ if hasPrefix . "http" }}
         {{ $images = $images | append (replace . "\r" "") }}
     {{ end }}
+    {{ if hasPrefix . "images" }}
+        {{ $images = $images | append (replace . "\r" "") }}
+    {{ end }}
 {{ end }}
 
 {{ $imageIndex := 0 }}
@@ -13,9 +16,11 @@
         {{ $endRow :=  or (eq $imageIndex (sub (len  $images) 1)) (eq (mod $imageIndex 3) 2) }}
 
         {{ if $newRow  }}<div class="img-gallery-row">{{ end }}
-            <a class="img-gallery-image" target="_blank" href="{{ . }}">
-                <img src="{{ . }}" >
-            </a>
+            {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" .) }}
+                <a class="img-gallery-image" target="_blank" href="{{ . }}">
+                    <img src="{{ . }}" >
+                </a>
+            {{ end }}
         {{ if $endRow }}</div>{{ end }}
 
         {{ $imageIndex = add $imageIndex 1}}
