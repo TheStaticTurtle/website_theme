@@ -2,7 +2,9 @@
 
     <section id="section-content" class="container markdown">
         <h1>{{ .Title }}</h1>
-        {{ .Content | emojify }}
+        <span class="h1-subtitle">{{ .Summary | emojify }}</span>
+        <hr>
+        {{ substr .Content (len .Summary) | emojify }}
     </section>
     
     {{/* {{ partial "toc.html" . }} */}}
