@@ -6,13 +6,13 @@
                 <a href="{{ .URL }}" aria-label="First" role="button">«</a>
             {{ end }}
         {{ else }}
-            <a class="page-selector-disabled">«</a>
+            <span class="page-selector-disabled">«</span>
         {{ end }}
 
         {{ with .Prev }}
             <a href="{{ .URL }}" aria-label="Previous" role="button">‹</a>
         {{ else }}
-            <a class="page-selector-disabled">‹</a>
+            <span class="page-selector-disabled">‹</span>
         {{ end }}
     </div>
 
@@ -27,7 +27,7 @@
         <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
     {{ end }}
             
-    <a class="page-selector-current">{{.PageNumber}}</a>
+    <span class="page-selector-current">{{.PageNumber}}</span>
 
     {{ with .Next }}
         <a href="{{ .URL }}" aria-label="Page {{.PageNumber}}" role="button">{{.PageNumber}}</a>
@@ -44,7 +44,7 @@
         {{ with .Next }}
             <a href="{{ .URL }}" aria-label="Next" role="button">›</a>
         {{ else }}
-            <a class="page-selector-disabled">›</a>
+            <span class="page-selector-disabled">›</span>
         {{ end }}
         
         {{ if .HasNext }}
@@ -52,7 +52,7 @@
                 <a href="{{ .URL }}" aria-label="Last" role="button">»</a>
             {{ end }}
         {{ else }}
-            <a class="page-selector-disabled">»</a>
+            <span class="page-selector-disabled">»</span>
         {{ end }}
     </div>
 </div>

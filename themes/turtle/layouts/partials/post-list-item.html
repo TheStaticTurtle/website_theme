@@ -2,9 +2,9 @@
     <div class="post-item-image-container">
         <a href="{{ .RelPermalink }}">
         {{ with .Resources.GetMatch .Params.image }}
-            <img src='{{ (.Fit "450x300 webp").RelPermalink }}' alt="{{ $.Title }}"/>
+            <img src='{{ (.Fit "675x450 webp").RelPermalink }}' alt="{{ $.Title }}"/>
         {{ else }}
-            <img src='{{ ((resources.Get "img/default_post_cover.png").Fit "450x300 webp").RelPermalink  }}' alt="{{ .Title }}"/>
+            <img src='{{ ((resources.Get "img/default_post_cover.png").Fit "675x450 webp").RelPermalink  }}' alt="{{ .Title }}"/>
         {{ end }}
         </a>
     </div>
