@@ -80,14 +80,11 @@
 .mdi-account::before{
 	content:"\F0004"
 }
-.mdi-clock::before{
-	content:"\F0954"
-}
-.mdi-chevron-double-left::before{
-	content:"\F013D"
-}
-.mdi-chevron-double-right::before{
-	content:"\F013E"
-}
+.mdi-clock::before{content:"\F0954"}
+
+.mdi-chevron-double-left::before{content:"\F013D"}
+.mdi-chevron-double-right::before{content:"\F013E"}
 .mdi-chevron-left::before{content:"\F0141"}
 .mdi-chevron-right::before{content:"\F0142"}
+
+.mdi-numeric::before{content:"\F03A0"}

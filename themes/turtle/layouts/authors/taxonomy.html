@@ -1,11 +1,12 @@
 {{ define "main" }}
     <section id="section-posts" class="container">
-        <h2>All the authors</h2>
+        <h2>All authors:</h2>
         <div class="post-list">
             {{ range .Pages }}
-                {{- partial "author-list-item" . -}}
+                {{- partial "authors/list-item" . -}}
             {{ end }}
         </div>
+        <br>
     </section>
 {{ end }}
 

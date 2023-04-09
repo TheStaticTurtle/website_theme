@@ -1,14 +1,19 @@
 {{ define "main" }}
     <section id="section-intro" class="container">
-        {{ partial "author-list-item.html" . }} 
+        {{ partial "authors/list-item.html" . }} 
     </section>
     <section id="section-posts" class="container">
-        <h2>{{ len .Pages }} Posts:</h2>
+        {{ $paginator := .Paginate .Pages (sub .Site.Params.pagination.articleCount 1) }}
+
+        <h2>{{ len .Pages }} Posts - Page {{ $paginator.PageNumber }}:</h2>
+
         <div class="post-list">
-            {{ range .Pages }}
-                {{- partial "post-list-item" . -}}
+            {{ range $paginator.Pages }}
+                {{- partial "posts/list-item" . -}}
             {{ end }}
         </div>
+        
+        {{ partial "pagination.html" $paginator }}
     </section>
 {{ end }}
 

@@ -7,14 +7,14 @@
         <div class="post-list">
             {{ if eq $paginator.PageNumber 1 }}
                 {{ range first 1 $paginator.Pages }}
-                    {{- partial "post-list-item-large" . -}}
+                    {{- partial "posts/list-item-large" . -}}
                 {{ end }}
                 {{ range after 1 $paginator.Pages }}
-                    {{- partial "post-list-item" . -}}
+                    {{- partial "posts/list-item" . -}}
                 {{ end }}
             {{ else }}
                 {{ range $paginator.Pages }}
-                    {{- partial "post-list-item" . -}}
+                    {{- partial "posts/list-item" . -}}
                 {{ end }}
             {{ end }}
         </div>

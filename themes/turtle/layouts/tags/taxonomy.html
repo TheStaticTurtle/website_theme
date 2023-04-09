@@ -1,11 +1,12 @@
 {{ define "main" }}
     <section id="section-posts" class="container">
-        <h2>All the tags</h2>
+        <h2>All tags:</h2>
         <div class="post-list">
             {{ range .Pages }}
-                {{- partial "tag-list-item" . -}}
+                {{- partial "tags/list-item" . -}}
             {{ end }}
         </div>
+        <br>
     </section>
 {{ end }}
 

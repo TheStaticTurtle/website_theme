@@ -1,11 +1,17 @@
 {{ define "main" }}
     <section id="section-posts" class="container">
-        <h2>All posts tagged "{{ .Title }}"</h2>
+        {{ $paginator := .Paginate .Pages (sub .Site.Params.pagination.articleCount 1) }}
+
+        <h2>All posts tagged "{{ .Title }}" - Page {{ $paginator.PageNumber }}:</h2>
+
         <div class="post-list">
-            {{ range .Pages }}
-                {{- partial "post-list-item" . -}}
+            {{ range $paginator.Pages }}
+                {{- partial "posts/list-item" . -}}
             {{ end }}
         </div>
+        
+        {{ partial "pagination.html" $paginator }}
+
     </section>
 {{ end }}
 

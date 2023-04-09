@@ -14,7 +14,7 @@
     <div class="embed-content">
         {{ with resources.GetRemote $plantumlUrl  }}
             {{ with .Err }}
-                {{ warnf "[plant_uml] Couldn't download %s: %s" $plantumlUrl . }}
+                {{ errorf "[plant_uml] Couldn't download %s: %s" $plantumlUrl . }}
                 <b>Failed to get the UML diagram, here is the original plantuml code:</b>
                 <pre>
                     {{- $umlContent }}
