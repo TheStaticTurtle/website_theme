@@ -4,7 +4,7 @@ refLinksNotFoundURL: "/404.html"
 
 log: true
 verbose: true
-timeout: 300000 # Large timeout for the SSR of embed
+timeout: 300000 # Large timeout for the SSR of embeds
 
 enableGitInfo: true
 
@@ -17,7 +17,7 @@ theme: turtle
 title: TheStaticTurtle
 copyright: Copyright 2023 - TheStaticTurtle
 
-languageCode: en-us
+languageCode: en-gb
 
 timeZone: "Europe/Paris"
 
@@ -118,13 +118,20 @@ outputs:
   term:
     - "HTML"
 
+rssLimit: -1 
+
+sitemap:
+  changefreq: always
+  filename: sitemap.xml
+  priority: 0.5
+
 params:
   description: Let's hack
   header:
     links:
-      - url: https://thestaticturtle.fr
+      - url: http://thestaticturtle.fr.home.tugler.fr/portfolio
         name: Portfolio
-      - url: https://blog.thestaticturtle.fr/
+      - url: http://thestaticturtle.fr.home.tugler.fr/
         name: Blog
   plantuml:
     server: https://www.plantuml.com/plantuml/svg/

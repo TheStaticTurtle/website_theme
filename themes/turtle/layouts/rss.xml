@@ -1,16 +1,13 @@
 {{- $pctx := . -}}
-{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
-{{- $pages := slice -}}
-{{- if or $.IsHome $.IsSection -}}
-{{- $pages = $pctx.RegularPages -}}
-{{- else -}}
-{{- $pages = $pctx.Pages -}}
-{{- end -}}
+{{- $pages := where .Site.RegularPages "Section" "posts" -}}
 {{- $limit := .Site.Config.Services.RSS.Limit -}}
+
 {{- if ge $limit 1 -}}
 {{- $pages = $pages | first $limit -}}
 {{- end -}}
+
 {{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+
 
 {{ $pageTitle := $.Site.Title }}
 {{ if ne $.Title $.Site.Title }}
@@ -71,19 +68,19 @@
                     {{- (printf "<category><![CDATA[ %s ]]></category>" (.Title | humanize))  | safeHTML }}
                 {{ end }}
             {{ end }}
-            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
             {{ with index .Params.authors 0 }}
                 {{ with $.Site.GetPage (printf "/%s/%s" "authors" .) }}
                     {{- (printf "<dc:creator><![CDATA[ %s ]]></dc:creator>" .Params.name)  | safeHTML }}
                 {{ end }}
             {{ end }}
+            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
             {{ with .Resources.GetMatch .Params.image }}
-                <media:content url='{{ .RelPermalink }}' medium="image"/>
+                <media:content url='{{ .Permalink }}' medium="image"/>
             {{ else }}
-                <media:content url='{{ (resources.Get "img/default_post_cover.png").RelPermalink }}' medium="image"/>
+                <media:content url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' medium="image"/>
             {{ end }}
 
-            {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .Content)  | safeHTML }}
+            {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" (.Content | emojify))  | safeHTML }}
         </item>
     {{ end }}
   </channel>

@@ -10,7 +10,7 @@
             {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
         {{ else }}
             {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
-            {{ $imageSrc = $img.RelPermalink }}
+            {{ $imageSrc = $img.Permalink }}
         {{ end }}
     {{ else }}
         {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
@@ -19,7 +19,7 @@
     {{ warnf "[image_hook_local] Masking %s" $imageSrc }}
     {{ with (index $ "res").GetMatch $imageSrc }}
         {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
-        {{ $imageSrc = $img.RelPermalink }}
+        {{ $imageSrc = $img.Permalink }}
         {{ warnf $imageSrc }}
     {{ else }}
         {{ warnf "[image_hook_local] Couldn't get %s" $imageSrc }}
