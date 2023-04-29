@@ -28,7 +28,7 @@ However, I recently observed some issue that needed a 2nd revision and here we a
 
 So the issues are entirely with the hardware. I didn't have a single issue with the firmware part of the project (but I'll be touching it a bit later since I needed to somehow get the private key off the original keys)
 
-After more than a year of using these keys daily, they started to show theirs weaknesses. In my [previous post](__GHOST_URL__/lets-make-a-diy-gpg-usb-key/), I stated that “the big mistake that I made, the USB is too far in and interferes with the board”. This became a problem after a few months because the USB broke, and I need to resolder it constantly.
+After more than a year of using these keys daily, they started to show theirs weaknesses. In my [previous post](https://blog.thestaticturtle.fr/lets-make-a-diy-gpg-usb-key/), I stated that “the big mistake that I made, the USB is too far in and interferes with the board”. This became a problem after a few months because the USB broke, and I need to resolder it constantly.
 
 With the old revision, I had put all the passives on the bottom side, this works great for a bench PCB which don't experience daily abuse. But on a keychain things are different, and I had to replace multiple capacitors / resistors that broke off.
 
