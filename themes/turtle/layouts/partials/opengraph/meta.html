@@ -30,12 +30,18 @@
     <meta name="description" content="{{ .Site.Params.description }}">
 {{ end }}
 
+
 {{ with .Resources.GetMatch .Params.image }}
-    <meta property="og:image" content="{{ .RelPermalink }}">
-    <meta property="twitter:image" content="{{ .RelPermalink }}">
+    <meta property="og:image" content="{{ .Permalink }}">
+    <meta property="twitter:image" content="{{ .Permalink }}">
 {{ else }}
-    <meta property="og:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
-    <meta property="twitter:image" content='{{ (resources.Get "img/logo_white_round.png").RelPermalink }}'>
+    {{ if hasPrefix .Section "authors" }}
+        <meta property="og:image" test content='{{ .Params.image }}'>
+        <meta property="twitter:image" content='{{ .Params.image }}'>
+    {{ else }}
+        <meta property="og:image" test content='{{ (resources.Get "img/logo_white_round.png").Permalink }}'>
+        <meta property="twitter:image" content='{{ (resources.Get "img/logo_white_round.png").Permalink }}'>
+    {{ end }}
 {{ end }}
 
 <meta name="keywords" content="thestaticturtle{{ with .Param `tags` }},{{ delimit . `,` }}{{ end }}">

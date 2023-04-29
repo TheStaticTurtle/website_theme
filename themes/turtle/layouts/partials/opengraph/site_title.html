@@ -1,19 +1,19 @@
 {{ $title := .Site.Title }}
 
-{{ if eq .Kind "page" }}
-    {{ if eq .Section "posts" }}
+{{ if hasPrefix .Kind "page" }}
+    {{ if hasPrefix .Section "posts" }}
         {{ $title = print $title " - " .Title }}
     {{ end }}
 {{ end }}
-{{ if eq .Kind "term" }}
-    {{ if eq .Section "tags" }}
+{{ if hasPrefix .Kind "term" }}
+    {{ if hasPrefix .Section "tags" }}
         {{ $title = print $title " - Posts tagged with " (.Title | humanize) }}
     {{ end }}
-    {{ if eq .Section "authors" }}
+    {{ if hasPrefix .Section "authors" }}
         {{ $title = print $title " - Posts from " (.Param "name") }}
     {{ end }}
 {{ end }}
-{{ if eq .Kind "taxonomy" }}
+{{ if hasPrefix .Kind "taxonomy" }}
     {{ $title = print $title " - " (.Section | humanize) }}
 {{ end }}
 

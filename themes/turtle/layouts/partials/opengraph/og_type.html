@@ -1,19 +1,19 @@
 {{ $og_type := "website" }}
 
-{{ if eq .Kind "page" }}
-    {{ if eq .Section "posts" }}
+{{ if hasPrefix .Kind "page" }}
+    {{ if hasPrefix .Section "posts" }}
         {{ $og_type = "article" }}
     {{ end }}
 {{ end }}
-{{ if eq .Kind "term" }}
-    {{ if eq .Section "tags" }}
+{{ if hasPrefix .Kind "term" }}
+    {{ if hasPrefix .Section "tags" }}
         {{ $og_type = "website" }}
     {{ end }}
-    {{ if eq .Section "authors" }}
+    {{ if hasPrefix .Section "authors" }}
         {{ $og_type = "website" }}
     {{ end }}
 {{ end }}
-{{ if eq .Kind "taxonomy" }}
+{{ if hasPrefix .Kind "taxonomy" }}
     {{ $og_type = "website" }}
 {{ end }}
 
