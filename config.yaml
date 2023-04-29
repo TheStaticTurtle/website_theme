@@ -120,6 +120,8 @@ outputs:
 
 rssLimit: -1 
 
+enableRobotsTXT: true
+
 sitemap:
   changefreq: always
   filename: sitemap.xml
