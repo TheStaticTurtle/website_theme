@@ -21,11 +21,13 @@
     <link>{{ .Permalink }}</link>
 
     {{ with (index .Site.Params "rss" "image")  }}
-        <image>
-            <url>{{ absURL  . }}</url>
-            <title>{{ $pageTitle }}</title>
-            <link>{{ $.Permalink }}</link>
-        </image>
+        {{ with partial "_get_masked_image_url.html" (dict "res" (resources) "src" . "dim" "512x512 jpg q100") }}
+            <image> 
+                <url>{{ . | safeURL }}</url>
+                <title>{{ $pageTitle }}</title>
+                <link>{{ $.Permalink }}</link>
+            </image>
+        {{ end }}
     {{end}}
 
     <generator>Hugo</generator>
@@ -74,13 +76,23 @@
                 {{ end }}
             {{ end }}
             <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+            
+
+            {{- $ictx := . -}}
             {{ with .Resources.GetMatch .Params.image }}
-                <media:content url='{{ .Permalink }}' medium="image"/>
+                {{ with partial "_get_masked_image_url.html" (dict "res" ($ictx.Resources) "src" ($ictx.Params.image) "dim" "1275x712 jpg q100")  }}
+                    <media:thumbnail url="{{ . | safeURL }}" />
+                    <media:content url="{{ . | safeURL }}" medium="image"></media:content>
+                {{ end }}
             {{ else }}
-                <media:content url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' medium="image"/>
+                <media:thumbnail url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' />
+                <media:content url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' medium="image"></media:content>
             {{ end }}
 
-            {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" (.Content | emojify))  | safeHTML }}
+
+            {{ with partial "rss/_post_content.html" . }}
+                {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .)  | safeHTML }}
+            {{ end }}
         </item>
     {{ end }}
   </channel>

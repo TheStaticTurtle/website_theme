@@ -6,12 +6,13 @@ featured: false
 date: 2023-03-13T11:00:00.000Z
 image: "images/cover.jpg"
 tags:
-  - diy
-  - 3D
-  - raspberry
   - concerts
   - electronics
-  - network
+  - audio
+  - M32 
+  - diy
+  - web
+  - 3D
 authors:
   - samuel
 ---

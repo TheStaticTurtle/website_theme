@@ -1,0 +1,9 @@
+<h1>{{ .Title }}</h1>
+<span class="subtitle">{{ .Summary | emojify }}</span>
+<br>
+{{ with .Resources.GetMatch .Params.image }}
+    <img class="" src='{{ (.Fit "1350x900 jpg q80").RelPermalink }}' alt="{{ $.Title }}"/>
+{{ end }}
+<hr>
+{{ substr .Content (len .Summary) | emojify }}
+

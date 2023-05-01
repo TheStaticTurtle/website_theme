@@ -1,4 +1,5 @@
 {{ $imageSrc := index . "src" }}
+{{ $outputResolution := default "1275x712 webp q100" (index . "dim") }}
 
 {{ $imageFilename := print ($imageSrc | md5) (path.Ext $imageSrc) }}
 {{ $imgPath := path.Join $.Page.RelPermalink "images/" $imageFilename }}
@@ -9,18 +10,17 @@
         {{ with .Err }}
             {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
         {{ else }}
-            {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
+            {{ $img := (. | resources.Copy $imgPath).Fit $outputResolution  }}
             {{ $imageSrc = $img.Permalink }}
         {{ end }}
     {{ else }}
         {{ warnf "[image_hook_remote] Couldn't download %s" $imageSrc }}
     {{ end }}
 {{ else }}
-    {{ warnf "[image_hook_local] Masking %s" $imageSrc }}
+    {{ warnf "[image_hook_local] Resizing %s" $imageSrc }}
     {{ with (index $ "res").GetMatch $imageSrc }}
-        {{ $img := (. | resources.Copy $imgPath).Fit `1275x712 webp q100`  }}
+        {{ $img := .Fit $outputResolution  }}
         {{ $imageSrc = $img.Permalink }}
-        {{ warnf $imageSrc }}
     {{ else }}
         {{ warnf "[image_hook_local] Couldn't get %s" $imageSrc }}
     {{ end }}
