@@ -35,17 +35,7 @@ After verifying this theory by checking day by day that it actually matches (at 
 
 Since the temperature rise is pretty linear, I went with a very basic linear interpolation between two points.
 
-$$
-\begin{gather}
-\begin{aligned}
-&f(x) = y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)\\
-\text{where } &x1 \text{ is the timestamp for the first value}\\
-\text{where } &y1 \text{ is the temperature of the first value}\\
-\text{where } &x2 \text{ is the timestamp for the second value}\\
-\text{where } &y2 \text{ is the temperature of the second value}\\
-\end{aligned}
-\end{gather}
-$$
+![](https://data.thestaticturtle.fr/ShareX/2023/05/01/chrome_2023-05-01_02-34-36_f9effa2f-3fc1-46b0-a3d6-416aefb3bf65.png)
 
 This also means that as I'm not using a fancy Ai to determine the temp, I can't do it before I have an acceptable value for the first and second point which I randomly set at 10h30
 
@@ -56,21 +46,7 @@ At `10h30`, the sensor reported a temperature of approximatively `26.06degC`.
 The timestamp for `9h29` being `1657438080s` and the timestamp for `10h30` being `1657441800s` 
 
 Let's say I want the temperature at 16h30 (`1657452600`) we can use the previous defined formula like this:
-$$
-\small
-\begin{gather}
-\begin{aligned}
-&f(x) = y1 + ((x - x1) / (x2 - x1)) * (y2 - y1)\\
-\text{with } &x1 = 1657438080\\
-\text{with } &y1 = 25.72\\
-\text{with } &x2 = 1657441800\\
-\text{with } &y2 =26.06\\\\
-&y = f(1657452600) \\
-&y = 25.72+ ((1657452600- 1657438080) / (1657441800- 1657438080)) * (26.06- 25.72)\\
-&y = 28.03
-\end{aligned}
-\end{gather}
-$$
+![](https://data.thestaticturtle.fr/ShareX/2023/05/01/chrome_2023-05-01_02-34-45_caeeae8f-87c7-4b67-a0dd-dc3f6be69db4.png)
 
 Let's check the results, according to the sensor, at `16h30` the temp was `28.49degC`, neither a bad result nor a perfect one. A `.5degC` deviation is a high, but this was approximatively one hour after it started to heat up, it can't be that precise.
 

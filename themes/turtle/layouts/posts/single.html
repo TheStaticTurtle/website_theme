@@ -3,6 +3,13 @@
     <section id="section-content" class="container markdown">
         <h1>{{ .Title }}</h1>
         <span class="h1-subtitle">{{ .Summary | emojify }}</span>
+        <br>
+        {{ with .Resources.GetMatch .Params.image }}
+            <div class="content-featured-image">
+                <img class="" src='{{ (.Fit "1350x900 webp q80").RelPermalink }}' alt="{{ $.Title }}"/>
+            </div>
+        {{ end }}
+
         <hr>
         {{ substr .Content (len .Summary) | emojify }}
     </section>
