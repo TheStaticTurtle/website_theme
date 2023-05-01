@@ -1,5 +1,5 @@
 #########################  Website  ###########################
-baseURL: 'https://blog.thestaticturtle.fr/'
+baseURL: 'https://blog.thestaticturtle.fr.home.tugler.fr/'
 refLinksNotFoundURL: "/404.html"
 
 log: true
@@ -131,9 +131,9 @@ params:
   description: Let's hack
   header:
     links:
-      - url: http://thestaticturtle.fr.home.tugler.fr/portfolio
-        name: Portfolio
       - url: http://thestaticturtle.fr.home.tugler.fr/
+        name: Portfolio
+      - url: http://blog.thestaticturtle.fr.home.tugler.fr/
         name: Blog
   plantuml:
     server: https://www.plantuml.com/plantuml/svg/
