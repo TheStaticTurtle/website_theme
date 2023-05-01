@@ -1,19 +1,21 @@
 {{ $title := .Site.Title }}
 
-{{ if hasPrefix .Kind "page" }}
+{{ if hasPrefix .Kind "home" }}
+    {{ $title = print $title " - Blog" }}
+{{ else if hasPrefix .Kind "page" }}
     {{ if hasPrefix .Section "posts" }}
         {{ $title = print $title " - " .Title }}
+    {{ else if hasPrefix .Layout "portfolio" }}
+        {{ $title = print $title " - Portfolio" }}
     {{ end }}
-{{ end }}
-{{ if hasPrefix .Kind "term" }}
+{{ else if hasPrefix .Kind "term" }}
     {{ if hasPrefix .Section "tags" }}
         {{ $title = print $title " - Posts tagged with " (.Title | humanize) }}
     {{ end }}
     {{ if hasPrefix .Section "authors" }}
         {{ $title = print $title " - Posts from " (.Param "name") }}
     {{ end }}
-{{ end }}
-{{ if hasPrefix .Kind "taxonomy" }}
+{{ else if hasPrefix .Kind "taxonomy" }}
     {{ $title = print $title " - " (.Section | humanize) }}
 {{ end }}
 
