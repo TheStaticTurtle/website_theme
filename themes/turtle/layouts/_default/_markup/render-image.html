@@ -1,5 +1,5 @@
 {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" .Destination) }}
     <p>
-        <img src="{{ . | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} />
+        <a href="{{ $.Destination }}" target="_blank"><img src="{{ . | safeURL }}" alt="{{ $.Text }}" {{ with $.Title}} title="{{ . }}"{{ end }} /></a>
     </p>
 {{ end }}

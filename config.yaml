@@ -115,6 +115,7 @@ outputs:
     - "SITEMAP"
   taxonomy:
     - "HTML"
+    - "SITEMAP"
   term:
     - "HTML"
 
