@@ -21,13 +21,13 @@
     <link>{{ .Permalink }}</link>
 
     {{ with (index .Site.Params "rss" "image")  }}
-        {{ with partial "_get_masked_image_url.html" (dict "res" (resources) "src" . "dim" "512x512 jpg q100") }}
+        {# with partial "_get_masked_image_url.html" (dict "res" (resources) "src" . "dim" "512x512 jpg q100") #}
             <image> 
                 <url>{{ . | safeURL }}</url>
                 <title>{{ $pageTitle }}</title>
                 <link>{{ $.Permalink }}</link>
             </image>
-        {{ end }}
+        {# end #}
     {{end}}
 
     <generator>Hugo</generator>
@@ -80,11 +80,14 @@
 
             {{- $ictx := . -}}
             {{ with .Resources.GetMatch .Params.image }}
-                {{ with partial "_get_masked_image_url.html" (dict "res" ($ictx.Resources) "src" ($ictx.Params.image) "dim" "1275x712 jpg q100")  }}
-                    <media:thumbnail url="{{ . | safeURL }}" />
-                    <media:content url="{{ . | safeURL }}" medium="image"></media:content>
-                {{ end }}
+                {{ $image := .Resize "1275x712 jpg q100" }}
+                <media:thumbnail url="{{ $image.Permalink }}" />
+                <media:content url="{{ $image.Permalink }}" medium="image" />
+
+                {#<media:thumbnail url="{{ $ictx.Params.image | safeURL }}" />#}
+                {#<media:content url="{{ $ictx.Params.image | safeURL }}" medium="image"></media:content>#}
             {{ else }}
+                {{ warnf "[rss.xml] Coudln't get post thumbnail '%s' / %s" .Title .Params.image }}
                 <media:thumbnail url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' />
                 <media:content url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' medium="image"></media:content>
             {{ end }}

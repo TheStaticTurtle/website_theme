@@ -328,7 +328,7 @@ The PBS is pretty easy to configure because it supports OpenID Connect, the only
         userinfo_signing_algorithm: RS256
 ```
 Server side it's the url of Authelia, the ID, secret and scope
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/12/06/firefox_2022_12_06_12-31-40_Z3VHXrCux4.png)
+![enter image description here](images/dl_firefox_2022_12_06_12-31-40_Z3VHXrCux4.png)
 
 Here is a demo:
 https://youtu.be/EpZrtVe7h_M

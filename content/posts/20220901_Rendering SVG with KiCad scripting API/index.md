@@ -43,7 +43,7 @@ plot_controller.PlotLayer()
 plot_controller.ClosePlot() 
 ```
 
-![](https://data.thestaticturtle.fr/ShareX/2022/08/12/chrome_2022-08-12_02-36-22.png)    
+![](images/dl_chrome_2022-08-12_02-36-22.png)    
     
 Multiple issues with this:    
  - My board has traces in the negative as I like to center around 0 this means the half SVG simply isn't drawn    
@@ -69,7 +69,7 @@ plot_options.SetUseAuxOrigin(True)
 board.GetDesignSettings().SetAuxOrigin(pcb_bounding_box.GetOrigin()) 
 ```
 
-![](https://data.thestaticturtle.fr/ShareX/2022/08/12/chrome_2022-08-12_02-45-46.png)    
+![](images/dl_chrome_2022-08-12_02-45-46.png)    
     
 First issue solved    
     
@@ -116,7 +116,7 @@ for attr, value in new_svg_attributes.items():
     print(svg)
 ```    
 And success we now have a black & white SVG    
-![](https://data.thestaticturtle.fr/ShareX/2022/08/12/chrome_2022-08-12_03-05-37.png)    
+![](images/dl_chrome_2022-08-12_03-05-37.png)    
     
 ## Third issue / Colours    
  You would think that using ``SetColorMode(True)`` would actually enable colours. Why would that be the case, though? Why would it be easy?    
@@ -129,7 +129,7 @@ color_settings = settings_manager.GetColorSettings()
 plot_options.SetColorSettings(color_settings) 
 ``` 
 Success we now have ugly colours but at least they are there    
-![](https://data.thestaticturtle.fr/ShareX/2022/08/12/chrome_2022-08-12_03-11-33.png)    
+![](images/dl_chrome_2022-08-12_03-11-33.png)    
     
 Once again, one would think that we could use the `color_settings` var to change the colours, but that would be too easy. The ``COLOR_SETTINGS`` class doesn't have a swig proxy in the pcbnew, either. Great.    
 So to modify the colours, we need to pull out the big guns and use ``.replace`` on the SVG to get colour that are somewhat OK.    
@@ -165,7 +165,7 @@ bottom_layer = bottom_layer\
  You can note that, as the mask layer isn't actually a mask layer but only a layer, I need to invert ``top_mask`` and ``top_layer``. It isn't great but works for now as I wanted to avoid dealing with it any more.    
     
 And finally, we have our SVG (rendered with the black ENIG theme)    
-![](https://data.thestaticturtle.fr/ShareX/2022/08/12/chrome_2022-08-12_03-20-09.png)    
+![](images/dl_chrome_2022-08-12_03-20-09.png)    
     
 ## Conclusion    
 

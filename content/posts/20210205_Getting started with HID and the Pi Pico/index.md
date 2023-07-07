@@ -38,7 +38,7 @@ and dragged it onto the pico storage. I then started a terminal and jumped into 
     
 
 I then proceeded to solder a joystick to it following this very simple schematic:
-![](https://data.thestaticturtle.fr/blog/2021/02/image-1.png)
+![](images/dl_image-1.png)
 And wrote some more code:
 
     import board

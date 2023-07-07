@@ -46,7 +46,7 @@ void draw_frame(Mat frame,int termWitdh,int termHeight) {
 
 I messed a bit with unicode characters to try do double the resolution but it isn't working really well
 
-![](https://data.thestaticturtle.fr/blog/2020/08/68747470733a2f2f692e696d6775722e636f6d2f66696551615a492e706e67.png)
+![](images/dl_68747470733a2f2f692e696d6775722e636f6d2f66696551615a492e706e67.png)
 
 {{<og "https://github.com/TheStaticTurtle/terminal_tv">}}
 

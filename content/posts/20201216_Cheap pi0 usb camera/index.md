@@ -28,24 +28,24 @@ And so at 2am it was decided I was making a webcam, the software part was really
 Now having everything (cables and all) hanging around isn't pretty, so I spend some time and design a nice case for everything
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2020/12/SLDWORKS_2020-12-16_13-36-59.png
-https://data.thestaticturtle.fr/blog/2020/12/SLDWORKS_2020-12-16_13-37-34.png
+images/dl_SLDWORKS_2020-12-16_13-36-59.png
+images/dl_SLDWORKS_2020-12-16_13-37-34.png
 {{< /gallery >}}
 
 After some 15h of printing here's what I got:
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201215_165508-1.jpg
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201215_190526-1.jpg
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201215_191925.jpg
+images/dl_IMG_20201215_165508-1.jpg
+images/dl_IMG_20201215_190526-1.jpg
+images/dl_IMG_20201215_191925.jpg
 {{< /gallery >}}
 
 After struggling quite a bit to glue, solder and fix everything in place I had this wonderful case:
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201215_191937.jpg
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201216_023114.jpg
-https://data.thestaticturtle.fr/blog/2020/12/IMG_20201216_023022.jpg
+images/dl_IMG_20201215_191937.jpg
+images/dl_IMG_20201216_023114.jpg
+images/dl_IMG_20201216_023022.jpg
 {{< /gallery >}}
 
 Works pretty great, the pi0 get a little warm hence I left the heat sink apparent on the backside. I also left a groove to put some addressable LEDs to light up whatever I'm recording (haven't received it yet).

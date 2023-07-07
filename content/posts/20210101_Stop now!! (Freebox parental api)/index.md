@@ -32,19 +32,19 @@ And it went downhill from there. To simplify things I removed the "acquire app t
 To get a session token, you need to get a challenge and do an hmac-sha1 with it and the token. And after many hours of trying, the micropython hmac, hashlib, uhashlib were not able to give me a hmac. After these painful hours I just gave up and searched for a pure python sha1 implementation and after copying some part of hmac and fixing missing functions I had it working nicely.
 
 After all that it wasn't really difficult, add prints everywhere, add the ws2812 for the status indication and add the button.
-![](https://data.thestaticturtle.fr/blog/2021/01/IMG_20201231_175955.jpg)
+![](images/dl_IMG_20201231_175955.jpg)
 But I couldn't really leave this mess hanging around (I use the keypad as one big button, useless otherwise as it isn't a matrix).
 
 So after some time I managed to make a good enough box
-![](https://data.thestaticturtle.fr/blog/2021/01/image.png)
+![](images/dl_image.png)
 After way to much time 3d printing and assembly I managed to fit everything nicely.
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/01/IMG_20210101_014249.jpg
-https://data.thestaticturtle.fr/blog/2021/01/IMG_20210101_024907.jpg
-https://data.thestaticturtle.fr/blog/2021/01/IMG_20210101_024324.jpg
-https://data.thestaticturtle.fr/blog/2021/01/IMG_20210101_024339.jpg
-https://data.thestaticturtle.fr/blog/2021/01/IMG_20210101_024829.jpg
+images/dl_IMG_20210101_014249.jpg
+images/dl_IMG_20210101_024907.jpg
+images/dl_IMG_20210101_024324.jpg
+images/dl_IMG_20210101_024339.jpg
+images/dl_IMG_20210101_024829.jpg
 {{< /gallery >}}
 
 The ring get white/blue at boot while connecting to Wi-Fi, purplish while connection to the API and red/green depending on if the profile has internet access or not. Also, when you press the button the ring goes white while it does the request.

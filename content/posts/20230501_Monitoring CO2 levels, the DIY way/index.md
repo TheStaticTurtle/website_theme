@@ -22,7 +22,7 @@ As I spend most of my day in my office 🤓, I thought it would be a good idea t
 And after being in a room that hasn't any ventilation for +10h straight, the CO2 level is definitely high.
 
 This [study](https://newscenter.lbl.gov/2012/10/17/elevated-indoor-carbon-dioxide-impairs-decision-making-performance/), found that the level of CO2 has a very negative effect on performance, particularly on thinking in general:
-![CO2 Levels on human activities from a study of the Lawrence Berkeley National Laboratory](https://data.thestaticturtle.fr/ShareX/2022/12/30/CO2-Figure2-624x455.png)
+![CO2 Levels on human activities from a study of the Lawrence Berkeley National Laboratory](images/dl_CO2-Figure2-624x455.png)
 Which is sadly something that I noticed before after a long day 😕.
 
 I also wanted to measure the PM2.5 concentration, as it could prove useful for automations down the road.
@@ -52,31 +52,31 @@ For the particulate matter sensor, I choose a [PMS5003](https://data.thestatictu
 I first hoped into SolidWorks and my something that reassembles a case.
 
 The PMS5003 has an intake fan in it and by default the air is ejected on the same side:
-![PM5003 air pattern](https://data.thestaticturtle.fr/ShareX/2022/12/30/chrome_2022-12-30_23-44-20_bb5f5da0-bcc2-4ebc-82e3-c10159289503.png)
+![PM5003 air pattern](images/dl_chrome_2022-12-30_23-44-20_bb5f5da0-bcc2-4ebc-82e3-c10159289503.png)
 That doesn't really work for me, as I also want the MHZ19 to use the same air. And while technically, you could find a position which would work, I wanted to avoid spending a lot of time on this. So, I simply opened it up, figured out the air pattern and drill holes on the other side.
 
 So, here is what I came up with:
-![3D Model assembly](https://data.thestaticturtle.fr/ShareX/2022/12/30/SLDWORKS_2022-12-30_23-38-41_d8d4f269-68e7-4008-a343-ddbc36aaaa81.png)
+![3D Model assembly](images/dl_SLDWORKS_2022-12-30_23-38-41_d8d4f269-68e7-4008-a343-ddbc36aaaa81.png)
  
  The air comes in from the side, ejected on the other side and then passes over the MHZ19.
 
 On the front, I added a recess for a washer that I'll use a button using the esp32 touch library, a recess for the OLED and a hole for LEDs:
-![Front of 3D model.](https://data.thestaticturtle.fr/ShareX/2022/12/30/SLDWORKS_2022-12-30_23-37-39_4bd7ef8d-89e9-40e5-b361-c4206d5f4822.png)
+![Front of 3D model.](images/dl_SLDWORKS_2022-12-30_23-37-39_4bd7ef8d-89e9-40e5-b361-c4206d5f4822.png)
 
 On one side I added an intake hole for the fan, an output, and a hole for the USB wire.
 
 ### Assembly
 Assembly was a little finicky. I started by inserting the OLED:
-![OLED Installed.](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00216.JPG)
+![OLED Installed.](images/dl_DSC00216.JPG)
 
 Then poured hot glue in the LED hole to act as a diffuser and then put the LED strip in:
-![LEDs installed](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00219.JPG)
+![LEDs installed](images/dl_DSC00219.JPG)
 
 Unfortunately, my 3D print wasn't perfect and the PM5003 didn't fit by less than a millimeter. So, I used some hot air to ease it in 😏:
-![PMS5003 and MHZ19 installed](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00222.JPG)
+![PMS5003 and MHZ19 installed](images/dl_DSC00222.JPG)
 
 Then with a lot of patience, I manage to solder everything to the ESP32 and hot glued it in place:
-![ESP32 soldered in](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00627.JPG)
+![ESP32 soldered in](images/dl_DSC00627.JPG)
 
 A bonus of the 3D print being slightly out of size, is that I can use the flat side of the PMS5003 to stick it to the wall with some double side tape.
 
@@ -275,12 +275,12 @@ Flashed the compiled esphome firmware and was greeted by some wonderful logs:
 
 The LEDs and OLED lighted up with the correct info:
 
-![Sensor put on the wall](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00623.jpg)
+![Sensor put on the wall](images/dl_DSC00623.jpg)
 
 
 I added the entities in HomeAssistant, left it for a while and got these wonderful graphs:
-![HomeAssistant CO2 sensor](https://data.thestaticturtle.fr/ShareX/2022/12/30/chrome_2022-12-30_23-03-22_539d435e-861a-4c78-997d-4546fb31184a.png)
-![HomeAssistant PM sensor](https://data.thestaticturtle.fr/ShareX/2022/12/30/chrome_2022-12-30_23-03-42_c3a65a71-6589-4fb0-831a-9650f13c1a51.png)
+![HomeAssistant CO2 sensor](images/dl_chrome_2022-12-30_23-03-22_539d435e-861a-4c78-997d-4546fb31184a.png)
+![HomeAssistant PM sensor](images/dl_chrome_2022-12-30_23-03-42_c3a65a71-6589-4fb0-831a-9650f13c1a51.png)
 Guess when I started soldering for another project 😅.
 
 

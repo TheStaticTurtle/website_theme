@@ -16,11 +16,28 @@
         {{ $endRow :=  or (eq $imageIndex (sub (len  $images) 1)) (eq (mod $imageIndex 3) 2) }}
 
         {{ if $newRow  }}<div class="img-gallery-row">{{ end }}
-            {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" .) }}
+            
+            {{- $img := $.Page.Resources.GetMatch . -}}
+            {{- if and (not $img) $.Page.File -}}
+                {{ $path := path.Join $.Page.File.Dir . }}
+                {{- $img = resources.Get $path -}}
+            {{- end -}}
+            
+            {{ with $img }}
+                {{ $image := . }}
+                {{ if gt $img.Height 720 }}
+                    {{ $image = .Resize "0x720 webp q80" }}
+                {{ end }}
+                <a class="img-gallery-image" target="_blank" href="{{ . }}">
+                    <img src="{{ $image.RelPermalink }}" >
+                </a>
+            {{ else }}
+                {{ warnf "[shortcodes/gallery.html] Couldn't resize: %s " .Destination }}
                 <a class="img-gallery-image" target="_blank" href="{{ . }}">
                     <img src="{{ . }}" >
                 </a>
             {{ end }}
+                
         {{ if $endRow }}</div>{{ end }}
 
         {{ $imageIndex = add $imageIndex 1}}

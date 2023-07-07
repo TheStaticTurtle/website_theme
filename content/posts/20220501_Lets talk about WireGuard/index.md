@@ -45,7 +45,7 @@ The protocol is also discreet, since it does not respond to packets from peers t
 
 On Linux, WireGuard works exclusively within the kernel. Because of this, its performance is much better than that of OpenVPN. 
 
-![enter image description here](https://data.thestaticturtle.fr/blog/2022/05/chrome_2022_05_10_08-57-37_GxnS6BMpXP.png)
+![enter image description here](images/dl_chrome_2022_05_10_08-57-37_GxnS6BMpXP.png)
 
 At equal hardware, it achieves almost quadruple the speed than that of OpenVPN while still keeping the CPU free for other task 
 
@@ -223,16 +223,16 @@ u8+M7kLlXJkPvcRsPx7+8rfgUOPV6G9Xu7hubuklpA8=
 ```
 ## Server
 Setting up the interface is super easy, just click the `+` button, paste the private key and click `Ok`:
-![Interface creation on mikrotik](https://data.thestaticturtle.fr/blog/2022/05/image.png)
+![Interface creation on mikrotik](images/dl_image.png)
 
 Next we need to add a peer, to do that, I went to the `Peers` tab, clicked the `+` button, pasted the client public key, set his IP address and clicked OK
-![Peer creation](https://data.thestaticturtle.fr/blog/2022/05/image-1.png)
+![Peer creation](images/dl_image-1.png)
 
 ## Testing
 To test things, I added the configuration to the WireGuard client on my phone:
-![enter image description here](https://data.thestaticturtle.fr/blog/2022/05/image-2.png)
+![enter image description here](images/dl_image-2.png)
 As you can see, it successfully connected to the VPN and after a quick battle with firewall rules I was able to use the mikrotik app:
-![enter image description here](https://data.thestaticturtle.fr/blog/2022/05/image-3.png)
+![enter image description here](images/dl_image-3.png)
 
 
 # Conclusion

@@ -22,12 +22,12 @@ We put our pool on the south-east corner of our property (which means it get sun
 
 ## Data
 I already have temperature sensors in my pool, yes sensor**s** one at the top and one at the bottom
-![One day of pool temps](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_10-52-14_hJyBS7EQX4.png)
+![One day of pool temps](images/dl_chrome_2022_07_11_10-52-14_hJyBS7EQX4.png)
 
 You can see at 18h45 the pump turning on and mixing the water (which takes about `30min`).
 
 You can also see that the temps start rising around `9h30` in a pretty linear way. A bit of digging later, and this time correlates with the sun elevation going over `35deg`, which is the angle at which it starts covering almost all the pool.
-![Temperature and Sun elevation graph](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_11-08-53_NHjJ9bQ715.png)
+![Temperature and Sun elevation graph](images/dl_chrome_2022_07_11_11-08-53_NHjJ9bQ715.png)
 
 After verifying this theory by checking day by day that it actually matches (at least somewhat, I don't want something precise to the second, just to the half hour), I started to work on predicting the temp.
 
@@ -35,7 +35,7 @@ After verifying this theory by checking day by day that it actually matches (at 
 
 Since the temperature rise is pretty linear, I went with a very basic linear interpolation between two points.
 
-![](https://data.thestaticturtle.fr/ShareX/2023/05/01/chrome_2023-05-01_02-34-36_f9effa2f-3fc1-46b0-a3d6-416aefb3bf65.png)
+![](images/dl_chrome_2023-05-01_02-34-36_f9effa2f-3fc1-46b0-a3d6-416aefb3bf65.png)
 
 This also means that as I'm not using a fancy Ai to determine the temp, I can't do it before I have an acceptable value for the first and second point which I randomly set at 10h30
 
@@ -46,7 +46,7 @@ At `10h30`, the sensor reported a temperature of approximatively `26.06degC`.
 The timestamp for `9h29` being `1657438080s` and the timestamp for `10h30` being `1657441800s` 
 
 Let's say I want the temperature at 16h30 (`1657452600`) we can use the previous defined formula like this:
-![](https://data.thestaticturtle.fr/ShareX/2023/05/01/chrome_2023-05-01_02-34-45_caeeae8f-87c7-4b67-a0dd-dc3f6be69db4.png)
+![](images/dl_chrome_2023-05-01_02-34-45_caeeae8f-87c7-4b67-a0dd-dc3f6be69db4.png)
 
 Let's check the results, according to the sensor, at `16h30` the temp was `28.49degC`, neither a bad result nor a perfect one. A `.5degC` deviation is a high, but this was approximatively one hour after it started to heat up, it can't be that precise.
 
@@ -59,7 +59,7 @@ In the middle of building the flow, I thought that it might be a good idea to ha
 
 ### Constants
 First part is an `inject` node that start at `10h00` and triggers every `10min` until `17h00`, that then feed through a `function` node that sets some constants:
-![Node red flow start](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_12-26-49_JlzaUiDLGL.png)
+![Node red flow start](images/dl_chrome_2022_07_11_12-26-49_JlzaUiDLGL.png)
 ```js
 msg.desired_temp = 28.25
 var d = new Date();
@@ -69,7 +69,7 @@ return msg;
 ```
 ### Data query
 I then use the `template` node to build the query and the `influxdb in` node to retrieve the data
-![Query nodes](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_12-27-04_5I28DNbnTm.png)
+![Query nodes](images/dl_chrome_2022_07_11_12-27-04_5I28DNbnTm.png)
 ```sql
 SELECT
     mean("elevation") AS "mean_elevation"
@@ -84,10 +84,10 @@ FILL(linear)
 ```
 The query for the temperature is almost the same except for the `GROUP BY` using `time(60s)`, you'll see later why this is "needed".
 This query gives a result similar to this (`null` meaning the sensor didn't have a value at the time):
-![Query result.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_12-33-10_ngpZXcafWz.png)
+![Query result.](images/dl_chrome_2022_07_11_12-33-10_ngpZXcafWz.png)
 
 I then immediately enter a `function` node to get the time when the sun reached 35deg
-![Sun angle node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_12-35-19_kupyYrtQ0g.png)
+![Sun angle node.](images/dl_chrome_2022_07_11_12-35-19_kupyYrtQ0g.png)
 The code loops through all the points and if the elevation is greater than `35deg` store it in the message object and return it.
 ```js
 for(let point of msg.payload) {
@@ -101,7 +101,7 @@ for(let point of msg.payload) {
 ```
 
 I then need to join the two separates messages from the two queries into one. The simplest way to do it I found is to use a `join` node configured to expect two messages and return one array as the payload, followed by a `function` node to re-organize it
-![Message aggregation node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_12-27-35_MyaYYK91EZ.png)
+![Message aggregation node.](images/dl_chrome_2022_07_11_12-27-35_MyaYYK91EZ.png)
 
 And this is why I used two different time groups in the query on array will be bigger than the other. It's very hacky, but works, I'm welcome to a suggestion (using a topic as the key pop's in my mind)
 ```js
@@ -137,7 +137,7 @@ return msg;
 
 #### Extracting temps
 Next, the data goes to another `function` node to extract the temp when the sun is at `35deg` and the temp either now or at `17h00`:
-![Get temps at time node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-04-46_pu8akFKhJU.png)
+![Get temps at time node.](images/dl_chrome_2022_07_11_14-04-46_pu8akFKhJU.png)
 It's very similar to the first function, it loops through all points and when it meets the condition, stores it in the message object and break out of the loop.
 To get the last point between `17h00` and `09h00`, I reverse the data and added a simple condition to check the hours (this means that, right now, it will get the value around `17h59`, not an issue though).
 ```js
@@ -167,7 +167,7 @@ return msg
 ```
 #### Linear interpolation
 Now that we have our constants for the linear interpolation, we can use another `function` node, to create the values:
-![Linear interpolation node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-10-56_huxXN2WGO4.png)
+![Linear interpolation node.](images/dl_chrome_2022_07_11_14-10-56_huxXN2WGO4.png)
 First, we declare some constants like the `start`, `stop` and `step` time for the interpolation. Next, we use the function defined in the last part and create the dataset, assign it to the message object (along with the constants) and return it.
 ```js
 let interpolation_start = Date.parse(msg.query_start_time)
@@ -195,7 +195,7 @@ return msg
 
 The next step is to get when the **top of the pool** will be at `28.25degC`. To accomplish that, I use yet another `function` node and use the same code as I used to get the temps at a specific time, the only difference being that I search for the time instead of temperature. I also added a little margin to make sure I catch a value.
 **NB: I cloud have done the proper thing here and calculate an equation that take a temperature and return a timestamp, but it's 3am :bed: and don't really need it in this instance.**
-![Get prediction node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-15-53_LodgkSZpuM.png)
+![Get prediction node.](images/dl_chrome_2022_07_11_14-15-53_LodgkSZpuM.png)
 ```js
 for(let point of msg.interpolated_temp) {
     let time = Date.parse(point.time)
@@ -211,18 +211,18 @@ return msg
 
 ### Visualization
 The last step is visualization, the first thing that happens is that the message goes into a `function` node that will round all the values to an acceptable decimal point (2 for the values and 6 for the interpolation parameters)
-![Rounding node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-19-57_MUZ4pODtOE.png)
+![Rounding node.](images/dl_chrome_2022_07_11_14-19-57_MUZ4pODtOE.png)
 
 Then, it goes into multiple `function` & `template` nodes that then goes into multiple `UI` nodes, a `debug` node and an `homeassistant sensor` node:
-![UI & Visualization node.](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-22-19_NSB8bZHKI0.png)
+![UI & Visualization node.](images/dl_chrome_2022_07_11_14-22-19_NSB8bZHKI0.png)
 
 And that gives me a nice NodeRed dashboard:
-![NodeRed dashboard](https://data.thestaticturtle.fr/ShareX/2022/07/11/firefox_2022_07_11_14-32-20_cPdY5jsIB7.png)
+![NodeRed dashboard](images/dl_firefox_2022_07_11_14-32-20_cPdY5jsIB7.png)
 
 And you can see that (at least when I wrote this article) the prediction pretty much spot on. The ha sensor does his job and can be visualized in the dashboard:
-![Homeassistant entity](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-38-05_tCasS23XDr.png)
+![Homeassistant entity](images/dl_chrome_2022_07_11_14-38-05_tCasS23XDr.png)
 Don't mind the graph the values are a bit messed up because I put the wrong value in the state during testing and didn't bother clearing the database.
-![Homeassistant entity card](https://data.thestaticturtle.fr/ShareX/2022/07/11/chrome_2022_07_11_14-38-52_R9TAMnloDu.png)
+![Homeassistant entity card](images/dl_chrome_2022_07_11_14-38-52_R9TAMnloDu.png)
 
 ## Notes
 

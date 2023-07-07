@@ -8,16 +8,14 @@
 
 <blockquote class="embed embed-{{ $siteNameUrlized }}">
     {{ if $embedImage }}
-        {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" $embedImage) }}
-            {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" }}
+            {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
             <a href="{{ $link }}" class="embed-image-container">
                 {{ $embedImageBg | safeHTML }}
 
                 <div class="embed-image-image">
-                    <img src='{{ . }}' alt='{{ $embedImageAlt }}'>
+                    <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
                 </div>
             </a>
-        {{ end }}
     {{ end }}
     <div class="embed-content">
         {{ with $embedTitle }}

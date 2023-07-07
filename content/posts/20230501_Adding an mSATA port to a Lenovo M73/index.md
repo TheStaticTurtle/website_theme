@@ -64,7 +64,7 @@ The last solution was the USB 2.0 SSD bodged to an internal header, which would 
 
 ##  mSATA?
 When you look at the M73 motherboard, you can see an obviously missing footprint marked MSATA1 right next to the Wi-Fi slot:
-![M73 Motherboard M-SATA port](https://data.thestaticturtle.fr/ShareX/2022/12/30/%25pn_2022-12-30_00-29-55_2b332c9f-56d0-4747-a1dd-108fa297efe8.png)
+![M73 Motherboard M-SATA port](images/dl_%25pn_2022-12-30_00-29-55_2b332c9f-56d0-4747-a1dd-108fa297efe8.png)
 
 Which got me thinking. Could it be as simple as soldering a connector and plugging in an SSD?
 Tried soldering one and of course it didn't work 😑, that would be too easy.
@@ -88,24 +88,24 @@ I first [found a video from someone who successfully modded the motherboard](htt
 
 ### Top side
 On the top side, there are only three components. The inductor is pretty easy to solder, the cap, however, was a nightmare, I could not solder to that ground plane. The mSATA connector looks painful but with some solder paste, hot air, and a bit of rework with a fine point tip, flux, and solder wick, it's actually pretty easy
-![Motherboard top-side components.](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00540.JPG?abc)
+![Motherboard top-side components.](images/dl_DSC00540.JPG)
 
 ### Bottom side
 Bottom side is pretty easy, even for 0402, I replaced 0 Ohm resistor with wire bridges and swapped the resistor with some hot air. Not the prettiest job, but it should work.
-![Motherboard bottom-side components.](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00558.jpg)
+![Motherboard bottom-side components.](images/dl_DSC00558.jpg)
 
 ## Testing
  After everything was soldered, I put a 128 GB SSD in the new slot, plugged a VGA cable and power and quickly hopped in the BIOS
- ![SSD Installed in the motherboard.](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00528.JPG) 
+ ![SSD Installed in the motherboard.](images/dl_DSC00528.JPG) 
 
-![SSD detected in the BIOS](https://data.thestaticturtle.fr/ShareX/2022/12/30/DSC00610.JPG)
+![SSD detected in the BIOS](images/dl_DSC00610.JPG)
 
 I made sure the SSD was detected AND IT WAS 🥳 and quickly powered it off again because I didn't have the cooler installed.
 
 I then put everything back together and also took the opportunity to clean the cooler and changed the thermal paste.
 
 Finished by installing proxmox and that was it:
-![Disk list in proxmox](https://data.thestaticturtle.fr/ShareX/2022/12/30/chrome_2022-12-30_02-07-42_dabdd681-b815-404e-9059-4510d3acbda4.png)
+![Disk list in proxmox](images/dl_chrome_2022-12-30_02-07-42_dabdd681-b815-404e-9059-4510d3acbda4.png)
 
 Booted just fine, both disks are detected. To finish things off, I did some benchmarks: 
 ```

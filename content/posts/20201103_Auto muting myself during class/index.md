@@ -25,30 +25,30 @@ After some reflexion I choose to use and Attiny85 with the digispark bootloader,
 
 First I managed to stick the sensor to my door:
 
-![](https://data.thestaticturtle.fr/blog/2020/11/IMG_20201103_120240.jpg)
+![](images/dl_IMG_20201103_120240.jpg)
 
-![](https://data.thestaticturtle.fr/blog/2020/11/IMG_20201103_120248.jpg)
+![](images/dl_IMG_20201103_120248.jpg)
 
 It's not very pretty but it works well enough.
 
 Next was the attiny, unfortunately I couldn't find an original digispark, so I used one of my V-USB breakout
 
-![](https://data.thestaticturtle.fr/blog/2020/11/chrome_2020-11-03_12-32-44.png)
+![](images/dl_chrome_2020-11-03_12-32-44.png)
 
-![](https://data.thestaticturtle.fr/blog/2020/11/chrome_2020-11-03_12-33-19.png)
+![](images/dl_chrome_2020-11-03_12-33-19.png)
 
 And a sop-8 breakout board cut to only have the 4 pins on each side. Fortunately the soldering was very simple, after adding a pull down resistor and soldering a 3.5 mm jack between PB0 and +5V the electronics side was finished:
 
-![](https://data.thestaticturtle.fr/blog/2020/11/IMG_20201102_214804.jpg)
+![](images/dl_IMG_20201102_214804.jpg)
 
-![](https://data.thestaticturtle.fr/blog/2020/11/IMG_20201102_214810.jpg)
+![](images/dl_IMG_20201102_214810.jpg)
 
-![](https://data.thestaticturtle.fr/blog/2020/11/IMG_20201103_120318__01.jpg)
+![](images/dl_IMG_20201103_120318__01.jpg)
 
 ## Software
 
 First I want to say that I use VoiceMeeter Patato to route my audio, as I use two computers with the mouse synced (See synergy) I also used Voicemeeter VBAN protocol to stream audio in real time between the computers
-![](https://data.thestaticturtle.fr/blog/2020/11/voicemeeter8_2020-11-03_13-05-31.png)
+![](images/dl_voicemeeter8_2020-11-03_13-05-31.png)
 I didn't to just have the digispark act as a serial port, so I choose the keys combo CTRL + ALT +F2 to mute myself and CTRL + ALT +F3 to unmute. So all in all the attiny code is very tiny
 
     #include "DigiKeyboard.h"
@@ -112,7 +112,7 @@ Next I made these function that are executed when I want the program to mute/unm
     
 
 As my mic is on the first VoiceMeter input the correct command to send is `Strip(0).Mute = x`
-![](https://data.thestaticturtle.fr/blog/2020/11/voicemeeter8_2020-11-03_13-06-33.png)
+![](images/dl_voicemeeter8_2020-11-03_13-06-33.png)
 The vbt variable is an instance of the VBAN Text class that I made. Since I don't need things to be flexible with this app I hard coded the values like the stream name and skipped any security checks like the command length which has a maximum length and the end the function looks like this
 
     public void send(String text) {
@@ -135,7 +135,7 @@ The vbt variable is an instance of the VBAN Text class that I made. Since I don'
     
 
 After a lot of coding to make sure that I could move the icon by dragging it arround the screen and that everything worked as it was supposed to I clicked generate and it was done. Here is what it looks like:
-![](https://data.thestaticturtle.fr/blog/2020/11/2020-11-03_15-20-31.png)
+![](images/dl_2020-11-03_15-20-31.png)
 
 ## Conclusion
 True, I could have just used an esp8266 to send the UDP packet to VoiceMetter but I like using wires. Now the only issue that I have is since I share my keyboard using synergy between my computers my cursor is on my second computer the keystrokes aren't registered on my app and only sent to my second computer (which in itself is a good thing) so I'll need to write a patch for that.

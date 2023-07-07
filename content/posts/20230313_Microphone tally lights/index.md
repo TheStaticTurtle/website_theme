@@ -83,32 +83,32 @@ I still needed an actual solid piece of plastic to hold the microphone. The hold
 
 After some revisions (some of which happened while I was already printing) 🤫, I ended up with this design which is printed upright in two parts (holder and led diffuser):
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/02/27/SLDWORKS_2023-02-27_17-01-34_1a44898c-4a17-4f2d-9c47-e3b53fc68dc0.png
-https://data.thestaticturtle.fr/ShareX/2023/02/27/SLDWORKS_2023-02-27_17-02-01_bbebc3dd-72b8-4af6-bad8-e9b331f6c86a.png
+images/dl_SLDWORKS_2023-02-27_17-01-34_1a44898c-4a17-4f2d-9c47-e3b53fc68dc0.png
+images/dl_SLDWORKS_2023-02-27_17-02-01_bbebc3dd-72b8-4af6-bad8-e9b331f6c86a.png
 {{< /gallery >}}
 
 The LEDs are inserted in the sidearms, in retrospect, it would probably have been better to order modules with 3 mm LEDs instead of 5 mm ones since they stick out a bit, but it doesn't need to be perfect, it just needs to work. It's going to get beat up anyway 🙄. The cable for the LEDs get routed in a small channel in the arm, which then comes out in the back, where I can put the rest of the components.
-![Microphone holder clip](https://data.thestaticturtle.fr/ShareX/2023/02/27/SLDWORKS_2023-02-27_17-04-21_9da479a1-a599-4488-a3d5-e359dd1ae75a.png)
+![Microphone holder clip](images/dl_SLDWORKS_2023-02-27_17-04-21_9da479a1-a599-4488-a3d5-e359dd1ae75a.png)
 Once the LEDs are inserted, a small piece of heat-shrink with a hole is placed over the LED to secure it in place:
-![](https://data.thestaticturtle.fr/ShareX/2023/03/05/signal-2023-03-05-154217_002_crop.jpeg)
+![](images/dl_signal-2023-03-05-154217_002_crop.jpeg)
 
-![Microphone holder LED channels](https://data.thestaticturtle.fr/ShareX/2023/02/27/SLDWORKS_2023-02-27_17-03-31_94090686-b99d-4937-a28f-a372fcfec0a8.png)
+![Microphone holder LED channels](images/dl_SLDWORKS_2023-02-27_17-03-31_94090686-b99d-4937-a28f-a372fcfec0a8.png)
 
 To make it easier to build the 16 modules, I chose to use a classic LED strip, I cut out 6 LEDs and jammed them in a little recess that I put in the design.
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/02/27/SLDWORKS_2023-02-27_23-27-26_547684df-6f3d-46d3-8c26-a26b1bf7cacf.png
-https://data.thestaticturtle.fr/ShareX/2023/03/05/signal-2023-03-05-152528_028_cropped.jpeg
+images/dl_SLDWORKS_2023-02-27_23-27-26_547684df-6f3d-46d3-8c26-a26b1bf7cacf.png
+images/dl_signal-2023-03-05-152528_028_cropped.jpeg
 {{< /gallery >}}
 
 Finally, the PCB of the IR module gets attached with a piece of double-sided tape on the back and everything gets soldered together.
 
-![](https://data.thestaticturtle.fr/ShareX/2023/03/05/signal-2023-03-05-152528_027_cropped.jpeg)
+![](images/dl_signal-2023-03-05-152528_027_cropped.jpeg)
 
 I then spent 4 days printing everything (I printed 4 modules at the same time, which kept the printer busy for around 18h 😴). The assembly was actually straightforward once I got the hang of it, but I'm glad it's done.
 
 Now that everything is assembled, I printed some LED diffusers and stuck some labels with the microphone number printed on it:
-![](https://data.thestaticturtle.fr/ShareX/2023/03/05/signal-2023-03-05-152528_008_eddited.jpeg)
+![](images/dl_signal-2023-03-05-152528_008_eddited.jpeg)
 
 #### Flaws and improvement
 If I were to re-design this, I would probably do the following:
@@ -127,7 +127,7 @@ Once everything was printed, we began shopping for a piece of wood that could ho
 - Long enough for 16 of them,
 - Deep enough to route the cable behind.
 
-![U-Shaped channel of MDF](https://data.thestaticturtle.fr/ShareX/2023/03/02/3b273619-b4d4-4662-92de-be146b45277a.webp)
+![U-Shaped channel of MDF](images/dl_3b273619-b4d4-4662-92de-be146b45277a.webp)
 
 So, my dad and I started by drilling the two screw holes for each holder, plus a 20 mm hole for the cable to pass to the back. We choose to leave 2.5 cm of space between each holder to leave enough room to grab the mic easily, and something like 15 cm of space on each side for the controller.
 
@@ -135,24 +135,24 @@ Unfortunately, the +2 m piece of MDF wasn't very stiff, and the thing was flappi
 
 Fortunately, we found some aluminum channels that are 20 mm deep and the perfect width. These aluminum extrusions are typically used on the side of flight cases. Mine looks a bit like this one: 
 https://www.thomann.de/fr/adam_hall_6102_schliessprofil.htm
-![](https://data.thestaticturtle.fr/ShareX/2023/03/01/9185483.jpg)
+![](images/dl_9185483.jpg)
 
 It was perfect 😄. The board looks super nice, the screws are not too long any more and as the bonus, the board is super stiff now:
-![First test of all the holders on the board](https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-164250_009.jpeg)
+![First test of all the holders on the board](images/dl_signal-2023-03-01-164250_009.jpeg)
 
 You can see that the bottom screw is barely short enough, but it will actually be very helpful later to hold the cable harness 😏:
-![Backside of the board](https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-164250_008.jpeg)
+![Backside of the board](images/dl_signal-2023-03-01-164250_008.jpeg)
 
 I then proceeded by cutting a ton of wires for power distribution and for the addressable LEDs data line 😫. Instead of soldering everything manually, I choose to use these wonderful heat shrink pieces that already have some solder in them: [https://fr.aliexpress.com/item/1005003878417358.html](https://fr.aliexpress.com/item/1005003878417358.html).
-![LED Cable harness heat shrink pieces](https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-164250_004.jpeg)
+![LED Cable harness heat shrink pieces](images/dl_signal-2023-03-01-164250_004.jpeg)
 
 The white cable you can see is the connection of the IR module. To connect this one, I cut a 16 conductor by +2 m long piece of ribbon cable, separated the cable where required and soldered the same heat shrink pieces everywhere.
 
 This made for a very nice cable harness to put in the back (The photo is missing the ribbon cable)  👍.
-![LED Cable harness](https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-164250_003.jpeg)
+![LED Cable harness](images/dl_signal-2023-03-01-164250_003.jpeg)
 
 To fix everything in place, I printed some big washer that I placed on the screw post of the holder with the cable underneath. After that was done, everything was nice and neat:
-![](https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-164250_011.jpeg)
+![](images/dl_signal-2023-03-01-164250_011.jpeg)
 
 ## Controller
 Now that I have 15 holders and a spare, I need something to control them. Originally, I wanted to use an ESP32 and fully integrate everything. 
@@ -186,7 +186,7 @@ Well, there is not a lot to say here. The ws2812b is a single pin, so I just use
 
 I have some cheap Ethernet dongles. I cut one up and soldered it up to the D+/D- test pads of the PI Zero, that gives me Ethernet connectivity
 
-![PI0 2W Test pads description](https://data.thestaticturtle.fr/ShareX/2023/03/06/Raspberry-Pi-Zero-2-W-Test-Pad%20%281%29.png)
+![PI0 2W Test pads description](images/dl_Raspberry-Pi-Zero-2-W-Test-Pad%20%281%29.png)
 
 ### Wiring
 
@@ -198,24 +198,24 @@ I also soldered some DuPont connectors to the D+ and D- of the Raspberry Pi for 
 
 ### CAD
 I spent some time making the PCB and the Raspberry Pi fit inside a very basic box
-![Controller box](https://data.thestaticturtle.fr/ShareX/2023/03/03/SLDWORKS_2023-03-03_14-17-44_c818f447-b903-49a9-8e36-a8189312d429.png)
+![Controller box](images/dl_SLDWORKS_2023-03-03_14-17-44_c818f447-b903-49a9-8e36-a8189312d429.png)
 
 Added some holes for power, and status LEDs:
-![Controller box with LEDs and power holes](https://data.thestaticturtle.fr/ShareX/2023/03/03/SLDWORKS_2023-03-03_14-19-21_2e9fe2e9-38e9-4a9c-ab72-a7aa6c88dec7.png)
+![Controller box with LEDs and power holes](images/dl_SLDWORKS_2023-03-03_14-19-21_2e9fe2e9-38e9-4a9c-ab72-a7aa6c88dec7.png)
 
 I then added a place for the network card
-![Controller with the network card slot](https://data.thestaticturtle.fr/ShareX/2023/03/03/SLDWORKS_2023-03-03_14-19-44_7d8352f2-927a-42f0-b1e2-a8b90358382d.png)
+![Controller with the network card slot](images/dl_SLDWORKS_2023-03-03_14-19-44_7d8352f2-927a-42f0-b1e2-a8b90358382d.png)
 
 Once that got printed, I put the PCB, network card (which I had to hot glue in to secure it), LEDs and the power connector in it. And, finally, wired the 16 inputs from the wire harness and screwed in the power cables and LED data cable.
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/03/14/signal-2023-03-13-224316_006.jpeg
-https://data.thestaticturtle.fr/ShareX/2023/03/14/signal-2023-03-13-224316_004.jpeg
+images/dl_signal-2023-03-13-224316_006.jpeg
+images/dl_signal-2023-03-13-224316_004.jpeg
 {{< /gallery >}}
 
 After securing it on the MDF board, it looked perfect.
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/03/14/signal-2023-03-13-224316_010.jpeg
-https://data.thestaticturtle.fr/ShareX/2023/03/14/signal-2023-03-13-224316_009.jpeg
+images/dl_signal-2023-03-13-224316_010.jpeg
+images/dl_signal-2023-03-13-224316_009.jpeg
 {{< /gallery >}}
 
 ## Software
@@ -740,7 +740,7 @@ As a sidenote, getting these stupid icons was not fun, while they are in the spe
 #### Screenshot
 Thanks to Vuetify, I didn't need to do a lot of CSS, just for the strips themselves. Once this UI placement was finished, I had a very nice read-only UI that even works on phone (kind of, you need to scroll a lot since I chose to force the cue list open on every device):
 
-![](https://data.thestaticturtle.fr/ShareX/2023/03/06/%25pn_2023_03_06_09-27-32_p4w6vFiaUD.png)
+![](images/dl_%25pn_2023_03_06_09-27-32_p4w6vFiaUD.png)
 
 A strip surrounded in blue means that someone has the microphone in his/her hand, but it's still muted. Meanwhile, a yellow border means that it's unmuted on the stand. If a strip doesn't match any of these conditions, the strip reflects the color stored in the X32.
 
@@ -790,14 +790,14 @@ As I mentioned before, the system needs to withstand power cuts. The poor SD car
 
 Now that I had finished, I spent some time doing a diagram that shows how everything interconnects
 .
-![Functional diagram](https://github.com/TheStaticTurtle/x32tally/raw/master/res/diagram.drawio.png)
+![Functional diagram](images/dl_diagram.drawio.png)
 
 
 ## And in use?
 Last week was the first time this system was actually used in production:
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/03/01/signal-2023-03-01-172743_003.jpeg
-https://data.thestaticturtle.fr/ShareX/2023/03/01/DSC00762_crop.jpg
+images/dl_signal-2023-03-01-172743_003.jpeg
+images/dl_DSC00762_crop.jpg
 {{< /gallery >}}
 
 And it worked perfectly. 

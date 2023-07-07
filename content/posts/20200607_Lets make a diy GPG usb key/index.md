@@ -51,7 +51,7 @@ I named my project TurtleAuth, so I started by just using the same config as the
 #define VAL_GPIO_LED_CRH            0x88388888      /* PC15...PC8 */
 ```
 
-The button will still not work with this code I still had to add it the gnuk / chopstx source code. First I need to add a new function in chopstx to wait until the button has been pressed. I set it up to blink the led  every 100ms and break out of the loop if the button goes high (I have a 10k pull down resistor on the button)
+The button will still not work with this code I still had to add it the gnuk / chopstx source code. First I need to add a new function in chopstx to wait until the button has been pressed. I set it up to blink the led every 100ms and break out of the loop if the button goes high (I have a 10k pull down resistor on the button)
 ```c
 void wait_button() {
     #if defined(GPIO_BUTTON_PIN)
@@ -103,7 +103,7 @@ I started by creating a config for OpenOCD (Debugger / Programmer) and setting u
     gdb_breakpoint_override hard
     
 
-OpenOCD open a telnet server on port 4444 that you can use to send commands to it. I, next wrote a build and flash script to simplify my life during testing, since I change  the source code on a different computer that the one I used to flash (Windows/Linux), I added git pull to make sure that I'm up to date with my GitHub
+OpenOCD open a telnet server on port 4444 that you can use to send commands to it. I, next wrote a build and flash script to simplify my life during testing, since I change the source code on a different computer that the one I used to flash (Windows/Linux), I added git pull to make sure that I'm up to date with my GitHub
 
 Build script:
 
@@ -171,19 +171,19 @@ After executing gpg --card-status I was greeted by a wonderful output that told 
     
 
 After that I could use it like a normal gpg smart card. However, this mess isn't superb to carry around and very fragile:
-![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_020442.jpg)
+![](images/dl_IMG_20200608_020442.jpg)
 ## Making it cooler
 
 So I decided to improve my by design and soldering skill by only choosing 0603 sized components (Which is retrospect a size that I won't go further unless I get a magnifying glass or a microscope).
 
 I wanted to have to boards one on top of each other to clean up the design and make it appear less "hacky" and I recently discovered the TTP223E Touch control ic, so I don't wanted to use a typical pushbutton to validate the access. So I basically cloned the blue pill design and added the ic:
-![](https://data.thestaticturtle.fr/blog/2020/06/Schematic_Stm32GPG_2020-06-08_03-07-59.png)
+![](images/dl_Schematic_Stm32GPG_2020-06-08_03-07-59.png)
 I replaced the BOOT0/1 header with tiny pads that you solder to change the position, the USB connector to a USB A male one , I also tried to solder a metal dome for the reset button but that was a TOTAL failure of course I chose LCSC as my component provider (Partly for the shipping discount when you order via JLCPCB) and here is the [BOM list](https://data.thestaticturtle.fr/ShareX/BOM_Stm32GPG_2020-06-08_03-15-35.csv) the PCB design was by far the most challenging one that I did since I tried to do my best to reduce the board size (which cause me some problem during assembly later) at the end I submitted a panelized version of this board:
-![](https://data.thestaticturtle.fr/blog/2020/06/chrome_2020-06-08_03-19-01.png)![](https://data.thestaticturtle.fr/blog/2020/06/chrome_2020-06-08_03-20-07.png)
+![](images/dl_chrome_2020-06-08_03-19-01.png)![](images/dl_chrome_2020-06-08_03-20-07.png)
 The bottom and top board are connected to allow me to test everything without the top board being in the way. After finally receiving my PCB from JLCPCB I snapped on board out and started soldering
-![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_033253.jpg)![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_033300.jpg)
+![](images/dl_IMG_20200608_033253.jpg)![](images/dl_IMG_20200608_033300.jpg)
 And you can probably see the big mistake that I made, the USB is too far in and interferes with the board (I should really get the real 3d Model) a bit of surgery fixes that. As it turns out gunk doesn't need the 32.768kHz oscillator, so I didn't solder it but left the pads is I ever want to repurpose the board in the future. After a painful soldering session this was the result and I'm very happy with it:
-![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_033954-1.jpg)![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_034010.jpg)![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200608_034146.jpg)
+![](images/dl_IMG_20200608_033954-1.jpg)![](images/dl_IMG_20200608_034010.jpg)![](images/dl_IMG_20200608_034146.jpg)
 Links
 
 - [https://github.com/TheStaticTurtle/chopstx/](https://github.com/TheStaticTurtle/chopstx/)

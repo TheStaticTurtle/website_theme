@@ -22,7 +22,7 @@ A new project started at work, and we needed to make a schedule between two peop
 There is 1 to 5 tasks of 10 min that needs to be scheduled each day.
 
 The scheduling is done on an Excel spreadsheet because it's just easier for now. The spreadsheet looks a bit like this:
-![enter image description here.](https://data.thestaticturtle.fr/ShareX/2022/11/18/EXCEL_2022_11_18_14-58-09_25dyEwwxSR.png)
+![enter image description here.](images/dl_EXCEL_2022_11_18_14-58-09_25dyEwwxSR.png)
 
 This works, but it's a bit outdated and since, for the start of the project, I must be present to monitor some things on pretty much each one I wanted something else than a spreadsheet.
 Moreover, the spreadsheet is updated frequently which is a pain if you want to set up events in a calendar
@@ -160,7 +160,7 @@ As this is a shared calendar, I wanted to avoid annoying other people by deletin
 I also didn't want to be marked as "Busy" in teams for each meeting, so by default it marks me as free
 I can manually set these settings if there is a task that I need to monitor.
 This make a very nice and organized calendar that I don't have to modify manually:
-![enter image description here.](https://data.thestaticturtle.fr/ShareX/2022/11/18/OUTLOOK_2022_11_18_15-35-26_4JaqJoyvbG.png)
+![enter image description here.](images/dl_OUTLOOK_2022_11_18_15-35-26_4JaqJoyvbG.png)
 
 ## Resources & Conclusion
 Including the time I spent trying to locate a proper documentation for creating the events, I spent maybe two hours on this script. Which isn't that bad considering that it took me 45 min last time I did this manually (which was a week ago)

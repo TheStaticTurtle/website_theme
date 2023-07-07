@@ -19,8 +19,8 @@ Making a custom board to connect an esp8266 to the french energy meter
 ## A bit of context
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2020/08/4f7d74837884ae09d9a3a88a609faa01e80c6ea8-compteur-linky-teleinformation.jpeg
-https://data.thestaticturtle.fr/blog/2020/08/e774561f541de60f5a360a97c188bf3412fc1ae2-compteurlinky-e15499842838113x.jpeg
+images/dl_4f7d74837884ae09d9a3a88a609faa01e80c6ea8-compteur-linky-teleinformation.jpeg
+images/dl_e774561f541de60f5a360a97c188bf3412fc1ae2-compteurlinky-e15499842838113x.jpeg
 {{< /gallery >}}
 
 The Linky energy meter is "connected" energy meter it transmit the energy consumed by their user to the energy company (Enedis).
@@ -29,13 +29,13 @@ The Linky energy meter is "connected" energy meter it transmit the energy consum
 
 The arrow on the second picture above show the user teleinfo port. Here the user is free to plug something like the "Linky ERL" or any device to monitor the meter
 
-![](https://data.thestaticturtle.fr/blog/2020/08/Screenshot_20200121_222732.png)
+![](images/dl_Screenshot_20200121_222732.png)
 
 The linky provides 3 "easy" to use ports I1 I2 and A. The actual data comes from the circuit I1 and I2 and you have an alimentation circuit between I1 and A. For reference P, N, P', N' are the mains connections C1 and C2 connection to a water boiler and T1 / T2 are I think for technicians and are locked.
 
 The actual signal is a unidirectional serial connection with a 50kHz carrier. The documentation (available at the bottom) says that the signal is at 9600bps 7E1 but the signal is actually 1200bps at 7E1. Converting this signal is really simple I used the following circuit:
 
-![](https://data.thestaticturtle.fr/blog/2020/08/Screenshot_20200121_224123.png)
+![](images/dl_Screenshot_20200121_224123.png)
 
 The linky spits out frames composed of these lines (For the one I have):
 
@@ -55,7 +55,7 @@ MOTDETAT 000000
 
 Here's a table to see what stands for what:
 
-![](https://data.thestaticturtle.fr/blog/2020/08/Screenshot_20200121_225030-1@2x.png)
+![](images/dl_Screenshot_20200121_225030-1@2x.png)
 
 ## Version 1 - Prototype
 
@@ -75,7 +75,7 @@ As I wanted to make my module compatible with 3-phased devices I added all these
 struct LinkyData {
   char   ADCO   [13];      //Adresse du compteur
   char   OPTARIF[ 5];      //Option tarifaire choisie
-  int    ISOUSC;           //Intensité souscrite
+  int    ISOUSC;           //Intensitée souscrite
   int    BASE;             //Index option Base
   long   HCHC;             //Index option Heures Creuses - Heures Creuses
   long   HCHP;             //Index option Heures Creuses - Heures Pleines
@@ -91,17 +91,17 @@ struct LinkyData {
   char   PTEC   [ 5];      //Période Tarifaire en cours
   char   DEMAIN [ 5];      //Couleur du lendemain
   int    IINST;            //Intensité Instantanée
-  int    IINST1;           //Intensité Instantanée Phase n°1 (Triphaser seulement)
-  int    IINST2;           //Intensité Instantanée Phase n°2 (Triphaser seulement)
-  int    IINST3;           //Intensité Instantanée Phase n°3 (Triphaser seulement)
+  int    IINST1;           //Intensité Instantanée Phase né1 (Triphaser seulement)
+  int    IINST2;           //Intensité Instantanée Phase né2 (Triphaser seulement)
+  int    IINST3;           //Intensité Instantanée Phase né3 (Triphaser seulement)
   int    ADPS;             //Avertissement de DépassementDe Puissance Souscrite
-  int    ADIR1;            //Avertissement de DépassementDe Puissance Souscrite Phase n°1 (Triphaser seulement)
-  int    ADIR2;            //Avertissement de DépassementDe Puissance Souscrite Phase n°2 (Triphaser seulement)
-  int    ADIR3;            //Avertissement de DépassementDe Puissance Souscrite Phase n°3 (Triphaser seulement)
+  int    ADIR1;            //Avertissement de DépassementDe Puissance Souscrite Phase né1 (Triphaser seulement)
+  int    ADIR2;            //Avertissement de DépassementDe Puissance Souscrite Phase né2 (Triphaser seulement)
+  int    ADIR3;            //Avertissement de DépassementDe Puissance Souscrite Phase né3 (Triphaser seulement)
   int    IMAX;             //Intensité maximale appelée
-  int    IMAX1;            //Intensité maximale appelée Phase n°1 (Triphaser seulement)
-  int    IMAX2;            //Intensité maximale appelée Phase n°2 (Triphaser seulement)
-  int    IMAX3;            //Intensité maximale appelée Phase n°3 (Triphaser seulement)
+  int    IMAX1;            //Intensité maximale appelée Phase né1 (Triphaser seulement)
+  int    IMAX2;            //Intensité maximale appelée Phase né2 (Triphaser seulement)
+  int    IMAX3;            //Intensité maximale appelée Phase né3 (Triphaser seulement)
   long   PMAX;             //Puissance maximale triphasée atteinte
   long   PAPP;             //Puissance apparente / Puissance apparente triphasée soutirée
   char   HHPHC;            //Horaire Heures Pleines Heures Creuses

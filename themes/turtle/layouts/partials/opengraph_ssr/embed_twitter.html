@@ -23,18 +23,16 @@
                 {{ $mediaExpandedUrl := index . 0 "expanded_url" }}
                 {{ $mediaType := index . 0 "type" }}
                 
-                {{ with partial "_get_masked_image_url.html" (dict "res" $.Page.Resources "src" $mediaUrl) }}
-                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" }}
+                    {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $mediaUrl ");'></div>" }}
                     <a href="{{ $tweetUrl }}" target="_blank" class="embed-image-container">
                         {{ $embedImageBg | safeHTML }}
                         <div class="embed-image-image embed-twitter-mediatype-{{ $mediaType }}">
                             {{ if eq $mediaType "video" }}
                                 <p>▶</p>
                             {{ end }}
-                            <img src='{{ . }}'>
+                            <img src='{{ $mediaUrl }}'>
                         </div>
                     </a>
-                {{ end}}
             {{ end }}
         {{ end }}
 

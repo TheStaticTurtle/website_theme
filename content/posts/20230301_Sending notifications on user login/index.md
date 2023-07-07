@@ -23,13 +23,13 @@ For the notifications, I choose Telegram, mostly because I already have most of 
 
 ### Creating the bot
 Telegram makes it ridiculously easy to create a new bot, so I just dm-ed @BotFather and got a new token.
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/12/06/Telegram_2022-12-06_18-39-45_5d37e168-01ae-4654-bd1e-66c75967aa00.png)
+![enter image description here](images/dl_Telegram_2022-12-06_18-39-45_5d37e168-01ae-4654-bd1e-66c75967aa00.png)
 
 Subsequently, all, I had to do is add the bot to the group I use for monitoring. Then I could use the API myself to determine the chat ID of my group:
 
 I simply went to `https://api.telegram.org/botTELEGRAMBOTTOKEN/getUpdates` in my browser (with `TELEGRAMBOTTOKEN` being the real token) and got the chat id:
 
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/12/06/chrome_2022-12-06_18-45-13_cc900e57-a688-4c85-9c3d-2ccf118b31c2.png)
+![enter image description here](images/dl_chrome_2022-12-06_18-45-13_cc900e57-a688-4c85-9c3d-2ccf118b31c2.png)
 
 On Telegram, chat ID are negative, and user IDs are positive, so it was pretty easy to find.
 
@@ -41,7 +41,7 @@ curl -X POST \
      https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage
 ```
  With the correct variables, and it worked, nice 😀
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/12/06/Telegram_2022-12-06_19-26-28_b006873d-1034-4d1e-9e70-71c7cadfecfa.png)
+![enter image description here](images/dl_Telegram_2022-12-06_19-26-28_b006873d-1034-4d1e-9e70-71c7cadfecfa.png)
 
 ## Writing the script
 

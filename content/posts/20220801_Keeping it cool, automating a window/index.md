@@ -30,11 +30,11 @@ So instead of remembering to open the window every day, my maker mind went to th
 
 As I said, my room is on the first floor and our house have a slanted roof, so I have a velux (skylight) that pivots on the top, like that:
 
-![Closed skylight](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_185438.jpg)
-![Opened skylight](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_185508.jpg)
+![Closed skylight](images/dl_IMG_20220703_185438.jpg)
+![Opened skylight](images/dl_IMG_20220703_185508.jpg)
 
 So, I foolishly bought a 40 cm linear actuator, thinking that I could fit it so that I would have a big range, that was a stupid idea, the damn thing wouldn't fit at all. Therefore, I returned it and bought a 20 cm one, which barely fit.
-![Linear actuator mounting points](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_185541.jpg)
+![Linear actuator mounting points](images/dl_IMG_20220703_185541.jpg)
 
 
 ## Controlling the motor
@@ -57,7 +57,7 @@ Now, how can we detect if the motor is running? The first thing I thought of was
 
 The next thing I thought of is to use a similar approach to my previous controller, using two optocouplers to detect in which direction is the motor running. 
 The issue with that is that, as I said before, the actuator doesn't have connection directly to the motor, but only via a switch. So, I opened the **very** greasy gearbox and spliced the wires to get a direct connection to the motors.
-![Motor gearbox](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_193233.jpg)
+![Motor gearbox](images/dl_IMG_20220703_193233.jpg)
 As I didn't have a 3 wire cable big and flexible enough, I used two speaker wires and added multiple layers of heat shrink. While the heath shrink was still hot, I pressed on the cover to create something that look good enough and has some strain relief. It's not the prettiest thing, but it works and will barely ever be seen.
 
 ## Schematic
@@ -65,45 +65,45 @@ As this project is very similar to my previously done garage door controller, I 
 
 ### Powering the board
 I went with a basic circuit with a DC-DC convert to reduce 12v to 5v. Also added some decoupling caps, a power LED and a jumper for disconnecting the 12v input
-![Power regulation circuit.](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-18-57.png)
+![Power regulation circuit.](images/dl_chrome_2022-07-03_21-18-57.png)
 
 ### Rotation direction of the motor
 
 Next is the detection of the motor direction, same design as my garage door controller, one optocoupler works when opening and the other one when closing. 
-![Motor optocouplers detection circuit](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-07-18.png)
+![Motor optocouplers detection circuit](images/dl_chrome_2022-07-03_21-07-18.png)
 
 ### Powering the motor
 I could have used a traditional H-Bridge (like a L293) but as I don't need speed control, so I simply used two SPDT relays that I had on hand. Depending which one I turn on, the motor will spin in the according direction.
-![Relay motor controller](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-16-33.png)
+![Relay motor controller](images/dl_chrome_2022-07-03_21-16-33.png)
 
 ### User buttons
 To still be able to use this thing without a phone, I added 3 buttons to control the motor (open, close, and stop). I also tied the stop button to GPIO0, which is the boot pin for the esp8266.
-![Input buttons pull-up](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-22-18.png)
+![Input buttons pull-up](images/dl_chrome_2022-07-03_21-22-18.png)
 
 ### MCU
 For the mcu, I choose a simple esp8266 with both a d1 mini footprint and an esp12 footprint (with an ams1117 to get 3.3v):
-![MCU](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-25-53.png)
+![MCU](images/dl_chrome_2022-07-03_21-25-53.png)
 
 ## Prototype
 Subsequently, I did a very crude prototype:
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_212716.jpg)
+![enter image description here](images/dl_IMG_20220703_212716.jpg)
 
 ## PCB
 And everything worked, so I designed a pcb:
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-42-17.png)
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-43-15.png)
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_21-49-50.png)
+![enter image description here](images/dl_chrome_2022-07-03_21-42-17.png)
+![enter image description here](images/dl_chrome_2022-07-03_21-43-15.png)
+![enter image description here](images/dl_chrome_2022-07-03_21-49-50.png)
 
 Once again, PCBWay stepped in and offered to manufacture the PCB
 
-![](https://data.thestaticturtle.fr/blog/2021/02/PCBway1_1-1.png)
+![](images/dl_PCBway1_1-1.png)
 
 ## Soldering the board
 
 After waiting for one week, I received the PCBs
 
-![Top side of the PCB](https://data.thestaticturtle.fr/ShareX/2022/08/01/IMG_20220715_125832.jpg)
-![Bottom side of the PCB](https://data.thestaticturtle.fr/ShareX/2022/08/01/IMG_20220715_125842.jpg)
+![Top side of the PCB](images/dl_IMG_20220715_125832.jpg)
+![Bottom side of the PCB](images/dl_IMG_20220715_125842.jpg)
 
 After looking at the PCBs, they were pretty good, nothing wrong with the 5 boards.
 
@@ -179,7 +179,7 @@ It works like this:
 
 ## Home assistant integration
 You can see here are the message the board transmits via mqtt:
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/MQTT_Explorer_2022-07-03_22-06-04.png)
+![enter image description here](images/dl_MQTT_Explorer_2022-07-03_22-06-04.png)
 
 I then hit the same issue that I had with my garage door controller. HomeAssistant doesn't support a mqtt cover with a status "partially_opened". So, I need to transmit two window_status messages the first one is "normal" and the second topic treats the `partially_opened` state as `open`
 
@@ -206,7 +206,7 @@ Here is the HomeAssistant configuration:
   state_stopped: "open_partial"
 ```
 The result is a nice entity showing up on the dashboard:
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/03/chrome_2022-07-03_22-03-23.png)
+![enter image description here](images/dl_chrome_2022-07-03_22-03-23.png)
 
 Now let's do some automation, I couldn't do an automation easily with the UI, so I went full YAML mode and wrote this:
 ```yaml
@@ -227,27 +227,27 @@ action:
 Basically, it has two triggers with a corresponding ID, I can then use this ID as a template in the action part of the automation.
 
 After adding the open/close time helpers and adding everything to the UI, I have a very nice interface to control the thing
-![enter image description here](https://data.thestaticturtle.fr/ShareX/2022/07/06/chrome_2022-07-06_19-15-18.png)
+![enter image description here](images/dl_chrome_2022-07-06_19-15-18.png)
 I could have used the sun rise time as a way to schedule the closing time of the window, but I prefer being able to manually set it.
 
 ## Case & finished installation
 
 ### User inputs
 I spent a bit of time on SolidWorks designing a button box that's not completely stupid to stick on my wall:
-![3D model](https://data.thestaticturtle.fr/ShareX/2022/07/03/SLDWORKS_2022-07-03_22-11-39.png)
-![Transparent 3D model](https://data.thestaticturtle.fr/ShareX/2022/07/03/SLDWORKS_2022-07-03_22-12-17.png)
-![3D Print with the buttons](https://data.thestaticturtle.fr/ShareX/2022/07/03/IMG_20220703_220839.jpg)
+![3D model](images/dl_SLDWORKS_2022-07-03_22-11-39.png)
+![Transparent 3D model](images/dl_SLDWORKS_2022-07-03_22-12-17.png)
+![3D Print with the buttons](images/dl_IMG_20220703_220839.jpg)
 
 This was originally intended to match the angle of the roof and put the button parallel to the wall, but instead it fitted just perfectly to the top of my mosquito net, so I put it there instead.
 
-![Buttons mounted](https://data.thestaticturtle.fr/ShareX/2022/07/31/IMG_20220726_183818.jpg)
+![Buttons mounted](images/dl_IMG_20220726_183818.jpg)
 
 ### Controller
 I then spent more time designing a case for the controller:
-![Controller case + PCB](https://data.thestaticturtle.fr/ShareX/2022/07/31/SLDWORKS_2022-07-31_18-57-14.png)
+![Controller case + PCB](images/dl_SLDWORKS_2022-07-31_18-57-14.png)
 As you can see, I also added light pipes to the cover. These light pipes will be filled with hot glue and painted black (when I'll get the time to do it).
 
-![Controller mounted on the wall](https://data.thestaticturtle.fr/ShareX/2022/07/31/IMG_20220726_183754.jpg)
+![Controller mounted on the wall](images/dl_IMG_20220726_183754.jpg)
 
 ## Demo
 
@@ -269,4 +269,4 @@ Again, thanks to  [pcbway](https://www.pcbway.com/) for letting me try out their
 
 https://discord.com/invite/z8bwtdE
 
-![](https://data.thestaticturtle.fr/blog/2021/02/PCBway1_1-2.png)
+![](images/dl_PCBway1_1-2.png)

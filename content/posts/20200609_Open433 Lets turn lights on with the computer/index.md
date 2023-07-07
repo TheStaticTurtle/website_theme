@@ -23,12 +23,12 @@ It worked well expect that I didn't have control over my switches. Sure I could 
 Version two is smaller and have two coiled antennas instead of a sma port and it works well enough. It's still based around an atmega328 running at 16MHz with the Arduino UNO bootloader and a CH340 USB to Serial converter. As it's so versatile in its operation, I also added expansion port for SDA / SCL / A0 / Pin8 (PD0) in addition to the iscp header with the spi bus so that the board could be used as standalone transmitter to send sensor values for example.
 
 So here are some photos of the v2 board:
-![](https://data.thestaticturtle.fr/blog/2020/06/chrome_2020-06-16_01-04-59.png)![](https://data.thestaticturtle.fr/blog/2020/06/chrome_2020-06-16_01-05-11.png)![](https://data.thestaticturtle.fr/blog/2020/06/IMG_20200616_010949.jpg)
+![](images/dl_chrome_2020-06-16_01-04-59.png)![](images/dl_chrome_2020-06-16_01-05-11.png)![](images/dl_IMG_20200616_010949.jpg)
 Unfortunately as I'm an idiot I put the resistor for the power led on the wrong side of the board, so I couldn't solder it up and corrected it for v2.1
 
 ## Software
 
-As I had good luck with the rcswitch library I wanted to use this library on the Arduino side and wanted to make a python library (for future integration with home assistant) resembling as much as possible as rcswitch. To make the board communicate with the software I was a first thinking a serial communication of the type "SEND:2523794944:32:2:700" but that's way too complicated and I wanted to try struct serialization so that what I did I made 4 structs for configuration / packet sent / packet received / acknowledgment  and all prefixed by a char[17] for the packet type ("rcswitch_conf" / "send_decimal" / "receive_signal" / "ack") and the use this code to extract the raw bytes that I read from the serial port:
+As I had good luck with the rcswitch library I wanted to use this library on the Arduino side and wanted to make a python library (for future integration with home assistant) resembling as much as possible as rcswitch. To make the board communicate with the software I was a first thinking a serial communication of the type "SEND:2523794944:32:2:700" but that's way too complicated and I wanted to try struct serialization so that what I did I made 4 structs for configuration / packet sent / packet received / acknowledgment and all prefixed by a char[17] for the packet type ("rcswitch_conf" / "send_decimal" / "receive_signal" / "ack") and the use this code to extract the raw bytes that I read from the serial port:
 
     char type[17];  //Create a tmp buffer to store the type of packet received
     memcpy (&type, &data_buffer, 17); //Copy only the first 17bytes to the tmp buffer (See ptype in each struct in packet.h)

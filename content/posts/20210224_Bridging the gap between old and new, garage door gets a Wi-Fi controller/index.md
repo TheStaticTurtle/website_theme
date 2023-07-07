@@ -22,7 +22,7 @@ Building a stable and secure garage door controller that interfaces to the origi
 This project started a long time ago, the idea is to be able to control the two garage doors remotly.
 
 The garage door that we have is a BFT TIR 60-120 fortunatly the manual ([https://www.bft.cz/privat/navody/poh_sekcni/en/TIR 60-120.pdf](https://www.bft.cz/privat/navody/poh_sekcni/en/TIR%2060-120.pdf)) includes a cut-down schematic of controller board
-![](https://data.thestaticturtle.fr/blog/2021/02/image-2.png)
+![](images/dl_image-2.png)
 Before anything else, you have to understand how the door is working, each door has one button, press it, it opens, press it again (in the middle) the door stops, press it again the door closes. 
 
 One problem common to all version is that the original button and the rf remote need to be kept functional "just in case"
@@ -50,15 +50,15 @@ At first, I wanted to avoid soldering myself to the board and only use the avail
 So after much time taking photos of the main board:
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_184855-1.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210212_214143__01-1.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_175909-1.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_175930-1.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_180124-1.jpg
+images/dl_IMG_20210209_184855-1.jpg
+images/dl_IMG_20210212_214143__01-1.jpg
+images/dl_IMG_20210209_175909-1.jpg
+images/dl_IMG_20210209_175930-1.jpg
+images/dl_IMG_20210209_180124-1.jpg
 {{< /gallery >}}
 
 After many hours I produced a schematic with all the power parts of the circuit:
-![](https://data.thestaticturtle.fr/blog/2021/02/image-4.png)
+![](images/dl_image-4.png)
 The schematic might not be exactly right, but it's good enough to get a grasp of essentials.
 
 I then decided that the only thing to do is to solder myself to the bridge rectifier that ways I get a ground and a positive.
@@ -72,29 +72,29 @@ PS: At the time of making the schematic, I wasn't sure what component I'll use, 
 ### Powering the board
 
 Powering the board will be done via the 20V AC out of the controller board
-![](https://data.thestaticturtle.fr/blog/2021/02/image-5.png)
+![](images/dl_image-5.png)
 ### Rotation direction of the motor
 
 As I said, the motor rotation direction is used via two optocouplers:
-![](https://data.thestaticturtle.fr/blog/2021/02/image-6.png)
+![](images/dl_image-6.png)
 ### Door open/closed buttons
 
 This one is a bit tricker, I could have done some tricks and used a level shifter, but I went on the simpler route and used two more optocouplers. 
 
 As I said I soldered a wire on the output terminals of the bridge rectifier and used a zener diode to make the output a known voltage (The motor which is powered by the rectifier has two speeds, see the board schematic)
-![](https://data.thestaticturtle.fr/blog/2021/02/image-7.png)
+![](images/dl_image-7.png)
 ### Door button
 
 The last connection is the door button for which I used a relay 
-![](https://data.thestaticturtle.fr/blog/2021/02/image-8.png)
+![](images/dl_image-8.png)
 (I forgot the fly back diode, but I'll add it later on the back of the PCB)
 
 ### MCU
 
 For the mcu I choose a simple esp8266 the only issue is that I didn't know if I wanted to use a d1 mini of directly solder an esp12 to the board. So I added circuitry for both on the schematic:
-![](https://data.thestaticturtle.fr/blog/2021/02/image-9.png)
+![](images/dl_image-9.png)
 After a quick breadboard prototyping to validate the schematic
-![](https://data.thestaticturtle.fr/blog/2021/02/image-10.png)
+![](images/dl_image-10.png)
 I started to design the board pcb
 
 ## Add-on board PCB
@@ -102,30 +102,30 @@ I started to design the board pcb
 The design was quite simple. You will see on the bottom left of the pcb there are connectors, one is for an FTDI, one is the I2C bus and the last one is two spare gpio (gpio2 and the adc) these ports are for future expansion or some sensors
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/chrome_2021-02-18_18-35-52.png
-https://data.thestaticturtle.fr/blog/2021/02/chrome_2021-02-18_18-36-16.png
-https://data.thestaticturtle.fr/blog/2021/02/chrome_2021-02-18_18-37-12-2.png
+images/dl_chrome_2021-02-18_18-35-52.png
+images/dl_chrome_2021-02-18_18-36-16.png
+images/dl_chrome_2021-02-18_18-37-12-2.png
 {{< /gallery >}}
 
 Thankfully, PCBWay stepped in and offered to manufacture the PCB
-![](https://data.thestaticturtle.fr/blog/2021/02/PCBway1_1-1.png)
+![](images/dl_PCBway1_1-1.png)
 ## Soldering the add-on board
 
 After waiting one week for the pcb to be made
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210224_184719.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210224_184705-1.jpg
+images/dl_IMG_20210224_184719.jpg
+images/dl_IMG_20210224_184705-1.jpg
 {{< /gallery >}}
 
 After a bit of inspection, I couldn't find anything wrong with all the 5 boards and the pcb quality is quite good, on one hand the red might not be as vibrant as jlcpcb (but that's looking for something it's not really important) on the other hand the silk screen and the copper traces are fantastic. 
 
 Overall I'm very pleased with [pcbway ](https://www.pcbway.com/)PCBs and after a quick soldering job, I got a wonderful looking board:
-![](https://data.thestaticturtle.fr/blog/2021/02/IMG_20210224_162414.jpg)
+![](images/dl_IMG_20210224_162414.jpg)
 Best thing is that my smd footprints with through hole worked like a charm, even the esp12 to wemos d1 mini footprint worked. The first board uses a d1 mini directly the second board an esp12 (with the proper passives and a 3.3v regulator)
 
 After a quick test, I needed to swap the relay contact and swap a pin in software. After that, the board worked just fine and responded to all my commands
-![](https://data.thestaticturtle.fr/blog/2021/02/IMG_20210224_102006.jpg)
+![](images/dl_IMG_20210224_102006.jpg)
 ## Software for the add-on board
 
 All the software development has been done under the Arduino IDE (to simplfy some stuff) instead of using platformIO
@@ -225,7 +225,7 @@ This function shouldn't run long to cause any problem with the OTA library or an
 ### Home assistant integration
 
 Here I ran into a bit of a problem, you see here are the message transmitted via mqtt:
-![](https://data.thestaticturtle.fr/blog/2021/02/MQTT_Explorer_2021-02-18_19-26-42.png)
+![](images/dl_MQTT_Explorer_2021-02-18_19-26-42.png)
 You'll see that I transmit two door_status messages. The issue is that homeassitant doesn't support a mqtt cover with a status "partially_opened" so I tried the position topic instead of the status one, but then I didn't have the opening/closing message on ha. So I just gave up and treated partially_opened as open hence the door_status_4state topic.
 
 Here is the homeassitant configuration:
@@ -249,23 +249,23 @@ Here is the homeassitant configuration:
     
 
 The result is a nice entity showing up on the dashboard:
-![](https://data.thestaticturtle.fr/blog/2021/02/image-13.png)
+![](images/dl_image-13.png)
 ### Case for add-on board
 
 Of course, I can't leave a PCB hanging around on the ceiling, so I modeled a little case that I could stick on the side of the garage door original controller.
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/SLDWORKS_2021-02-24_19-22-15.png
-https://data.thestaticturtle.fr/blog/2021/02/SLDWORKS_2021-02-24_19-22-37.png
-https://data.thestaticturtle.fr/blog/2021/02/SLDWORKS_2021-02-24_19-24-45.png
+images/dl_SLDWORKS_2021-02-24_19-22-15.png
+images/dl_SLDWORKS_2021-02-24_19-22-37.png
+images/dl_SLDWORKS_2021-02-24_19-24-45.png
 {{< /gallery >}}
 
 After some "quick" 3d printing I assembled the case and fixed it to the garage door original box.
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_121611.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_095406.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_101734.jpg
+images/dl_IMG_20210225_121611.jpg
+images/dl_IMG_20210225_095406.jpg
+images/dl_IMG_20210225_101734.jpg
 {{< /gallery >}}
 
 I used some hot glue to act as light pipes and 2 black screw to extend the buttons soldered on the PCB
@@ -273,10 +273,10 @@ I used some hot glue to act as light pipes and 2 black screw to extend the butto
 ## Installation
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_134025.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_134138.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_134245.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_134528.jpg
+images/dl_IMG_20210225_134025.jpg
+images/dl_IMG_20210225_134138.jpg
+images/dl_IMG_20210225_134245.jpg
+images/dl_IMG_20210225_134528.jpg
 {{< /gallery >}}
 
 ## Demo
@@ -287,15 +287,15 @@ And here is a little demo video of the whole system
 ## More photos
 
 {{< gallery >}}
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210212_214219.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_165641.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_175909-2.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210209_175928.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210212_214051.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210212_214143__01-2.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210224_162434.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_121605.jpg
-https://data.thestaticturtle.fr/blog/2021/02/IMG_20210225_125027.jpg
+images/dl_IMG_20210212_214219.jpg
+images/dl_IMG_20210209_165641.jpg
+images/dl_IMG_20210209_175909-2.jpg
+images/dl_IMG_20210209_175928.jpg
+images/dl_IMG_20210212_214051.jpg
+images/dl_IMG_20210212_214143__01-2.jpg
+images/dl_IMG_20210224_162434.jpg
+images/dl_IMG_20210225_121605.jpg
+images/dl_IMG_20210225_125027.jpg
 {{< /gallery >}}
 
 ## Links / Docs

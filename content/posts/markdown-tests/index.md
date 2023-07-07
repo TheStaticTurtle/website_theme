@@ -217,9 +217,9 @@ will produce
 ## Adding Image
 
 ```
-![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
+![Branching Concepts](images/dl_18333fig0319-tn.png "Branching Map")
 ```
-![Branching Concepts](http://git-scm.com/figures/18333fig0319-tn.png "Branching Map")
+![Branching Concepts](images/dl_18333fig0319-tn.png "Branching Map")
 
 ## Big Image
 ![images/cover.jpg](images/cover.jpg)
@@ -310,9 +310,10 @@ Test: fefv https://www.youtube.com/watch?v=ytWz0qVvBZ0
 
 <hr>
 {{< gallery >}}
-https://dummyimage.com/600x400/828282/ffffff&text=1
-https://dummyimage.com/600x400/828282/ffffff&text=2
-https://dummyimage.com/600x400/828282/ffffff&text=3
-https://dummyimage.com/600x400/828282/ffffff&text=4
+images/1.webp
+images/2.webp
+images/3.webp
+images/4.webp
+images/5.webp
 images/cover.jpg
 {{< /gallery >}}

@@ -32,7 +32,7 @@ But after 2-3 days I thought that I should have a plan in case something like th
 
 So obviously next to come was to build a container of my caching system. The little script is made with NodeJS and first need some remodeling to accept configs in the form of environment variable.
 
-Next I could create a file name  Dockerfile at the root of the project with this content:
+Next I could create a file name Dockerfile at the root of the project with this content:
 
     FROM node:14
     
@@ -88,4 +88,4 @@ After all of this you can use your freshly build container in a docker-compose f
 
 Note that I also specified a volume, that is so that I can access the cached images of my app with going into the container itself
 
-If  you want to try it my container is available at: [https://hub.docker.com/r/thestaticturtle/nodecached](https://hub.docker.com/r/thestaticturtle/nodecached)
+If you want to try it my container is available at: [https://hub.docker.com/r/thestaticturtle/nodecached](https://hub.docker.com/r/thestaticturtle/nodecached)

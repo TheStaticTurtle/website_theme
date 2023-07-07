@@ -37,26 +37,26 @@ So, I went to Farrell and Amazon and ordered a few things:
 ## Schematic
 
 The schematic is heavily inspired by this project [https://www.sonelec-musique.com/electronique_realisations_melangeur_audio_002.html](https://www.sonelec-musique.com/electronique_realisations_melangeur_audio_002.html), but with the PAM8403 replacing the op amp.
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/chrome_2023-02-05_22-07-09_48c11ddf-093a-40d2-8d8d-12212a1c090f.png)
+![](images/dl_chrome_2023-02-05_22-07-09_48c11ddf-093a-40d2-8d8d-12212a1c090f.png)
 ## Soldering
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00678.JPG)![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00682.JPG)
+![](images/dl_DSC00678.JPG)![](images/dl_DSC00682.JPG)
 And now I remember why I design pcb instead of manually soldering them.
 
 ## Case
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00676.JPG)
+![](images/dl_DSC00676.JPG)
 ## Assembly
 
 ### Adding jack connectors
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00689.JPG)
+![](images/dl_DSC00689.JPG)
 ### Adding power connector
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00693.JPG)
+![](images/dl_DSC00693.JPG)
 ### Placing the PCB
-![](https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00697.JPG)
+![](images/dl_DSC00697.JPG)
 ## Final photos
 {{< gallery >}}
-https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00714.JPG
-https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00719.JPG
-https://data.thestaticturtle.fr/ShareX/2023/02/05/DSC00721.JPG
+images/DSC00714.JPG
+images/DSC00719.JPG
+images/DSC00721.JPG
 {{< /gallery >}}
 ## Final thoughts
 

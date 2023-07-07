@@ -36,7 +36,7 @@ Well, running a CA manually is more than fine.
 Except that when you reach the point where you have +20 ct/vms, you spend all your time provisioning and renewing certificates
 
 Here is a screenshot of my XCA database, pretty full, heh
-![Old TLS certificate list in XCA](https://data.thestaticturtle.fr/ShareX/2022/11/28/xca_2022_11_28_09-21-16_p1RZU9hR7o.png)
+![Old TLS certificate list in XCA](images/dl_xca_2022_11_28_09-21-16_p1RZU9hR7o.png)
 
 I do think that XCA is the way for small setups, as it's pretty easy to use.
 
@@ -62,7 +62,7 @@ Great that look perfect and as a bonus, they have a superb tutorial for a [small
 
 As I don't own a Yubikey, I didn't exactly follow the tutorial. 
 Instead, because step-ca doesn't have an easy way to customize the root and intermediate CA,  I started by creating them in XCA, 
-![CA setup in XCA](https://data.thestaticturtle.fr/ShareX/2022/11/28/xca_2022_11_28_10-14-00_mOnVfMn6wR.png)
+![CA setup in XCA](images/dl_xca_2022_11_28_10-14-00_mOnVfMn6wR.png)
 
 The root and intermediate CA infrastructure is perfect because I actually intend to manage two sites (my lab and the small setup at my parents) and I can use different intermediate CA for both while still having one root.
 
@@ -134,7 +134,7 @@ auth.internal.tugler.fr {
 ```
 
 I proceeded by restarting the stack, and it worked the first time:
-![First valid certificate](https://data.thestaticturtle.fr/ShareX/2022/11/28/firefox_2022_11_28_10-36-38_Q1VhX3qNud.png)
+![First valid certificate](images/dl_firefox_2022_11_28_10-36-38_Q1VhX3qNud.png)
 
 Nice 😃
 
@@ -146,12 +146,12 @@ After looking at the cert a bit closely, I need to modify the certificate templa
 Now that we have everything running, we have to tell our clients to actually trust the CA. Pretty easy, you would think? Well, not so, depending on the platform!
 ### Windows
 Windows is easy, just import the certificate to the Machine "Certification Authority" store
-![My CA in window's machine store](https://data.thestaticturtle.fr/ShareX/2022/11/28/mmc_2022_11_28_10-50-02_BeJmJrJ7zA.png)
+![My CA in window's machine store](images/dl_mmc_2022_11_28_10-50-02_BeJmJrJ7zA.png)
 #### Chrome
 Chrome takes the certificate from the Windows store, so that's done!
 #### Firefox
 Firefox, as always, is again doing things differently, so you have to go into the options and import it there as well.
-![My CA in Firefox](https://data.thestaticturtle.fr/ShareX/2022/11/28/firefox_2022_11_28_10-48-53_W5x5Tm6s0S.png)
+![My CA in Firefox](images/dl_firefox_2022_11_28_10-48-53_W5x5Tm6s0S.png)
 I think that one shitty decision Mozilla made, is the fact that a certificate for "pve1.internal.tugler.fr" will work if you use this url "https://pve1.internal.tugler.fr", but not for "https://pve1.internal.tugler.fr:8006" it's logic but a pain in the ass. As proxmox for example doesn't allow ports or IPs in a domain for ACME.
 
 ### Servers
@@ -192,10 +192,10 @@ Turns out, you can either do it manually each time you reboot by moving files ar
 {{<og "https://github.com/NVISOsecurity/MagiskTrustUserCerts">}}
 
 I proceeded by reading the script (always do this before randomly giving root access to something you don't trust), installed it, rebooted and boom here it is:
-![My CA in android's system store](https://data.thestaticturtle.fr/ShareX/2022/11/28/Signal_2022_11_28_11-09-54_50LQqc4T8N.png)
+![My CA in android's system store](images/dl_Signal_2022_11_28_11-09-54_50LQqc4T8N.png)
 
 And you know what? It actually worked:
-![Successful connection of nbz360 to my sonarr instance.](https://data.thestaticturtle.fr/ShareX/2022/11/28/Signal_2022_11_28_11-12-47_kqNLWlWUSE.png)
+![Successful connection of nbz360 to my sonarr instance.](images/dl_Signal_2022_11_28_11-12-47_kqNLWlWUSE.png)
 
 #### Firefox
 You would think it would be easy, right? That Firefox would just work? 🤡
@@ -209,7 +209,7 @@ So to make Firefox trust my CA, I have to:
  - Enable "Use third-party CA certificates"🙄
 
 But it works:
-![Valid certificate in Firefox](https://data.thestaticturtle.fr/ShareX/2022/11/28/%25pn_2022_11_28_11-17-28_0F10vNqO14.png)
+![Valid certificate in Firefox](images/dl_%25pn_2022_11_28_11-17-28_0F10vNqO14.png)
 
 #### Chrome
 Chrome is a system app, right? So, it should just work, right? 🤡
@@ -236,7 +236,7 @@ Chrome doesn't need root anyway, so I choose to hide it, in magisk I had to:
 	- Check the chrome app
 
 After doing all this and force closing chrome, ignoring the pop-up about installing a CA on first load 🤨, my CA was now valid:
-![Valid certificate in chrome](https://data.thestaticturtle.fr/ShareX/2022/11/28/Signal_2022_11_28_11-29-40_1PSK2ndVkU.png)
+![Valid certificate in chrome](images/dl_Signal_2022_11_28_11-29-40_1PSK2ndVkU.png)
 
 This shouldn't be a problem for non-rooted phones anyway because you wouldn't be able to add it to the system store in the first place.
 
