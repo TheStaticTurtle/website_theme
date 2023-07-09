@@ -1,13 +1,13 @@
-{{ with partial "opengraph_ssr/extract_tags.html" . }}
+{{ with partial "tools/opengraph_ssr/extract_tags.html" . }}
     {{ if index . "valid" }}
         {{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
 
         {{ if eq $siteNameUrlized "youtube"}}
-            {{ partial "opengraph_ssr/embed_youtube.html" . }}
+            {{ partial "tools/opengraph_ssr/embed_youtube.html" . }}
         {{ else if eq $siteNameUrlized "twitter"}}
-            {{ partial "opengraph_ssr/embed_twitter.html" . }}
+            {{ partial "tools/opengraph_ssr/embed_twitter.html" . }}
         {{ else }}
-            {{ partial "opengraph_ssr/embed_generic.html" . }}
+            {{ partial "tools/opengraph_ssr/embed_generic.html" . }}
         {{ end }}
     {{ else }}
         <blockquote class="embed">

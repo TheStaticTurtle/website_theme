@@ -7,23 +7,23 @@
         <div class="post-list">
             {{ if eq $paginator.PageNumber 1 }}
                 {{ range first 1 $paginator.Pages }}
-                    {{- partial "posts/list-item-large" . -}}
+                    {{- partial "content/posts/list-item-large" . -}}
                 {{ end }}
                 {{ range after 1 $paginator.Pages }}
-                    {{- partial "posts/list-item" . -}}
+                    {{- partial "content/posts/list-item" . -}}
                 {{ end }}
             {{ else }}
                 {{ range $paginator.Pages }}
-                    {{- partial "posts/list-item" . -}}
+                    {{- partial "content/posts/list-item" . -}}
                 {{ end }}
             {{ end }}
         </div>
         
-        {{ partial "pagination.html" $paginator }}
+        {{ partial "content/pagination.html" $paginator }}
 
     </section>
 {{ end }}
 
 {{ define "head" }}
-    {{ partial "scss/include.html" "sass/blog.scss" }}
+    {{ partial "tools/scss/include.html" "sass/blog.scss" }}
 {{ end }}

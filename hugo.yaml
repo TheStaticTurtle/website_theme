@@ -20,12 +20,12 @@ copyright: Copyright 2023 - TheStaticTurtle
 defaultContentLanguage: en
 languages:
   en:
-    languageCode: en-gb
+    languageCode: en-GB
     languageDirection: ltr
     languageName: English
     weight: 1
   fr:
-    languageCode: en-gb
+    languageCode: fr-FR
     languageDirection: ltr
     languageName: Français
     weight: 2

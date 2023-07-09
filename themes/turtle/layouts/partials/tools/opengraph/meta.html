@@ -2,10 +2,10 @@
 {{ $og_type := "website" }}
 
 
-{{ with partial "opengraph/site_title.html" . }}
+{{ with partial "tools/opengraph/site_title.html" . }}
     {{ $title = . }}
 {{ end }}
-{{ with partial "opengraph/og_type.html" . }}
+{{ with partial "tools/opengraph/og_type.html" . }}
     {{ $og_type = . }}
 {{ end }}
 

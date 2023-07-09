@@ -93,7 +93,7 @@
             {{ end }}
 
 
-            {{ with partial "rss/_post_content.html" . }}
+            {{ with partial "content/rss/_post_content.html" . }}
                 {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .)  | safeHTML }}
             {{ end }}
         </item>

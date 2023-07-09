@@ -3,7 +3,7 @@
         <h2>All authors:</h2>
         <div class="post-list">
             {{ range .Pages }}
-                {{- partial "authors/list-item" . -}}
+                {{- partial "content/authors/list-item" . -}}
             {{ end }}
         </div>
         <br>
@@ -11,5 +11,5 @@
 {{ end }}
 
 {{ define "head" }}
-    {{ partial "scss/include.html" "sass/blog.scss" }}
+    {{ partial "tools/scss/include.html" "sass/blog.scss" }}
 {{ end }}

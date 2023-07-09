@@ -1,6 +1,6 @@
 {{ define "main" }}
     <section id="section-intro" class="container">
-        {{ partial "authors/list-item.html" . }} 
+        {{ partial "content/authors/list-item.html" . }} 
     </section>
     <section id="section-posts" class="container">
         {{ $paginator := .Paginate .Pages (sub .Site.Params.pagination.articleCount 1) }}
@@ -9,14 +9,14 @@
 
         <div class="post-list">
             {{ range $paginator.Pages }}
-                {{- partial "posts/list-item" . -}}
+                {{- partial "content/posts/list-item" . -}}
             {{ end }}
         </div>
         
-        {{ partial "pagination.html" $paginator }}
+        {{ partial "content/pagination.html" $paginator }}
     </section>
 {{ end }}
 
 {{ define "head" }}
-    {{ partial "scss/include.html" "sass/blog.scss" }}
+    {{ partial "tools/scss/include.html" "sass/blog.scss" }}
 {{ end }}

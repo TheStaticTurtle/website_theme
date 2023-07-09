@@ -6,15 +6,15 @@
 
         <div class="post-list">
             {{ range $paginator.Pages }}
-                {{- partial "posts/list-item" . -}}
+                {{- partial "content/posts/list-item" . -}}
             {{ end }}
         </div>
         
-        {{ partial "pagination.html" $paginator }}
+        {{ partial "content/pagination.html" $paginator }}
 
     </section>
 {{ end }}
 
 {{ define "head" }}
-    {{ partial "scss/include.html" "sass/blog.scss" }}
+    {{ partial "tools/scss/include.html" "sass/blog.scss" }}
 {{ end }}
