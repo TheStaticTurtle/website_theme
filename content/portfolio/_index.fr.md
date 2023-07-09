@@ -39,6 +39,12 @@ Clé GPG: [0xc97f759321c4c29c](https://keyserver.ubuntu.com/pks/lookup?search=0x
 - Membre de l'équipe technique de l'[AFSR](https://www.fete-sorciere.com/association.html)
 - Aide technique à la [chorale d'oberhergheim](https://choraleoberhergheim.wixsite.com/choraleoberhergheim)
 
+### {{< mdi "mdi-wrench" >}} Technologies
+
+J'ai passé un certain temps à créer une page qui contient une liste non exhaustive des différentes technologies et du matériel avec lesquels j'ai travaillé à un moment donné dans mes projets et activités personnels, professionnels ou associatifs.
+
+{{< biglink "/fr/technologies" "Aller voir" >}}
+
 <br>
 <br>
 

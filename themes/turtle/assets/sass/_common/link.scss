@@ -8,3 +8,21 @@ a {
         color: $link-color-mouserover-color;
     }
 }
+
+.big-link {
+    display: flex;
+    justify-content: center;
+    
+    a {
+        border: 1px solid $link-color;
+        color: $link-color;
+        text-decoration: none;
+        min-width: 90px;
+        padding: 8px 24px ;
+    
+        &:hover {
+            background: $link-color;
+            color: white;
+        }
+    }
+}

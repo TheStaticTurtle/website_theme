@@ -38,6 +38,12 @@ GPG key: [0xc97f759321c4c29c](https://keyserver.ubuntu.com/pks/lookup?search=0xc
 - Part of the stage sound and lighting crew at [AFSR](https://www.fete-sorciere.com/association.html)
 - Technical aid at my local [choir](https://choraleoberhergheim.wixsite.com/choraleoberhergheim)
 
+### {{< mdi "mdi-wrench" >}} Technologies
+
+I've spent some time creating a page that contains a non-exhaustive list of the various technologies & hardware I worked with at some point in my personal, proffesional or assiosiative projects and activities.
+
+{{< biglink "/technologies" "Go take a look" >}}
+
 <br>
 <br>
 

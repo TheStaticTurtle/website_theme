@@ -1,3 +1,5 @@
+@import "theme.scss";
+
 /* Social icons */
 .social-icon {
     display: flex;
@@ -24,4 +26,12 @@
 
 #section-interests p {
     margin-left: 24px;
+}
+
+code {
+    background-color: $post-content-code-bg-color !important; /* !important to override the style attribute put by pygment */
+    //border: 1px solid black;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    padding: 1px 3px;
 }
