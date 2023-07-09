@@ -1,0 +1,11 @@
+{{ if .Page.IsTranslated }}
+<section id="section-language" class="container" style="margin-top: 0;">
+    <div class="language-select">
+        <span>Read in: </span>
+        {{ range .Page.Translations }}
+            <a href="{{ .Permalink }}">
+                <img src='{{- (resources.Get (printf "img/flags/%s.png" .Language)).RelPermalink -}}'>
+            </a>
+        {{ end }}
+    </div>
+</section>{{ end }}

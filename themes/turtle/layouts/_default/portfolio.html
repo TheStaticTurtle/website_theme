@@ -1,4 +1,6 @@
 {{ define "main" }}
+    {{ partial "language_head.html" . }}
+
     <section id="section-portfolio" class="container">
         {{ .Content | emojify }}
     </section>

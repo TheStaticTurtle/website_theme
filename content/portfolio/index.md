@@ -1,5 +1,7 @@
 ---
 layout: portfolio
+language: en
+translationKey: "portfolio"
 ---
 
 ## About me
@@ -20,7 +22,7 @@ GPG key: [0xc97f759321c4c29c](https://keyserver.ubuntu.com/pks/lookup?search=0xc
 <br>
 <br>
 
-## Experience
+## Experiences
 ### {{< mdi "mdi-school" >}} Education
 - (2021 - 2022) [Bachelor of science in Administration and Network security](https://www.iutcolmar.uha.fr/index.php/formations/diplomes/bac-3-licences-professionnelles/lp-metiers-des-reseaux-informatiques-et-telecommunications-parcours-administration-et-securite-des-reseaux/) ([University of Haute Alsace](https://www.uha.fr/en/index.html))
 - (2019 - 2021) [HND in Computer science](http://www.iut-bm.univ-fcomte.fr/) ([IUT Belfort Montbéliard](http://www.iut-bm.univ-fcomte.fr/))
@@ -41,7 +43,7 @@ GPG key: [0xc97f759321c4c29c](https://keyserver.ubuntu.com/pks/lookup?search=0xc
 
 ## Interests
 ### {{< mdi "mdi-satellite-variant" >}} Space & Radicommunications
-I'm a big space nerd, especially space radio communications and rf signals in general; I've received multiple images from meteorological satellites such as the NOAA and METEOR satellites series and planning to received more advanced ones. I've previously received an ARISS<sup>[Link](https://www.ariss.org/)</sup> SSTV Award. [See the award](https://data.thestaticturtle.fr/ShareX/2020/08/18/Diplome.png). I'm currently on my way studying to get my Amateur Radio Licence to be able to transmit and bounce my way around satellites like [QO-100](https://amsat-uk.org/satellites/geo/eshail-2/EsHail-2).
+I'm a big space nerd, especially space radio communications and rf signals in general; I've received multiple images from meteorological satellites such as the NOAA and METEOR satellites series and planning to received more advanced ones. I've previously received an ARISS<sup>[Link](https://www.ariss.org/)</sup> SSTV Award. [See the award](images/sstv-diploma.png). I'm currently on my way studying to get my Amateur Radio Licence to be able to transmit and bounce my way around satellites like [QO-100](https://amsat-uk.org/satellites/geo/eshail-2/EsHail-2).
 
 ### {{< mdi "mdi-cpu-64-bit" >}} Hardware
 Aside from software development, I also really enjoy doing firmware development and hardware design. I'm completely self-taught in this domain, and I'm learning project after project of the mistakes I make.

@@ -17,7 +17,18 @@ theme: turtle
 title: TheStaticTurtle
 copyright: Copyright 2023 - TheStaticTurtle
 
-languageCode: en-gb
+defaultContentLanguage: en
+languages:
+  en:
+    languageCode: en-gb
+    languageDirection: ltr
+    languageName: English
+    weight: 1
+  fr:
+    languageCode: en-gb
+    languageDirection: ltr
+    languageName: Français
+    weight: 2
 
 timeZone: "Europe/Paris"
 
