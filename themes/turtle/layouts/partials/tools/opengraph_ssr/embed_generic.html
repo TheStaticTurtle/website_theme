@@ -8,14 +8,15 @@
 
 <blockquote class="embed embed-{{ $siteNameUrlized }}">
     {{ if $embedImage }}
-            {{ $embedImageBg := print "<div class='embed-image-background' style='background-image: url(" $embedImage ");'></div>" }}
+        {{ with partial "tools/image.html" (dict "ctx" . "src" $embedImage "warn" false) }}
             <a href="{{ $link }}" class="embed-image-container">
-                {{ $embedImageBg | safeHTML }}
+                {{ print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" | safeHTML }}
 
                 <div class="embed-image-image">
-                    <img src='{{ $embedImage }}' alt='{{ $embedImageAlt }}'>
+                    <img src='{{ . }}' alt='{{ $embedImageAlt }}'>
                 </div>
             </a>
+        {{ end }}
     {{ end }}
     <div class="embed-content">
         {{ with $embedTitle }}

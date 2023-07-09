@@ -1,21 +1,8 @@
-{{- $img := .Page.Resources.GetMatch .Destination -}}
-{{- if and (not $img) .Page.File -}}
-{{ $path := path.Join .Page.File.Dir .Destination }}
-{{- $img = resources.Get $path -}}
-{{- end -}}
-
-<figure>
-    <a target="_blank" href="{{ .Destination | safeURL }}" >
-        {{ with $img }}
-            {{ $image := . }}
-            {{ if gt $img.Height 720 }}
-                {{ $image = .Resize "0x720 webp q80" }}
-            {{ end }}
-            <img alt="{{ $.Text }}" src="{{ $image.RelPermalink }}" />
-        {{ else }}
-            {{ warnf "[render-image.html] Couldn't resize: %s " .Destination }}
-            <img alt="{{ $.Text }}" src="{{ .Destination | safeURL }}" />
-        {{ end }}
-    </a>
-    {{ with $.Title | safeHTML }}<figcaption>{{ . }}</figcaption>{{ end }}
-</figure>
+{{ with partial "tools/image.html" (dict "ctx" . "src" .Destination) }}
+    <figure>
+        <a target="_blank" href="{{ $.Destination | safeURL }}" >
+            <img alt="{{ $.Text }}" src="{{ . | safeURL }}" />
+        </a>
+        {{ with $.Title | safeHTML }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+{{ end }}

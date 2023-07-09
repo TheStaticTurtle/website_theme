@@ -60,43 +60,37 @@
     {{end}}
 
     {{ range $pages }}
-        <item>
-            {{- (printf "<title><![CDATA[ %s ]]></title>" .Title)  | safeHTML }}
-            {{- (printf "<description><![CDATA[ %s ]]></description>" .Summary)  | safeHTML }}
-            <link>{{ .Permalink }}</link>
-            <guid>{{ .Permalink }}</guid>
-            {{ range .Params.tags }}
-                {{ with $.Site.GetPage (printf "/%s/%s" "tags" .) }}
-                    {{- (printf "<category><![CDATA[ %s ]]></category>" (.Title | humanize))  | safeHTML }}
+        {{/* Edge case that I don't want to figure out */}}
+        {{ if ne .RelPermalink "/" }}
+            <item>
+                {{- (printf "<title><![CDATA[ %s ]]></title>" .Title)  | safeHTML }}
+                {{- (printf "<description><![CDATA[ %s ]]></description>" .Summary)  | safeHTML }}
+                <link>{{ .Permalink }}</link>
+                <guid>{{ .Permalink }}</guid>
+                {{ range .Params.tags }}
+                    {{ with $.Site.GetPage (printf "/%s/%s" "tags" .) }}
+                        {{- (printf "<category><![CDATA[ %s ]]></category>" (.Title | humanize))  | safeHTML }}
+                    {{ end }}
                 {{ end }}
-            {{ end }}
-            {{ with index .Params.authors 0 }}
-                {{ with $.Site.GetPage (printf "/%s/%s" "authors" .) }}
-                    {{- (printf "<dc:creator><![CDATA[ %s ]]></dc:creator>" .Params.name)  | safeHTML }}
+                {{ with index .Params.authors 0 }}
+                    {{ with $.Site.GetPage (printf "/%s/%s" "authors" .) }}
+                        {{- (printf "<dc:creator><![CDATA[ %s ]]></dc:creator>" .Params.name)  | safeHTML }}
+                    {{ end }}
                 {{ end }}
-            {{ end }}
-            <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
-            
+                <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+                
 
-            {{- $ictx := . -}}
-            {{ with .Resources.GetMatch .Params.image }}
-                {{ $image := .Resize "1275x712 jpg q100" }}
-                <media:thumbnail url="{{ $image.Permalink }}" />
-                <media:content url="{{ $image.Permalink }}" medium="image" />
+                {{- $ictx := . -}}
+                {{ with partial "tools/image.html" (dict "ctx" . "src" .Params.image) }}
+                    <media:thumbnail url="{{ . }}" />
+                    <media:content url="{{ . }}" medium="image" />
+                {{ end }}
 
-                {#<media:thumbnail url="{{ $ictx.Params.image | safeURL }}" />#}
-                {#<media:content url="{{ $ictx.Params.image | safeURL }}" medium="image"></media:content>#}
-            {{ else }}
-                {{ warnf "[rss.xml] Coudln't get post thumbnail '%s' / %s" .Title .Params.image }}
-                <media:thumbnail url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' />
-                <media:content url='{{ (resources.Get "img/default_post_cover.png").Permalink }}' medium="image"></media:content>
-            {{ end }}
-
-
-            {{ with partial "content/rss/_post_content.html" . }}
-                {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .)  | safeHTML }}
-            {{ end }}
-        </item>
+                {{ with partial "content/rss/_post_content.html" . }}
+                    {{- (printf "<content:encoded><![CDATA[ %s ]]></content:encoded>" .)  | safeHTML }}
+                {{ end }}
+            </item>
+        {{ end }}
     {{ end }}
   </channel>
 </rss>

@@ -17,27 +17,13 @@
 
         {{ if $newRow  }}<div class="img-gallery-row">{{ end }}
             
-            {{- $img := $.Page.Resources.GetMatch . -}}
-            {{- if and (not $img) $.Page.File -}}
-                {{ $path := path.Join $.Page.File.Dir . }}
-                {{- $img = resources.Get $path -}}
-            {{- end -}}
-            
-            {{ with $img }}
-                {{ $image := . }}
-                {{ if gt $img.Height 720 }}
-                    {{ $image = .Resize "0x720 webp q80" }}
-                {{ end }}
-                <a class="img-gallery-image" target="_blank" href="{{ . }}">
-                    <img src="{{ $image.RelPermalink }}" >
-                </a>
-            {{ else }}
-                {{ warnf "[shortcodes/gallery.html] Couldn't resize: %s " .Destination }}
-                <a class="img-gallery-image" target="_blank" href="{{ . }}">
+            {{ $src := . }}
+            {{ with partial "tools/image.html" (dict "ctx" $ "src" $src) }}
+                <a class="img-gallery-image" target="_blank" href="{{ $src }}">
                     <img src="{{ . }}" >
                 </a>
             {{ end }}
-                
+            
         {{ if $endRow }}</div>{{ end }}
 
         {{ $imageIndex = add $imageIndex 1}}

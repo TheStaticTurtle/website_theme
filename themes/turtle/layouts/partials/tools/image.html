@@ -1,0 +1,56 @@
+{{ $src := index . "src" }}
+{{ $ctx := index . "ctx" }}
+{{ $dim := default "0x720 webp q90" (index . "dim") }}
+{{ $warn := default true (index . "warn") }}
+
+{{/* Remote images and local ones are handled separatly */}}
+{{ if hasPrefix $src "http" }}
+    {{if $warn }}{{ warnf "[partials/tools/image.html#http] Warning, using a remote image: %s " $src }}{{end}}
+
+    {{ with resources.GetRemote $src  }}
+        {{ with .Err }}
+            {{/* Error out, shouldn't happen */}}
+            {{ errorf "[partials/tools/image.html#http] Couldn't download: %s (%s) " $src . }}
+        {{ else }}
+            {{/* Compute an unique filename based on the url */}}
+            {{ $dst_fname := print ($src | md5) (path.Ext $src) }}
+            {{/* Get where to save the image */}}
+            {{ $dst := path.Join $.Page.RelPermalink "images/" $dst_fname }}
+
+            {{/* Copy said image to the distination file (might resize it as well) */}}
+            {{ $img := (. | resources.Copy $dst).Resize $dim  }}
+
+            {{/* Re-assign the perma-link */}}
+            {{ $src = $img.RelPermalink }}
+        {{ end }}
+    {{ else }}
+        {{/* Error out, shouldn't happen */}}
+        {{ errorf "[partials/tools/image.html#http] Couldn't download: %s " $src }}
+    {{ end }}
+
+{{ else }}
+    {{/* Get the image */}}
+    {{ $img := $ctx.Page.Resources.GetMatch $src }}
+
+    {{/* If the image was not found in the ressources, test if it can be found as a file */}}
+    {{ if and (not $img) $ctx.Page.File }}
+        {{ $path := path.Join $ctx.Page.File.Dir $src }}
+        {{ $img = resources.Get $path }}
+    {{ end }}
+
+    {{/* If we actually got the image */}}
+    {{ with $img }}
+        {{ $image := . }}
+        {{/* Resize if it's too big */}}
+        {{ if gt .Height 720 }}
+            {{ $image = .Resize $dim }}
+        {{ end }}
+        {{/* Re-assign the perma-link */}}
+        {{ $src = $image.RelPermalink }}
+    {{ else }}
+        {{/* Error out, shouldn't happen */}}
+        {{ errorf "[partials/tools/image.html#local] Couldn't get image: %s " $src }}
+    {{ end }}
+{{ end }}
+
+{{ return $src }}
