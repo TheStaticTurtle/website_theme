@@ -1,4 +1,4 @@
-{{ warnf "[opengraph_embeds] Getting tags for: %s" $ }}
+{{/* warnf "[opengraph_embeds] Getting tags for: %s" $ */}}
 
 {{ $tags := dict }}
 {{ $error := false }}
@@ -12,7 +12,7 @@
 {{ with resources.GetRemote . $opts }}
     {{ with .Err }}
         {{ $error = . }}
-        {{ warnf "[opengraph_embeds] %s" . }}
+        {{ warnf "[partials/tools/opengraph_ssr/extract_tags.html] Failed to get opengraph tag for %s (%s)" $ . }}
     {{ else }}
         {{ $processedContent := replace .Content "\n" "NEWLINETAG%%$" }}
 

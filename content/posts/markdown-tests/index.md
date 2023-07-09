@@ -304,7 +304,7 @@ Test: fefv https://www.youtube.com/watch?v=ytWz0qVvBZ0
 
 {{<og "https://docs.djangoproject.com/en/4.0/intro/tutorial01/" >}}
 
-{{<og "https://www.reddit.com/r/DataHoarder/comments/txy10y/just_finished_building_my_new_plex_server/" >}}
+{{<og "https://www.reddit.com/r/DataHoarder/comments/14nz7ow/extensive_testing_smr_results_with_raid_rebuild/" >}}
 
 {{<og "https://gist.github.com/spf13/7896402" >}}
 
