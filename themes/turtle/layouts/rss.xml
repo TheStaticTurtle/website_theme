@@ -21,7 +21,7 @@
     <link>{{ .Permalink }}</link>
 
     {{ with (index .Site.Params "rss" "image")  }}
-        {{ with partial "tools/image.html" (dict "ctx" $ "src" . "dim" "512x512 jpg q100" "force_resize" true) }}
+        {{ with partial "tools/image.html" (dict "ctx" $ "src" . "dim" "512x512 jpg q100" "force_resize" true "permalink" true) }}
             <image> 
                 <url>{{ . | safeURL }}</url>
                 <title>{{ $pageTitle }}</title>
@@ -81,7 +81,7 @@
                 
 
                 {{- $ictx := . -}}
-                {{ with partial "tools/image.html" (dict "ctx" . "src" .Params.image) }}
+                {{ with partial "tools/image.html" (dict "ctx" . "src" .Params.image "permalink" true) }}
                     <media:thumbnail url="{{ . }}" />
                     <media:content url="{{ . }}" medium="image" />
                 {{ end }}

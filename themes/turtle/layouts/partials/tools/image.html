@@ -3,6 +3,7 @@
 {{ $dim := default "0x720 webp q90" (index . "dim") }}
 {{ $warn := default true (index . "warn") }}
 {{ $force_resize := default false (index . "force_resize") }}
+{{ $permalink := default false (index . "permalink") }}
 
 {{/* Remote images and local ones are handled separatly */}}
 {{ if hasPrefix $src "http" }}
@@ -22,7 +23,7 @@
             {{ $img := (. | resources.Copy $dst).Resize $dim  }}
 
             {{/* Re-assign the perma-link */}}
-            {{ $src = $img.RelPermalink }}
+            {{ $src = cond $permalink $img.Permalink $img.RelPermalink }}
         {{ end }}
     {{ else }}
         {{/* Error out, shouldn't happen */}}
@@ -55,7 +56,7 @@
             {{ $image = .Resize $dim }}
         {{ end }}
         {{/* Re-assign the perma-link */}}
-        {{ $src = $image.RelPermalink }}
+        {{ $src = cond $permalink $img.Permalink $img.RelPermalink }}
     {{ else }}
         {{/* Error out, shouldn't happen */}}
         {{ errorf "[partials/tools/image.html#local] Couldn't get image: %s " $src }}
