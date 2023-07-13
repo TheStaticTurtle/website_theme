@@ -3,8 +3,8 @@
     <div class="language-select">
         <span>Read in: </span>
         {{ range .Page.Translations }}
-            <a href="{{ .Permalink }}">
-                <img src='{{- (resources.Get (printf "img/flags/%s.png" .Language)).RelPermalink -}}'>
+            <a href="{{ .Permalink }}" hreflang="{{ .Language }}">
+                <img alt="{{ .Language.LanguageName }}" src='{{- (resources.Get (printf "img/flags/%s.png" .Language)).RelPermalink -}}'>
             </a>
         {{ end }}
     </div>
