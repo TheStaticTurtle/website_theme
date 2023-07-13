@@ -1,4 +1,4 @@
-{{ printf "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 {{ printf "<?xml-stylesheet type=\"text/xsl\" href=\"/sitemap.xsl\"?>" | safeHTML }}
 
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -17,4 +17,3 @@
     {{- end -}}
 {{ end }}
 </sitemapindex>
-
