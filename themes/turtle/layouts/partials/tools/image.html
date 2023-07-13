@@ -9,7 +9,13 @@
 {{ if hasPrefix $src "http" }}
     {{if $warn }}{{ warnf "[partials/tools/image.html#http] Warning, using a remote image: %s " $src }}{{end}}
 
-    {{ with resources.GetRemote $src  }}
+    {{ $opts := dict
+        "method" "get"
+        "headers" (dict
+            "User-Agent" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" 
+        )
+    }}
+    {{ with resources.GetRemote $src $opts }}
         {{ with .Err }}
             {{/* Error out, shouldn't happen */}}
             {{ errorf "[partials/tools/image.html#http] Couldn't download: %s (%s) " $src . }}
