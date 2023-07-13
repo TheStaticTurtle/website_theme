@@ -2,6 +2,7 @@
 {{ $ctx := index . "ctx" }}
 {{ $dim := default "0x720 webp q90" (index . "dim") }}
 {{ $warn := default true (index . "warn") }}
+{{ $force_resize := default false (index . "force_resize") }}
 
 {{/* Remote images and local ones are handled separatly */}}
 {{ if hasPrefix $src "http" }}
@@ -38,11 +39,19 @@
         {{ $img = resources.Get $path }}
     {{ end }}
 
+    {{/* If the image was not found in files maybe it's a global ressource */}}
+    {{ if and (not $img) (resources) }}
+        {{ with resources.Get $src }}
+            {{ warnf "[partials/tools/image.html#local-global] %s was found in global resosurces" $src }}
+            {{ $img = . }}
+        {{ end }}
+    {{ end }}
+
     {{/* If we actually got the image */}}
     {{ with $img }}
         {{ $image := . }}
         {{/* Resize if it's too big */}}
-        {{ if gt .Height 720 }}
+        {{ if or (gt .Height 720) $force_resize }}
             {{ $image = .Resize $dim }}
         {{ end }}
         {{/* Re-assign the perma-link */}}

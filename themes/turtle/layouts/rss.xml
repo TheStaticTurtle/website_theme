@@ -21,13 +21,13 @@
     <link>{{ .Permalink }}</link>
 
     {{ with (index .Site.Params "rss" "image")  }}
-        {# with partial "_get_masked_image_url.html" (dict "res" (resources) "src" . "dim" "512x512 jpg q100") #}
+        {{ with partial "tools/image.html" (dict "ctx" $ "src" . "dim" "512x512 jpg q100" "force_resize" true) }}
             <image> 
                 <url>{{ . | safeURL }}</url>
                 <title>{{ $pageTitle }}</title>
                 <link>{{ $.Permalink }}</link>
             </image>
-        {# end #}
+        {{ end }}
     {{end}}
 
     <generator>Hugo</generator>
