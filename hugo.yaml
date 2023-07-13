@@ -93,6 +93,7 @@ security:
   http:
     methods:
     - (?i)GET
+    - (?i)POST
     urls:
     - .*
 
@@ -147,8 +148,7 @@ params:
         name: Portfolio
       - url: http://blog.thestaticturtle.fr.home.tugler.fr/
         name: Blog
-  plantuml:
-    server: https://www.plantuml.com/plantuml/svg/
+  plantuml_picoserver: http://127.0.0.1:8080/render
   webMaster: 
     email: samuel@thestaticturtle.fr
     name: Samuel

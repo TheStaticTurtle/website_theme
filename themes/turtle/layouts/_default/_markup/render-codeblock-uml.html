@@ -1,28 +1,28 @@
 {{ $umlContent := println "skinparam backgroundColor #00000000" }}
 {{ $umlContent := print "@startuml\n" $umlContent .Inner "\n@enduml"}}
 
-{{ $umlChars := split $umlContent "" }}
-{{ $hexUmlChars := apply $umlChars "printf" "%02x" "." }}
-{{ $hexUml := delimit $hexUmlChars "" }}
-
-{{ $plantumlUrl := print (index $.Page.Site.Params "plantuml" "server" | default "https://www.plantuml.com/plantuml/svg/" ) (print "~h" $hexUml)  }}
-
-{{ $imageFilename := print ($umlContent | md5) ".svg" }}
+{{ $imageFilename := print ($umlContent | md5) ".png" }}
 {{ $imgPath := path.Join $.Page.RelPermalink "diagrams/" $imageFilename }}
 
-<blockquote class="embed embed-diagram">
-    <div class="embed-content">
-        {{ with resources.GetRemote $plantumlUrl  }}
-            {{ with .Err }}
-                {{ errorf "[plant_uml] Couldn't download %s: %s" $plantumlUrl . }}
-                <b>Failed to get the UML diagram, here is the original plantuml code:</b>
-                <pre>
-                    {{- $umlContent }}
-                </pre>
-            {{ else }}
-                {{ $img := . | resources.Copy $imgPath  }}
-                <img src="{{ $img.RelPermalink | safeURL }}" alt="UML Diagarm" />
-            {{ end }}
-        {{ end }}
-    </div>
-</blockquote>
+{{ with partial "tools/plantuml.html" 
+    (dict 
+        "source" $umlContent 
+        "url" (index $.Page.Site.Params "plantuml_picoserver")
+    )}}
+    {{ $img := . | resources.Copy $imgPath }}
+
+    <blockquote class="embed embed-diagram">
+        <div class="embed-content">
+            <img src="{{ $img.RelPermalink | safeURL }}" alt="UML Diagarm" />
+        </div>
+    </blockquote>
+{{ else }}
+    <blockquote class="embed embed-diagram">
+        <div class="embed-content">
+            <b>Failed to get the UML diagram, here is the original plantuml code:</b>
+            <pre>
+                {{- $umlContent }}
+            </pre>
+        </div>
+    </blockquote>
+{{ end }} 
