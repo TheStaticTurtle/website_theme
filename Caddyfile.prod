@@ -1,0 +1,49 @@
+http://blog.thestaticturtle.fr.home.tugler.fr {
+	encode gzip zstd
+
+	# Handle the root folder
+	root * public
+
+	# Make sure that we redirect the portfolio page to the proper subdomain
+	@portfolio_urls {
+		path_regexp path (^/.*)(portfolio/?)(.*)
+	}
+	handle @portfolio_urls {
+		redir "https://thestaticturtle.fr.home.tugler.fr{re.path.1}{re.path.3}" permanent
+	}
+
+	import website_caching
+	import website_log prod_blog_access
+	import website_fs
+	import website_errors
+}
+
+http://thestaticturtle.fr.home.tugler.fr {
+	encode gzip zstd
+
+	# Replace the root: "/" should give files in "public/portfolio/"
+	root * public/portfolio/
+
+	# Multi-langual support, handles /fr*
+	handle /fr* {
+		#Remove the /fr part because it's not at the same place in the folder structure
+		uri /fr* strip_prefix /fr
+
+		# Replace the root: "/fr" should give files in "public/fr/portfolio/" (after the uri manipulation)
+		root * public/fr/portfolio/
+	}
+
+	# Handle common files with the blog
+	root /sass/* public/
+	root /fonts/* public/
+	root /img/* public/
+	root /images/* public/
+
+	root /404.html public/
+	root /robots.txt public/
+
+	import website_caching
+	import website_log prod_portfolio_access
+	import website_fs
+	import website_errors
+}
