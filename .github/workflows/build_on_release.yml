@@ -32,7 +32,7 @@ jobs:
       - name: "[Build] Build the site"
         run: |
           chmod +x ./build.sh
-          ./build.sh
+          ./build.sh --minify
         shell: bash
 
       - name: "[Deploy] Connect and deploy to prod"

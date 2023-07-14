@@ -12,7 +12,7 @@ while [ $retcode -ne 0 ]; do
 done
 echo "Picoserver is UP!"
 
-hugo --minify
+hugo $@
 
 echo "Cleaning up!"
 kill $PLANTUML_PID
