@@ -64,7 +64,7 @@ The last solution was the USB 2.0 SSD bodged to an internal header, which would 
 
 ##  mSATA?
 When you look at the M73 motherboard, you can see an obviously missing footprint marked MSATA1 right next to the Wi-Fi slot:
-![M73 Motherboard M-SATA port](images/dl_%25pn_2022-12-30_00-29-55_2b332c9f-56d0-4747-a1dd-108fa297efe8.png)
+![M73 Motherboard M-SATA port](images/dl_pn_2022-12-30_00-29-55_2b332c9f-56d0-4747-a1dd-108fa297efe8.png)
 
 Which got me thinking. Could it be as simple as soldering a connector and plugging in an SSD?
 Tried soldering one and of course it didn't work 😑, that would be too easy.

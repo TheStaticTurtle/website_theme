@@ -33,7 +33,7 @@ After countless hours of search, let me introduce the CC85XX series, these chips
 - Minimum latency of 10ms (max of around 30)
 
 I was sold, so I started to recreate the convenient application circuit of the datasheet on easyeda:
-![](images/dl_image.png)Ti application circuit
+![Ti application circuit](images/dl_image.png)
 Few tweaks that I did is replacing the antenna matching circuit with the 2450BM15A0002E which is a prebuild circuit for the CC chips.
 
 And as I wanted to be as flexible as possible I placed both the matching circuit and the CC2590 rf amp on the schematic.
@@ -47,11 +47,11 @@ After quite a bit of experimentation with the chips I had (tl07x, tl08x, lm386, 
 Conveniently the OPA2348 data sheet provides an application schematic for and electret microphone preamp circuit, so I continued the schematic by recreating the circuit, however something caught my eyes: the application schematic states a band pass of 300Hz to 3kHz which is good but not quite good enough especially in the high frequency side
 
 I then proceeded by creating a schematic for all of this
-![](images/dl_Schematic_CC8531_Breakout_2020-12-28_16-37-34%20%281%29.png)1st prototype schematic
+![1st prototype schematic](images/dl_Schematic_CC8531_Breakout_2020-12-28_16-37-34___.png)
 It's quite messy, but it's the first prototype I've placed a lot of test points to test everything, but it will never work the first time.
 
 I next designed the PCB
-![](images/dl_image-1.png)1st prototype rendering
+![1st prototype rendering](images/dl_image-1.png)
 Like the schematic I'm bound to have made some mistake, but it should be alright.
 
 ---
@@ -59,7 +59,7 @@ Like the schematic I'm bound to have made some mistake, but it should be alright
 So after waiting a week for the PCB to arrive I for the first time soldered the component with solder paste. The USB-C connector was definitively the hardest to solder correctly, even now I'm not sure.
 
 Obviously the first power up didn't work at all. Like VCC an GND shorted together. After many hours of scratching my head looking at the PCB and the schematic I could find the flaw. Turns out I might have meddled with the PCB after the order because you can see the VCC trace going straight into the ground plane
-![](images/dl_image-2.png)Beautiful VCC going straight into the ground plane
+![Beautiful VCC going straight into the ground plane](images/dl_image-2.png)
 And well after cutting that and re-soldering the trace correctly it worked just fine.
 
 Now the only issue is that I don't have a cc-debuger, so I ordered one but the mail service here SUCKS, so I wasn't able to do anything with the PCB for around 1.5 weeks. After I received it tho I was able to use the Ti PurePath Wireless configurator to program the chip which,

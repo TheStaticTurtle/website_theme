@@ -209,7 +209,7 @@ So to make Firefox trust my CA, I have to:
  - Enable "Use third-party CA certificates"🙄
 
 But it works:
-![Valid certificate in Firefox](images/dl_%25pn_2022_11_28_11-17-28_0F10vNqO14.png)
+![Valid certificate in Firefox](images/dl_pn_2022_11_28_11-17-28_0F10vNqO14.png)
 
 #### Chrome
 Chrome is a system app, right? So, it should just work, right? 🤡

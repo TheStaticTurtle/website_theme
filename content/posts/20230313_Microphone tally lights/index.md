@@ -740,7 +740,7 @@ As a sidenote, getting these stupid icons was not fun, while they are in the spe
 #### Screenshot
 Thanks to Vuetify, I didn't need to do a lot of CSS, just for the strips themselves. Once this UI placement was finished, I had a very nice read-only UI that even works on phone (kind of, you need to scroll a lot since I chose to force the cue list open on every device):
 
-![](images/dl_%25pn_2023_03_06_09-27-32_p4w6vFiaUD.png)
+![](images/dl_pn_2023_03_06_09-27-32_p4w6vFiaUD.png)
 
 A strip surrounded in blue means that someone has the microphone in his/her hand, but it's still muted. Meanwhile, a yellow border means that it's unmuted on the stand. If a strip doesn't match any of these conditions, the strip reflects the color stored in the X32.
 
