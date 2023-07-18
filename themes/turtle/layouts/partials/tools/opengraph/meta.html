@@ -1,5 +1,6 @@
 {{ $title := .Site.Title }}
 {{ $og_type := "website" }}
+{{ $og_url := .Site.BaseURL }}
 
 
 {{ with partial "tools/opengraph/site_title.html" . }}
@@ -8,7 +9,9 @@
 {{ with partial "tools/opengraph/og_type.html" . }}
     {{ $og_type = . }}
 {{ end }}
-
+{{ with partial "tools/opengraph/og_url.html" . }}
+    {{ $og_url = . }}
+{{ end }}
 
 
 <meta property="og:type" content="{{ $og_type }}">
@@ -17,8 +20,8 @@
 <meta property="og:title" content="{{ $title }}">
 <meta property="twitter:title" content="{{ $title }}">
 
-<meta property="og:url" content="{{ .Permalink | default .Site.BaseURL  }}">
-<meta property="twitter:url" content="{{ .Permalink | default .Site.BaseURL }}">
+<meta property="og:url" content="{{ $og_url }}">
+<meta property="twitter:url" content="{{ $og_url }}">
 
 {{ with .Summary }}
     <meta property="og:description" content="{{.}}">

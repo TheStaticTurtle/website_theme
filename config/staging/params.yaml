@@ -6,3 +6,7 @@ header:
       name: Portfolio
     - url: https://blog.staging.thestaticturtle.fr/
       name: Blog
+
+urls:
+  portfolio: https://website.staging.thestaticturtle.fr/
+  blog: https://blog.staging.thestaticturtle.fr/

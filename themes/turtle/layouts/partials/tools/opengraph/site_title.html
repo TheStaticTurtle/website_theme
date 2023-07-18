@@ -17,6 +17,8 @@
     {{ end }}
 {{ else if hasPrefix .Kind "taxonomy" }}
     {{ $title = print $title " - " (.Section | humanize) }}
+{{ else if hasPrefix .Layout "portfolio" }}
+    {{ $title = .Title }}
 {{ end }}
 
 {{ return $title }}

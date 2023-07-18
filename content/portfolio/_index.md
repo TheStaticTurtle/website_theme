@@ -1,4 +1,5 @@
 ---
+title: "TheStaticTurtle - Samuel TUGLER"
 layout: portfolio
 language: en
 translationKey: "portfolio"
