@@ -22,4 +22,4 @@ rss:
   ttl: 60
 
 pagination:
-  articleCount: 10
+  articleCount: 9

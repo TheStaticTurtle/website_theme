@@ -1,6 +1,6 @@
 {{ define "main" }}
     <section id="section-posts" class="container">
-        {{ $paginator := .Paginate .Pages (sub .Site.Params.pagination.articleCount 1) }}
+        {{ $paginator := .Paginate .Pages .Site.Params.pagination.articleCount }}
 
         <h2>All posts tagged "{{ .Title }}" - Page {{ $paginator.PageNumber }}:</h2>
 

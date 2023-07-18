@@ -3,7 +3,7 @@
         {{ partial "content/authors/list-item.html" . }} 
     </section>
     <section id="section-posts" class="container">
-        {{ $paginator := .Paginate .Pages (sub .Site.Params.pagination.articleCount 1) }}
+        {{ $paginator := .Paginate .Pages .Site.Params.pagination.articleCount }}
 
         <h2>{{ len .Pages }} Posts - Page {{ $paginator.PageNumber }}:</h2>
 

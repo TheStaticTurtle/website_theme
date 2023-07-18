@@ -4,20 +4,16 @@
         
         {{ $pages := where .Site.RegularPages "Section" "posts" }}
         {{ $pages = where $pages "RelPermalink" "!=" "/" }}
-        {{ $paginator := .Paginate $pages .Site.Params.pagination.articleCount }}
+        {{ $paginator := .Paginate (after 1 $pages) .Site.Params.pagination.articleCount }}
 
         <div class="post-list">
             {{ if eq $paginator.PageNumber 1 }}
-                {{ range first 1 $paginator.Pages }}
+                {{ range first 1 $pages }}
                     {{- partial "content/posts/list-item-large" . -}}
                 {{ end }}
-                {{ range after 1 $paginator.Pages }}
-                    {{- partial "content/posts/list-item" . -}}
-                {{ end }}
-            {{ else }}
-                {{ range $paginator.Pages }}
-                    {{- partial "content/posts/list-item" . -}}
-                {{ end }}
+            {{ end }}
+            {{ range $paginator.Pages }}
+                {{- partial "content/posts/list-item" . -}}
             {{ end }}
         </div>
         
