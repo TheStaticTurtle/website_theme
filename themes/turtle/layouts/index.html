@@ -1,8 +1,10 @@
 {{ define "main" }}
     <section id="section-posts" class="container">
         <h2>All the posts</h2>
-
-        {{ $paginator := .Paginate (where .Site.RegularPages "Section" "posts") .Site.Params.pagination.articleCount }}
+        
+        {{ $pages := where .Site.RegularPages "Section" "posts" }}
+        {{ $pages = where $pages "RelPermalink" "!=" "/" }}
+        {{ $paginator := .Paginate $pages .Site.Params.pagination.articleCount }}
 
         <div class="post-list">
             {{ if eq $paginator.PageNumber 1 }}
