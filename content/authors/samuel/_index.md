@@ -1,6 +1,6 @@
 ---
 name: "Samuel"
-image: "https://upload.wikimedia.org/wikipedia/commons/6/6d/Ursula_K_Le_Guin.JPG"
+image: "images/profile_picture.png"
 social:
     website: "https://thestaticturtle.fr"
     twitter: "TheStaticTurtle"
