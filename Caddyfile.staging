@@ -1,56 +1,56 @@
-(website_staging_auth) {
+(__website_staging_access) {
 	@match {
 		not path /robots.txt
 	}
 	basicauth @match {
 		staging $2a$12$HKLw/lQfVgYbbhJQptnhJuvJMtbb6zCZyFjUh/iPZBs0p0G14rV2G #staging
 	}
+
+	handle /*robots.txt {
+		respond "
+User-agent: *
+Disallow: /"
+	}
 }
 
-http://staging.blog.thestaticturtle.fr.home.tugler.fr {
-	import website_no_index_robots
-	import website_staging_auth
+(website_blog_staging) {
+	import __website_staging_access
 
-	root * public
+	root * {args.0}
 
+	# Edgecase (user found out that the portfolio and blog is in the same root and tried to access it)
 	# Make sure that we redirect the portfolio page to the proper subdomain
 	@portfolio_urls {
 		path_regexp path (^/.*)(portfolio/?)(.*)
 	}
 	handle @portfolio_urls {
-		redir "https://staging.thestaticturtle.fr.home.tugler.fr{re.path.1}{re.path.3}" permanent
+		redir "{args.1}{re.path.1}{re.path.3}" permanent
 	}
 
-	import website_caching
-	import website_log staging_blog_access
-	import website_fs
-	import website_errors
+	import __website_fs_and_errors
 }
 
-http://staging.thestaticturtle.fr.home.tugler.fr {
-	import website_no_index_robots
-	import website_staging_auth
 
-	root * public-staging/portfolio/
+(website_portfolio_staging) {
+	import __website_staging_access
 
+	root * {args.0}portfolio/
+	
 	# Multi-langual support, handles /fr*
 	handle /fr* {
 		#Remove the /fr part because it's not at the same place in the folder structure
 		uri /fr* strip_prefix /fr
 
-		# Replace the root: "/fr" should give files in "public-staging/fr/portfolio/" (after the uri manipulation)
-		root * public-staging/fr/portfolio/
+		# Replace the root: "/fr" should give files in "{args.0}fr/portfolio/" (after the uri manipulation)
+		root * {args.0}fr/portfolio/
 	}
 
 	# Handle common files with the blog
-	root /sass/* public-staging/
-	root /fonts/* public-staging/
-	root /img/* public-staging/
-	root /images/* public-staging/
+	root /sass/* {args.0}
+	root /fonts/* {args.0}
+	root /img/* {args.0}
+	root /images/* {args.0}
+	root /404.html {args.0}
 
-	root /404.html public-staging/
-
-	import website_log staging_portfolio_access
-	import website_fs
-	import website_errors
+	import __website_fs_and_errors
 }

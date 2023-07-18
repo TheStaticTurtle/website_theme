@@ -1,49 +1,46 @@
-http://blog.thestaticturtle.fr.home.tugler.fr {
+(website_blog) {
 	encode gzip zstd
 
 	# Handle the root folder
-	root * public
+	root * {args.0}
 
+	# Edgecase (user found out that the portfolio and blog is in the same root and tried to access it)
 	# Make sure that we redirect the portfolio page to the proper subdomain
 	@portfolio_urls {
 		path_regexp path (^/.*)(portfolio/?)(.*)
 	}
 	handle @portfolio_urls {
-		redir "https://thestaticturtle.fr.home.tugler.fr{re.path.1}{re.path.3}" permanent
+		redir "{args.1}{re.path.1}{re.path.3}" permanent
 	}
 
-	import website_caching
-	import website_log prod_blog_access
-	import website_fs
-	import website_errors
+	import __website_cache
+	import __website_fs_and_errors
 }
 
-http://thestaticturtle.fr.home.tugler.fr {
+(website_portfolio) {
 	encode gzip zstd
 
-	# Replace the root: "/" should give files in "public/portfolio/"
-	root * public/portfolio/
+	# Replace the root: "/" should give files in "{args.0}portfolio/"
+	root * {args.0}portfolio/
 
 	# Multi-langual support, handles /fr*
 	handle /fr* {
 		#Remove the /fr part because it's not at the same place in the folder structure
 		uri /fr* strip_prefix /fr
 
-		# Replace the root: "/fr" should give files in "public/fr/portfolio/" (after the uri manipulation)
-		root * public/fr/portfolio/
+		# Replace the root: "/fr" should give files in "{args.0}fr/portfolio/" (after the uri manipulation)
+		root * {args.0}fr/portfolio/
 	}
 
 	# Handle common files with the blog
-	root /sass/* public/
-	root /fonts/* public/
-	root /img/* public/
-	root /images/* public/
+	root /sass/* {args.0}
+	root /fonts/* {args.0}
+	root /img/* {args.0}
+	root /images/* {args.0}
 
-	root /404.html public/
-	root /robots.txt public/
+	root /404.html {args.0}
+	root /robots.txt {args.0}
 
-	import website_caching
-	import website_log prod_portfolio_access
-	import website_fs
-	import website_errors
+	import __website_cache
+	import __website_fs_and_errors
 }
