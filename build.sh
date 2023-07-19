@@ -13,6 +13,9 @@ done
 echo "Picoserver is UP!"
 
 hugo $@
+exit_code=$?
 
 echo "Cleaning up!"
 kill $PLANTUML_PID
+
+exit $exit_code
