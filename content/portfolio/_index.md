@@ -5,8 +5,6 @@ language: en
 translationKey: "portfolio"
 ---
 
-## About me
-
 Hey, I'm Samuel, I'm a {{< age >}} years old maker. I really like computers / electronics & hardware design / radio communication / space / 3D Design and audiovisual stuff.
 I currently live in Alsace, France and while I like French, I prefer using English when I can. If you are eager to learn more, just scroll a bit.
 If you wish to see my recent work / current projects, you might want to go to my blog.

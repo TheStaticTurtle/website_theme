@@ -5,8 +5,6 @@ language: fr
 translationKey: "portfolio"
 ---
 
-## À mon propos
-
 Hey, je m'appelle Samuel, je suis un maker de {{< age >}} ans. J'adore l'informatique, l'électronique et la conception de matériel, la communication radio, l'espace, le design 3D et l'audiovisuel.
 Je vis actuellement en Alsace. Bien que j'apprécie le français, vous me verrez écrire le plus souvent en anglais. Si vous voulez en savoir plus, faites défiler la page.
 Si vous voulez voir mes travaux récents / projets en cours, vous pouvez aller sur mon blog.
