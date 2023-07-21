@@ -42,7 +42,7 @@
 	handle /*robots.txt {
 		respond "
 User-Agent: *
-Allow: /
+Allow: /"
 	}
 
 	import __website_cache
