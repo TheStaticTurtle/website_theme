@@ -30,13 +30,14 @@
 
 		# Replace the root: "/fr" should give files in "{args.0}fr/portfolio/" (after the uri manipulation)
 		root * {args.0}fr/portfolio/
+		root /images/* {args.0}fr/portfolio/
 	}
 
 	# Handle common files with the blog
 	root /sass/* {args.0}
 	root /fonts/* {args.0}
 	root /img/* {args.0}
-	root /images/* {args.0}
+	root /images/* {args.0}portfolio/
 
 	root /404.html {args.0}
 	handle /*robots.txt {

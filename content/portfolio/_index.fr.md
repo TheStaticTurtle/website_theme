@@ -51,7 +51,7 @@ J'ai passé un certain temps à créer une page qui contient une liste non exhau
 
 ## Centres d'interets
 ### {{< mdi "mdi-satellite-variant" >}} Espace & Radiocommunications
-Je suis un grand nerd de l'espace, en particulier des communications radio spatiales et des signaux rf en général. J'ai reçu plusieurs images de satellites météorologiques tels que les séries de satellites NOAA et METEOR et je prévois d'en recevoir des plus avancées. Ainsi, j'ai déjà reçu un ARISS<sup>[Link](https://www.ariss.org/)</sup> SSTV Award. [Voir le diplôme](images/sstv-diploma.png). De plus, j'étudie actuellement pour obtenir ma licence de radio amateur afin de pouvoir transmettre et rebondir sur des satellites comme [QO-100](https://amsat-uk.org/satellites/geo/eshail-2/EsHail-2).
+Je suis un grand nerd de l'espace, en particulier des communications radio spatiales et des signaux rf en général. J'ai reçu plusieurs images de satellites météorologiques tels que les séries de satellites NOAA et METEOR et je prévois d'en recevoir des plus avancées. Ainsi, j'ai déjà reçu un ARISS<sup>[Link](https://www.ariss.org/)</sup> SSTV Award. [Voir le diplôme](images/sstv-diploma.fr.png). De plus, j'étudie actuellement pour obtenir ma licence de radio amateur afin de pouvoir transmettre et rebondir sur des satellites comme [QO-100](https://amsat-uk.org/satellites/geo/eshail-2/EsHail-2).
 
 ### {{< mdi "mdi-cpu-64-bit" >}} Matériel
 Outre le développement de logiciels, j'aime aussi beaucoup le développement de micrologiciels et la conception de matériel. Je suis complètement autodidacte dans ce domaine, et j'apprends projet après projet les erreurs que je fais.
