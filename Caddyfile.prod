@@ -39,7 +39,11 @@
 	root /images/* {args.0}
 
 	root /404.html {args.0}
-	root /robots.txt {args.0}
+	handle /*robots.txt {
+		respond "
+User-Agent: *
+Allow: /
+	}
 
 	import __website_cache
 	import __website_fs_and_errors
