@@ -1,6 +1,8 @@
 {{ $title := .Site.Title }}
 
-{{ if hasPrefix .Kind "home" }}
+{{ if hasPrefix .Layout "portfolio" }}
+    {{ $title = .Title }}
+{{ else if hasPrefix .Kind "home" }}
     {{ $title = print $title " - Blog" }}
 {{ else if hasPrefix .Kind "page" }}
     {{ if hasPrefix .Section "posts" }}
@@ -17,8 +19,6 @@
     {{ end }}
 {{ else if hasPrefix .Kind "taxonomy" }}
     {{ $title = print $title " - " (.Section | humanize) }}
-{{ else if hasPrefix .Layout "portfolio" }}
-    {{ $title = .Title }}
 {{ end }}
 
 {{ return $title }}
