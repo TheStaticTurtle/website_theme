@@ -1,12 +1,7 @@
 {{ define "main" }}
     {{ partial "content/language_head.html" . }}
 
-    <section id="section-portfolio" class="container">
-        {{ if eq .Page.Language "fr" }}
-        <h2 id="À-mon-propos">À mon propos</h2>
-        {{ else }}
-        <h2 id="about-me">About me</h2>
-        {{ end }}
+    <section id="section-content" class="container">
         {{ .Content | emojify }}
     </section>
 {{ end }}

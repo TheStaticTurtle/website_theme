@@ -3,16 +3,7 @@
     <div class="language-select">
         <span>Read in: </span>
         {{ range .Page.Translations }}
-            {{ $url := .Permalink }}
-            {{ if hasPrefix .Layout "portfolio" }}
-                {{ $url = index .Site.Params "urls" "portfolio" }}
-                {{ $path := replace .RelPermalink "portfolio/" "" }}
-                {{ $path  = substr $path 1 }}
-                {{ $url = print $url $path }}
-            {{ else }}
-                {{ $url = .Permalink | default .Site.BaseURL }}
-            {{ end }}
-            <a href="{{ $url }}" hreflang="{{ .Language }}">
+            <a href="{{ .RelPermalink }}" hreflang="{{ .Language }}">
                 <img alt="{{ .Language.LanguageName }}" src='{{- (resources.Get (printf "img/flags/%s.png" .Language)).RelPermalink -}}'>
             </a>
         {{ end }}
