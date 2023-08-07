@@ -1,8 +1,0 @@
-<h{{ .Level }} id="{{ .Anchor | safeURL }}">
-    {{ .Text | safeHTML }} 
-    {{ if eq .Page.CurrentSection.Name "Posts" }}
-    <a class="header-link" href="#{{ .Anchor | safeURL }}">
-        <i class="mdi mdi-link-variant" aria-hidden="true"></i>
-    </a>
-    {{ end }}
-</h{{ .Level }}>

@@ -1,0 +1,27 @@
+@import "../theme.scss";
+
+.markdown {
+    
+    li:has(input[type="checkbox"]) { 
+        list-style-position: outside;
+        list-style-type: none;
+    }
+
+    input[type="checkbox"] {
+        appearance: none;
+        margin: 0;
+        width: 1.15em;
+        height: 1.15em;
+        transform: translateY(0.25em);
+        font: inherit;
+        background-color: $main-dark-color;
+        border: 0.1em solid $main-darker-color;
+        border-radius: 50%;
+    }
+
+    input[type="checkbox"]:checked {
+        background-color: $main-accent-color;
+        border: 0.15em solid $main-accent-darker-color;
+    }
+
+}

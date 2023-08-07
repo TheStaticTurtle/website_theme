@@ -1,0 +1,9 @@
+{{ define "main" }}
+    <section id="section-single-default" class="container markdown">
+        {{ .Content | emojify }}
+    </section>
+{{ end }}
+
+{{ define "head" }}
+    {{ partial "tools/scss/include.html" "sass/site.scss" }}
+{{ end }}

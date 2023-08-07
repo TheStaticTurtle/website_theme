@@ -1,0 +1,28 @@
+{{ $umlContent := println "skinparam backgroundColor #00000000" }}
+{{ $umlContent := print "@startuml\n" $umlContent .Inner "\n@enduml"}}
+
+{{ $imageFilename := print ($umlContent | md5) ".png" }}
+{{ $imgPath := path.Join $.Page.RelPermalink "diagrams/" $imageFilename }}
+
+{{ with partial "tools/plantuml.html" 
+    (dict 
+        "source" $umlContent 
+        "url" (index $.Page.Site.Params "plantuml_picoserver")
+    )}}
+    {{ $img := . | resources.Copy $imgPath }}
+
+    <blockquote class="embed embed-diagram">
+        <div class="embed-content">
+            <img src="{{ $img.RelPermalink | safeURL }}" alt="UML Diagarm" />
+        </div>
+    </blockquote>
+{{ else }}
+    <blockquote class="embed embed-diagram">
+        <div class="embed-content">
+            <b>Failed to get the UML diagram, here is the original plantuml code:</b>
+            <pre>
+                {{- $umlContent }}
+            </pre>
+        </div>
+    </blockquote>
+{{ end }} 

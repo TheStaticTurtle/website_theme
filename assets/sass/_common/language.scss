@@ -1,0 +1,17 @@
+
+.language-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        margin-right: 8px;
+    }
+    
+    a {
+
+        img {
+            height: 32px;
+        }
+    }
+}

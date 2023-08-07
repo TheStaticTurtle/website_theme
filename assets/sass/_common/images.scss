@@ -1,0 +1,29 @@
+
+img, svg {
+	vertical-align: middle
+}
+
+figure {
+	display: table;
+	padding: 0;
+
+	margin: auto;
+	margin-bottom: 16px;
+
+
+	img {
+		vertical-align: middle;
+	}
+
+	figcaption {
+		background-color: $main-dark-color;
+		color: white;
+		padding: 6px;
+		text-align: center;
+		
+		display: table-caption;
+		caption-side: bottom;
+		max-width: 85%;
+		margin-left: 7.5%;
+	}
+}

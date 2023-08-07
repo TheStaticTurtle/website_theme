@@ -1,0 +1,19 @@
+{{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+{{ printf "<?xml-stylesheet type=\"text/xsl\" href=\"/sitemap.xsl\"?>" | safeHTML }}
+
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{{- /* Only render actual sitemaps of the blog, ignore anything related to the portfolio */ -}}
+{{- range site.Sections -}}{{ if and (.RelPermalink) (not (strings.Contains .RelPermalink "/portfolio/")) }}
+    <sitemap>
+        <loc>{{ .RelPermalink }}sitemap.xml</loc>
+    </sitemap>
+{{end}}{{end}}
+
+{{- range $taxonomy_term, $taxonomy := .Site.Taxonomies -}}
+    {{ with $.Site.GetPage (printf "/%s" $taxonomy_term) }}
+    <sitemap>
+        <loc>{{ .RelPermalink }}sitemap.xml</loc>
+    </sitemap>
+    {{- end -}}
+{{ end }}
+</sitemapindex>

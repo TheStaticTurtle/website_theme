@@ -1,0 +1,8 @@
+{{ with partial "tools/image.html" (dict "ctx" . "src" .Destination) }}
+    <figure>
+        <a target="_blank" href="{{ $.Destination | safeURL }}" >
+            <img alt="{{ $.Text }}" src="{{ . | safeURL }}" />
+        </a>
+        {{ with $.Title | safeHTML }}<figcaption>{{ . }}</figcaption>{{ end }}
+    </figure>
+{{ end }}

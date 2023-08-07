@@ -1,0 +1,120 @@
+@import "../theme.scss";
+
+.markdown {
+    blockquote[class*="embed"] {
+        background-color: $post-content-blockquote-bg-color;
+        border-left: $main-accent-color solid 4px;
+        position: relative;
+        display: flex;
+
+        @media (max-width: 767px) {
+            flex-direction: column-reverse;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            flex-direction: row-reverse;
+        }
+
+        .embed-image-container {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+
+            @media (max-width: 767px) {
+                /*margin-top: 16px;*/
+                /*max-width: 80%;*/
+                width: 100%;
+                flex-direction: row;
+            }
+            @media (min-width: 768px) {
+                max-width: 200px;
+                flex-direction: column;
+                margin-right: 8px;
+            }
+
+            .embed-image-background {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                z-index: 0;
+                background-position: center;
+                background-size: cover;
+                filter: blur(8px);
+            }
+
+            .embed-image-image {
+                z-index: 1;
+                width: fit-content;
+
+                img {
+                    margin-left: 0;
+                    margin-right: 0;
+                    max-width: 100% !important;
+                }
+            }
+
+        }
+        
+        .embed-content {
+            flex-grow: 1;
+            margin-left: 8px;
+            width: 100%;
+            overflow-x: auto;
+            
+            @media (max-width: 767px) {
+                padding: 12px;
+                padding-left: 16px;
+            }
+            @media (min-width: 768px) {
+                padding: 12px;
+            }
+
+            .embed-title {
+                font-family: 'Bebas Neue', cursive;
+                font-size: 1.3em;
+                color: $text-color  !important;
+                text-decoration: none;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+
+            a {
+                color: $main-accent-color;
+            }
+
+            p {
+                padding: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        &:before {
+            content: "";
+            height: 32px;
+            width: 32px;
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            top: 50%;
+            transform: translateX(-50%) translateX(-2px) translateY(-50%);
+            border-radius: 100%;
+            padding: 0;
+            background-color: $main-accent-color;
+            border: #12964a solid 4px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='width:32px;height:32px;background-color:%2311CE66' viewBox='-3 -3 24 24'%3E%3Cpath transform='scale(0.75)' fill='%23fff' d='M10.59,13.41C11,13.8 11,14.44 10.59,14.83C10.2,15.22 9.56,15.22 9.17,14.83C7.22,12.88 7.22,9.71 9.17,7.76V7.76L12.71,4.22C14.66,2.27 17.83,2.27 19.78,4.22C21.73,6.17 21.73,9.34 19.78,11.29L18.29,12.78C18.3,11.96 18.17,11.14 17.89,10.36L18.36,9.88C19.54,8.71 19.54,6.81 18.36,5.64C17.19,4.46 15.29,4.46 14.12,5.64L10.59,9.17C9.41,10.34 9.41,12.24 10.59,13.41M13.41,9.17C13.8,8.78 14.44,8.78 14.83,9.17C16.78,11.12 16.78,14.29 14.83,16.24V16.24L11.29,19.78C9.34,21.73 6.17,21.73 4.22,19.78C2.27,17.83 2.27,14.66 4.22,12.71L5.71,11.22C5.7,12.04 5.83,12.86 6.11,13.65L5.64,14.12C4.46,15.29 4.46,17.19 5.64,18.36C6.81,19.54 8.71,19.54 9.88,18.36L13.41,14.83C14.59,13.66 14.59,11.76 13.41,10.59C13,10.2 13,9.56 13.41,9.17Z' /%3E%3C/svg%3E");
+        }
+    }
+}
+
+@import "_embeds/diagram";
+@import "_embeds/github.scss";
+@import "_embeds/reddit.scss";
+@import "_embeds/stackoverflow.scss";
+@import "_embeds/youtube.scss";
+@import "_embeds/twitter.scss";

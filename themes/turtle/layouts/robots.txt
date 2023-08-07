@@ -1,6 +1,0 @@
-User-agent: *
-
-Disallow: /portfolio
-Disallow: /fr/portfolio
-
-Sitemap: {{ .Site.BaseURL }}sitemap.xml

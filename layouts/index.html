@@ -1,0 +1,30 @@
+{{ define "main" }}
+    <section id="section-posts" class="container">
+        {{ with .File }}
+            {{ $.Content }}
+        {{ else }}
+            <h2>All the posts</h2>
+        
+            {{ $pages := where .Site.RegularPages "Section" "posts" }}
+            {{ $pages = where $pages "RelPermalink" "!=" "/" }}
+            {{ $paginator := .Paginate (after 1 $pages) .Site.Params.pagination.articleCount }}
+
+            <div class="post-list">
+                {{ if eq $paginator.PageNumber 1 }}
+                    {{ range first 1 $pages }}
+                        {{- partial "content/posts/list-item-large" . -}}
+                    {{ end }}
+                {{ end }}
+                {{ range $paginator.Pages }}
+                    {{- partial "content/posts/list-item" . -}}
+                {{ end }}
+            </div>
+            
+            {{ partial "content/pagination.html" $paginator }}
+        {{ end }}
+    </section>
+{{ end }}
+
+{{ define "head" }}
+    {{ partial "tools/scss/include.html" "sass/blog.scss" }}
+{{ end }}

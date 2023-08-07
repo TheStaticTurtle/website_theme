@@ -1,0 +1,66 @@
+/*$main-bg-color: #f3f3f3;*/
+$main-bg-color: #263238;
+$main-dark-color: #1b282e;
+$main-darker-color: #142127;
+$main-light-color: #e3e3e3;
+/*$main-accent-color: #11ce66;*/
+$main-accent-color: #c09e09;
+
+$text-color-important: #cccccc;
+$text-color-muted: #726f6f;
+$text-color: #b9b8b8;
+
+$main-social-link-color: $main-accent-color;
+$main-social-link-mouserover-color: #ffffff;
+
+$link-color: $main-accent-color;
+$link-color-mouserover-color: #12964a;
+
+$footer-bg-color: $main-dark-color;
+$footer-color: $text-color-muted;
+
+$tag-bg-color: $main-darker-color;
+$tag-color: $main-light-color;
+$tag-hover-bg-color: $main-dark-color;
+$tag-hover-color: $main-light-color;
+$tag-font-size: 0.75em;
+
+$post-list-item-global-spacing: 0px;
+$post-list-item-spacing-bottom: 20px;
+$post-list-item-radius: 4px;
+    /* --post-list-item-bg-color: #e9e9e9; */
+$post-list-description-color: $text-color-muted;
+$post-list-icon-color: #808e95;
+$post-list-featured-color: #ffa90d;
+$post-list-description-font-size: 0.85em;
+$post-list-infos-font-size: 0.9em;
+$post-list-image-description-spacing: 16px;
+$post-list-top-spacing: 8px;
+$post-list-image-lg-align: start;
+$post-list-image-sm-md-align: strecth;
+$post-list-image-lg-width: 100%;
+$post-list-image-lg-height: 200px;
+$post-list-image-sm-md-width: 200px;
+$post-list-image-sm-md-height: 115px;
+
+$post-content-code-header-bg-color: $main-dark-color;
+$post-content-code-bg-color: $main-light-color;
+$post-content-code-icon-color: #3a3a3a;
+
+$post-content-blockquote-bg-color: $main-light-color;
+$post-content-blockquote-border-color: $main-accent-color;
+
+$post-content-table-header-bg-color: $main-dark-color;
+$post-content-table-border-color: $post-content-table-header-bg-color;
+$post-content-table-tr-odd-bg-color: transparent;
+$post-content-table-tr-even-bg-color: transparent;
+$post-content-table-tr-hover-bg-color: $main-light-color;
+
+$post-content-dl-dt-color: $main-accent-color;
+
+$post-content-kbd-bg-color: $main-dark-color;
+
+$post-content-tasklist-checked-color: $main-accent-color;
+$post-content-tasklist-unchecked-color: $main-dark-color;
+$post-content-tasklist-icon-unchecked: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm16.28-2.72a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5z"/></svg>');
+$post-content-tasklist-icon-checked: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12zm16.28-2.72a.75.75 0 0 0-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 0 0-1.06 1.06l3 3a.75.75 0 0 0 1.06 0l6.5-6.5z"/></svg>');

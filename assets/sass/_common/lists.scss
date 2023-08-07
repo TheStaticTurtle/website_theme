@@ -1,0 +1,13 @@
+@import "../theme.scss";
+
+ul {
+    color: $text-color;
+}
+
+li {
+    display: list-item;
+    list-style-type: square;
+    list-style-position: inside;
+    font-size: 1.05rem;
+    margin: 3px 0;
+}

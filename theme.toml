@@ -1,0 +1,12 @@
+name = "Turtle"
+license = "CC BY-NC-SA 4.0"
+licenselink = "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+description = "This theme is the theme use on my personal website/portfolio, not really intended for public use"
+homepage = "https://thestaticturtle.fr/"
+tags = ["blog","portfolio"]
+features = [""]
+min_version = "0.114.1"
+
+[author]
+  name = "TheStaticTurlte"
+  homepage = "https://thestaticturtle.fr/"

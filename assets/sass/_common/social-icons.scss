@@ -1,0 +1,24 @@
+
+/* Social icons */
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 50px;
+    border: 1px solid  var(--main-social-link-color);
+    margin-right: 16px;
+    padding-top: 2px;
+    font-size: 0 !important;
+}
+.social-icon > i {
+    position: relative;
+    font-size: 35px !important;
+    color: var(--main-social-link-color);
+}
+.social-icon:hover,.social-icon:active  {
+    background:  var(--main-social-link-color);
+}
+.social-icon:hover > i,.social-icon:active > i  {
+    color: var(--main-social-link-mouserover-color);
+}
