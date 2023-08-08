@@ -62,7 +62,7 @@
             {{ $image = .Resize $dim }}
         {{ end }}
         {{/* Re-assign the perma-link */}}
-        {{ $src = cond $permalink $img.Permalink $img.RelPermalink }}
+        {{ $src = cond $permalink $image.Permalink $image.RelPermalink }}
     {{ else }}
         {{/* Error out, shouldn't happen */}}
         {{ errorf "[partials/tools/image.html#local] Couldn't get image: %s " $src }}
