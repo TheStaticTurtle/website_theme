@@ -6,6 +6,10 @@
             {{ partial "tools/opengraph_ssr/embed_youtube.html" . }}
         {{ else if eq $siteNameUrlized "twitter"}}
             {{ partial "tools/opengraph_ssr/embed_twitter.html" . }}
+        {{ else if eq $siteNameUrlized "x-formerly-twitter"}}
+            {{ partial "tools/opengraph_ssr/embed_twitter.html" . }}
+        {{ else if eq $siteNameUrlized "x"}}
+            {{ partial "tools/opengraph_ssr/embed_twitter.html" . }}
         {{ else }}
             {{ partial "tools/opengraph_ssr/embed_generic.html" . }}
         {{ end }}

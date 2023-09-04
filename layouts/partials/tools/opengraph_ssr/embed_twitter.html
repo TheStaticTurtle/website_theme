@@ -16,36 +16,40 @@
 {{ end }}
 
 {{ if eq $error false }}
-    <blockquote class="embed embed-twitter">
-        {{ with (index $tweet "mediaDetails") }}
-            {{ if gt (len .) 0 }}
-                {{ $mediaUrl := index . 0 "media_url_https" }}
-                {{ $mediaExpandedUrl := index . 0 "expanded_url" }}
-                {{ $mediaType := index . 0 "type" }}
-                {{ with partial "tools/image.html" (dict "ctx" . "src" $mediaUrl "warn" false) }}
-                    <a href="{{ $tweetUrl }}" target="_blank" class="embed-image-container">
-                        {{ print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" | safeHTML }}
-                        <div class="embed-image-image embed-twitter-mediatype-{{ $mediaType }}">
-                            {{ if eq $mediaType "video" }}
-                                <p>▶</p>
-                            {{ end }}
-                            <img src='{{ . }}'>
-                        </div>
-                    </a>
+    {{ with  $tweet }}
+        <blockquote class="embed embed-twitter">
+            {{ with (index $tweet "mediaDetails") }}
+                {{ if gt (len .) 0 }}
+                    {{ $mediaUrl := index . 0 "media_url_https" }}
+                    {{ $mediaExpandedUrl := index . 0 "expanded_url" }}
+                    {{ $mediaType := index . 0 "type" }}
+                    {{ with partial "tools/image.html" (dict "ctx" . "src" $mediaUrl "warn" false) }}
+                        <a href="{{ $tweetUrl }}" target="_blank" class="embed-image-container">
+                            {{ print "<div class='embed-image-background' style='background-image: url(" . ");'></div>" | safeHTML }}
+                            <div class="embed-image-image embed-twitter-mediatype-{{ $mediaType }}">
+                                {{ if eq $mediaType "video" }}
+                                    <p>▶</p>
+                                {{ end }}
+                                <img src='{{ . }}'>
+                            </div>
+                        </a>
+                    {{ end }}
                 {{ end }}
             {{ end }}
-        {{ end }}
 
-        <div class="embed-content">
-            <a class="embed-title" target="_blank" href="{{ $tweetUrl }}">{{ index $tweet "user" "name" }}</a>
-            {{ with (index $tweet "text" ) }}
-                <p>{{ replace . "\n" "<br>" | replaceRE `https:\/\/t.co\/[a-zA-Z0-9]+` "" | safeHTML }}</p>
-            {{ end }}
-            {{ range (index $tweet "entities" "urls") }}
-                <a href='{{ index . "expanded_url" }}'>{{ index . "expanded_url" }}</a><br>
-            {{ end }}
-        </div>
-    </blockquote>
+            <div class="embed-content">
+                <a class="embed-title" target="_blank" href="{{ $tweetUrl }}">{{ index $tweet "user" "name" }}</a>
+                {{ with (index $tweet "text" ) }}
+                    <p>{{ replace . "\n" "<br>" | replaceRE `https:\/\/t.co\/[a-zA-Z0-9]+` "" | safeHTML }}</p>
+                {{ end }}
+                {{ range (index $tweet "entities" "urls") }}
+                    <a href='{{ index . "expanded_url" }}'>{{ index . "expanded_url" }}</a><br>
+                {{ end }}
+            </div>
+        </blockquote>
+    {{ else }}
+        {{ partial "tools/opengraph_ssr/embed_generic.html" . }}
+    {{ end }}
 {{ else }}
     <blockquote class="embed embed-twitter">
         <div class="embed-content">

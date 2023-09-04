@@ -1,4 +1,4 @@
-.markdown blockquote[class*="embed-twitter"] {
+.markdown blockquote[class*="embed-twitter"], .markdown blockquote[class*="embed-x"], .markdown blockquote[class*="embed-x-formerly-twitter"] {
     border-left: #1DA1F2 solid 4px !important;
 
     &:before {
