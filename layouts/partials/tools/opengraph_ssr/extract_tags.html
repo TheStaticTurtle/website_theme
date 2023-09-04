@@ -16,10 +16,9 @@
     {{ else }}
         {{ $processedContent := replace .Content "\n" "NEWLINETAG%%$" }}
 
-        {{ range findRE `<meta.*?content="(.*?)".*?(?:property|name)="(.+?)".*?\/?>` $processedContent }}
-            {{/* Stupid workaround for capture groups in template (yet, https://github.com/gohugoio/hugo/issues/10594) */}}
-            {{ $property := replaceRE `^.*?(?:property|name)="|".*$` "" .  }}
-            {{ $content := replaceRE `^.*?content="|".*$` "" .  }}
+        {{ range findRESubmatch  `<meta[^>]*?content="([^>]*?)"[^>]*?(?:property|name)="([^>]+?)"[^>]*?\/?>` $processedContent }}
+            {{ $property := index . 2 }}
+            {{ $content := index . 1 }}
             
             {{ $content = replace $content "NEWLINETAG%%$" "\n" }}
 
@@ -28,10 +27,9 @@
             {{ end }}
         {{ end }}
 
-        {{ range findRE  `<meta.*?(?:property|name)="(.+?)".*?content="(.*?)".*?\/?>` $processedContent }}
-            {{/* Stupid workaround for capture groups in template (yet, https://github.com/gohugoio/hugo/issues/10594) */}}
-            {{ $property := replaceRE `^.*?(?:property|name)="|".*$` "" .  }}
-            {{ $content := replaceRE `^.*?content="|".*$` "" .  }}
+        {{ range findRESubmatch  `<meta[^>]*?(?:property|name)="([^>]+?)"[^>]*?content="([^>]*?)"[^>]*?\/?>` $processedContent }}
+            {{ $property := index . 1 }}
+            {{ $content := index . 2 }}
             
             {{ $content = replace $content "NEWLINETAG%%$" "\n" }}
 
