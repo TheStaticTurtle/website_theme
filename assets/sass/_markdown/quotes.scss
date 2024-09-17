@@ -11,4 +11,23 @@
             margin-left: 0;
         }
     }
+
+    
+    blockquote[class*="todo-warning"] {
+        background-color: $post-content-todo-background;
+        border-left: $post-content-todo-border solid 4px;
+        border-right: $post-content-todo-border solid 4px;
+        margin: 0 0 16px;
+        padding: 16px;
+
+        .todo-warning-subtitle {
+            font-family: sans-serif;
+            margin-bottom: 8px;
+        }
+
+        .todo-warning-content {
+            background-color: $post-content-todo-content !important;
+            margin: 0;
+        }
+    }
 }
