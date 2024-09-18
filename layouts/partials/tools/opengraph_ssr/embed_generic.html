@@ -6,6 +6,10 @@
 {{ $embedImage := index . "tags" "og:image" }}
 {{ $embedImageAlt := index . "tags" "og:image:alt" }}
 
+{{ if eq $siteNameUrlized "" }}
+    {{ $siteNameUrlized = strings.ReplaceRE `[^a-zA-Z0-9]` "_" (urls.Parse $link).Host }}
+{{ end }}
+
 <blockquote class="embed embed-{{ $siteNameUrlized }}">
     {{ if $embedImage }}
         {{ with partial "tools/image.html" (dict "ctx" . "src" $embedImage "warn" false) }}
