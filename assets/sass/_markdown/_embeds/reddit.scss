@@ -1,5 +1,5 @@
 
-.markdown blockquote[class*="embed-www-reddit"] {
+.markdown blockquote[class*="embed-www-reddit"], .markdown blockquote[class*="embed-reddit"]  {
     border-left: #FF5700 solid 4px !important;
 
     &::before {

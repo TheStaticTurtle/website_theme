@@ -1,0 +1,11 @@
+<blockquote class="warning">
+    {{ with .Get 0 }}
+        <h3 class="warning-title">{{ . }}</h3>
+    {{ end }}
+    {{ with .Get 1 }}
+        <p class="warning-text">{{ . }}</p>
+        <pre class="warning-content">{{ $.Inner }}</pre>
+    {{ else }}
+        <p class="warning-text">{{ .Inner }}</p>
+    {{ end }}
+</blockquote>
