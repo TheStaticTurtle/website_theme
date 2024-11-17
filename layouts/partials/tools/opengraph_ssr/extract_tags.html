@@ -3,10 +3,12 @@
 {{ $tags := dict }}
 {{ $error := false }}
 
+{{ $params := (index site.Params "ssr") }}
+
 {{ $opts := dict
     "method" "get"
     "headers" (dict
-        "User-Agent" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" 
+        "User-Agent" (index $params "user_agent")
     )
 }}
 {{ with resources.GetRemote . $opts }}
