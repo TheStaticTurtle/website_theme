@@ -1,0 +1,22 @@
+{{ $thanks := slice }} 
+{{ range .Params.thanks }}
+    {{ with $.Site.GetPage (printf "/%s/%s" "contributors" .) }}
+        {{ if .Params.social.website }}
+            {{ $thanks = $thanks | append (printf "<a target='_blank' href='%s'>%s</a>" .Params.social.website .Params.name) }}
+        {{ else }}
+            {{ $thanks = $thanks | append .Params.name }}
+        {{ end }}
+    {{ else }}
+        {{ $thanks = $thanks | append . }}
+    {{ end }}
+{{ end }}
+
+<section id="section-thanks" class="container markdown">
+    <h2 id="special-thanks">Special thanks<a class="header-link" href="#special-thanks"><i class="mdi mdi-link-variant" aria-hidden="true"></i>Shortcut to: Special thanks</a></h1>
+    <blockquote class="embed embed-thanks">
+        <div class="embed-content">
+            I'd like to give a big thanks to {{ delimit $thanks ", " " and "}} for their support, whether by directly contributing to the project, offering valuable insights, or taking the time to proofread the article. 
+            Your help has been truly appreciated!
+        </div>
+    </blockquote>
+</section>

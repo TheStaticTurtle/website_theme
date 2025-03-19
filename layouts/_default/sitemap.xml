@@ -3,7 +3,7 @@
 
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {{- /* Only render actual sitemaps of the blog, ignore anything related to the portfolio */ -}}
-{{- range site.Sections -}}{{ if and (.RelPermalink) (not (strings.Contains .RelPermalink "/portfolio/")) }}
+{{- range site.Sections -}}{{ if and (.RelPermalink) (not (strings.Contains .RelPermalink "/portfolio/")) (not (strings.Contains .RelPermalink "/contributors/")) }}
     <sitemap>
         <loc>{{ .RelPermalink }}sitemap.xml</loc>
     </sitemap>
