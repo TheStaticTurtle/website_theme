@@ -1,18 +1,12 @@
 {{ $siteNameUrlized := urlize  (index . "tags" "og:site_name") }}
 {{ $tweetUrl := index . "link" }}
-{{ $tweetId := index (index (findRESubmatch  `^.*\/(\d+)` $tweetUrl) 0 ) 1 }}
-{{ $tweetInfoUrl := printf "https://cdn.syndication.twimg.com/tweet-result?id=%s" $tweetId }}
 
 {{ $tweet := dict }}
 {{ $error := false }}
 
-{{ with resources.GetRemote $tweetInfoUrl }}
-    {{ with .Err }}
-        {{ $error = . }}
-        {{ warnf "[twitter_syndication] %s %s" $tweetId $tweetInfoUrl }}
-    {{ else }}
-        {{ $tweet = unmarshal .Content }}
-    {{ end }}
+{{ with partial "tools/opengraph_ssr/twitter/get-tweet.html" $tweetUrl }}
+    {{ $tweet = index . "tweet" }}
+    {{ $error = index . "error" }}
 {{ end }}
 
 {{ if eq $error false }}

@@ -1,0 +1,50 @@
+{{/* https://gist.github.com/the-hotmann/a745c76c806128db68700685105a20e8#file-twittergettoken-go-L121 */}}
+
+{{ $js36 := "0123456789abcdefghijklmnopqrstuvwxyz" }}
+    
+{{ $tweetId := . }}
+{{ $tweetIdNum := cast.ToInt $tweetId }}
+
+
+{{ $float := math.Mul (math.Div $tweetIdNum 1e15) 3.141592653589793 }}
+
+{{ $int := math.Floor $float }}
+{{ $intBase := "" }}
+{{ $frac := math.Sub $float $int }}
+{{ $fracBase := "" }}
+
+{{ if eq $int 0 }}
+    {{ $intBase = "0" }}
+{{ else }}
+    {{ $n := $int }}
+    {{ range seq 1000 }}
+        {{ $remainder := math.Mod $n 36 }}
+        {{ $intBase = printf "%s%s" (substr $js36 $remainder 1) $intBase  }}
+        {{ $n = math.Div $n 36 }}
+        {{ if lt $n 1 }}
+            {{ break }}
+        {{ end }}
+    {{ end }}
+{{ end }}
+
+
+{{ $precision := math.Sub 12 ($intBase | len ) }}
+
+{{ $f := $frac }}
+{{ range seq (math.Add $precision 1) }}
+    {{ $f = math.Mul $f 36 }}
+    {{ $digit := math.Floor $f }}
+    {{ $fracBase = printf "%s%s"  $fracBase  (substr $js36 $digit 1) }}
+    {{ $f = math.Sub $f $digit }}
+{{ end }}
+
+{{ if gt ($fracBase | len) $precision }}
+    {{ if not (eq (substr $fracBase $precision 1) "0") }}
+        {{ warnf "[twitter_syndication_token] Fractional calculation not fully implemented. May fail!" }}
+    {{ else }}
+        {{ $fracBase = substr $fracBase 0 $precision }}
+    {{ end }}
+{{ end }}
+
+
+{{ return printf "%s%s" $intBase $fracBase }}

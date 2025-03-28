@@ -1,0 +1,33 @@
+{{ $tweetUrl := . }}
+
+{{ $tweetId := index (index (findRESubmatch  `^.*\/(\d+)` $tweetUrl) 0 ) 1 }}
+{{ $tweetIdNum := cast.ToInt $tweetId }}
+
+{{ $token := .  }}
+{{ with partial "tools/opengraph_ssr/twitter/token.html" $tweetId }}
+    {{ $token = .  }}
+{{ end }}
+
+{{ $tweetInfoUrl := printf "https://cdn.syndication.twimg.com/tweet-result?id=%s&token=%s" $tweetId $token  }}
+
+{{ $tweet := dict }}
+{{ $error := false }}
+
+{{ with resources.GetRemote $tweetInfoUrl }}
+    {{ with .Err }}
+        {{ $error = . }}
+        {{ warnf "[twitter_syndication] %s %s" $tweetId $tweetInfoUrl }}
+    {{ else }}
+        {{ $tweet = unmarshal .Content }}
+    {{ end }}
+{{ end }}
+
+{{ if not (index $tweet  "user" "name") }}
+    {{ $error = true }}
+    {{ errorf "[twitter_syndication] %s returned invalid data" $tweetUrl }}
+{{ end }}
+
+{{ return (dict
+    "tweet" $tweet
+    "error" $error
+)}}
