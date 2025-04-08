@@ -35,6 +35,10 @@
         background-color: $post-content-code-bg-color !important; /* !important to override the style attribute put by pygment */
         overflow-x: auto;
         overflow-wrap: break-word;
+
+        @media print {
+            white-space: pre-wrap;
+        }
     }
 
     pre {

@@ -30,35 +30,41 @@
         .header-link > i { 
             font-size: 36px;
         }
+        break-before: avoid;
     }
     h2 {
         font-size: 2.05em;
         .header-link > i { 
             font-size: 32px;
         }
+        break-before: page;
     }
     h3 {
         font-size: 1.75em;
         .header-link > i { 
             font-size: 28px;
         }
+        break-before: avoid;
     }
     h4 {
         font-size: 1.4em;
         .header-link > i { 
             font-size: 24px;
         }
+        break-before: avoid;
     }
     h5 {
         /* No resize for h5 */
         .header-link > i { 
             font-size: 16px;
         }
+        break-before: avoid;
     }
     h6 {
         /* No resize for h6 */
         .header-link > i { 
             font-size: 12px;
         }
+        break-before: avoid;
     }
 }
