@@ -17,11 +17,28 @@
 
         {{ if $newRow  }}<div class="img-gallery-row">{{ end }}
             
+            {{ $caption := "" }}
             {{ $src := . }}
+            
+            {{ if (hasSuffix . "\"") }}
+                {{ $tmp := split . " \"" }}
+                {{ if eq 2 (len $tmp) }}
+                    {{ $src = index $tmp 0 }}
+                    {{ $caption = strings.TrimSuffix "\"" (index $tmp 1) }}
+                {{ end }}
+            {{ end }}
+
             {{ with partial "tools/image.html" (dict "ctx" $ "src" $src) }}
-                <a class="img-gallery-image" target="_blank" href="{{ $src }}">
-                    <img src="{{ . }}" >
-                </a>
+                <div class="img-gallery-image">
+                    <figure>
+                        <a target="_blank" href="{{ $src }}">
+                            <img src="{{ . }}" alt="{{ $caption }}">
+                        </a>
+                        {{ with $caption }}
+                            <figcaption>{{ . }}</figcaption>
+                        {{ end }}
+                    </figure>
+                </div>
             {{ end }}
             
         {{ if $endRow }}</div>{{ end }}
