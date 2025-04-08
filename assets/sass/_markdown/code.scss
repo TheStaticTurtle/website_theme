@@ -35,6 +35,11 @@
         background-color: $post-content-code-bg-color !important; /* !important to override the style attribute put by pygment */
         overflow-x: auto;
         overflow-wrap: break-word;
+        
+        span:last-of-type {
+            margin-bottom: 4px;
+        }
+        scrollbar-color: gray $post-content-code-bg-color;
 
         @media print {
             white-space: pre-wrap;
