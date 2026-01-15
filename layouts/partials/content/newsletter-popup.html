@@ -1,0 +1,43 @@
+
+<aside id="newsletter-popup" class="newsletter">
+    <button class="close-button" aria-label="Close" onclick="dismissNewsletterPopup()">&#10006;</button>
+
+    <h3>🔔 Enjoying the article?</h3>
+
+    <p>Subscribe to my newsletter to get notified when I post a new article!</p>
+    
+    <form target="_blank" method="post" action="https://notify.thestaticturtle.fr/subscription/form" class="listmonk-form">
+        <input type="hidden" name="nonce" />
+        <input type="hidden" name="l" value="0ae96e59-3a94-4c66-a9ed-9d19b61aaacb" />
+
+        <div class="row">
+            <div class="col">
+                <input id="news-email" type="email" name="email" required placeholder="E-mail" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <input id="news-name" type="text" name="name" placeholder="Name (optional)" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col newsletter-submit">
+                <input type="submit" value="Subscribe " />
+            </div>
+        </div>
+    </form>
+</aside>
+<script>
+    function dismissNewsletterPopup() {
+        document.querySelector('#newsletter-popup').style.display = 'none';
+
+        var expires = (new Date(Date.now()+ 604800*1000)).toUTCString(); // Disables for 7 days
+        document.cookie = "disableNewsletterPopup=0; expires=" + expires + ";path=/;"
+    }
+    window.addEventListener('scroll', () => {
+        const disabledByCookie = document.cookie.includes("disableNewsletterPopup");
+        const isPastNewsletterEl = (window.scrollY + window.innerHeight) > (document.getElementById("newsletter")?.offsetTop || Number.MAX_SAFE_INTEGER)
+        const percent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        document.querySelector('#newsletter-popup').classList.toggle('shown', percent >= 25 && !isPastNewsletterEl && !disabledByCookie);
+    });
+</script>

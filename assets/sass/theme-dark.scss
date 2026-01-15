@@ -5,6 +5,7 @@ $main-darker-color: #142127;
 $main-light-color: #e3e3e3;
 /*$main-accent-color: #11ce66;*/
 $main-accent-color: #c09e09;
+$main-accent-darker-color: #a58a11;
 
 $text-color-important: #cccccc;
 $text-color-muted: #726f6f;
@@ -15,6 +16,10 @@ $main-social-link-mouserover-color: #ffffff;
 
 $link-color: $main-accent-color;
 $link-color-mouserover-color: #12964a;
+
+$button-text-color: #ffffff;
+$button-bg-color: $main-accent-color;
+$button-border-color: $main-accent-darker-color;
 
 $footer-bg-color: $main-dark-color;
 $footer-color: $text-color-muted;

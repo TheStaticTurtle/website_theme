@@ -4,7 +4,14 @@
             {{ $.Content }}
         {{ else }}
             <h2>All the posts</h2>
-        
+
+            <noscript>
+                <p style="margin-top: 8px;">
+                    Want to get an email when I post a new article? 
+                    <a target="_blank" href="https://notify.thestaticturtle.fr/subscription/form">Subscribe to the newsletter!</a>
+                </p>
+            </noscript>
+            
             {{ $pages := where .Site.RegularPages "Section" "posts" }}
             {{ $pages = where $pages "RelPermalink" "!=" "/" }}
             {{ $paginator := .Paginate (after 1 $pages) .Site.Params.pagination.articleCount }}
@@ -23,6 +30,9 @@
             {{ partial "content/pagination.html" $paginator }}
         {{ end }}
     </section>
+
+    {{ partial "content/newsletter-popup.html" }}
+    
 {{ end }}
 
 {{ define "head" }}
